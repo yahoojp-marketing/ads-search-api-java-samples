@@ -1,0 +1,12 @@
+AccountServiceIsTestAccount:
+  type: string
+  enum:
+    - 'FALSE'
+    - 'TRUE'
+    - UNKNOWN
+  description: |
+    <ja>テストアカウント</ja><br>
+    <en>Test account.</en><hr>
+    * `FALSE` - <ja>Productionアカウント(テストアカウントではありません)</ja><br><en>Production (non-test) account.</en>
+    * `TRUE` - <ja>テストアカウント</ja><br><en>Test account.</en>
+    * `UNKNOWN` - 未知の値です。<br>Unknown Value
