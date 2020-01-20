@@ -1,6 +1,0 @@
-CampaignCriterionServiceType:
-  type: string
-  enum:
-  - KEYWORD
-  - UNKNOWN
-  title: CampaignCriterionServiceType

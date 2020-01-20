@@ -27,6 +27,8 @@ src/main/
 
 download/                           : Directory where downloaded files stored when using download feature.
 
+module/                           : Modules which need for starting the code samples.
+
 --------------------------------
 [Feature]
 --------------------------------
@@ -36,11 +38,12 @@ src/main/java/jp/yahooapis/ss/adapisample/feature/
 --------------------------------
 [Development environment]
 --------------------------------
-Install the softwares below to organize environment.
+Install the software below to organize environment.
 
 1. Java 1.8(Java SE Development Kit 8 or above
 2. Apache Maven 3.5.3 or above
-3. Write the following each ID in src/main/resources/api_config.properties.  
+3. Rename src/main/resources/api_config.properties.dist to "api_config.properties".
+4. Write the following each ID in src/main/resources/api_config.properties.  
   - ACCOUNT_ID           : Account ID (required)
   - CLIENT_ID            : Client ID (required)
   - CLIENT_SECRET        : Client secret (required)
@@ -49,7 +52,12 @@ Install the softwares below to organize environment.
 --------------------------------
 [How to execute Sample Code]
 --------------------------------
-Move into the directory where you cloned and execute the command below.
+Move to the directory where you stored the cloned sample program, and execute the following command to update the module to the latest. 
+```
+git submodule update --init --recursive
+```
+
+Then, execute the following command.
 ```
 mvn clean install
 ```

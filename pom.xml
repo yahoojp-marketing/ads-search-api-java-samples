@@ -56,7 +56,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/models/v0/Route.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/module/design/v0/Route.yaml</inputSpec>
                             <output>${project.build.directory}/generated-sources</output>
                             <generatorName>java</generatorName>
                             <modelPackage>jp.co.yahoo.adssearchapi.v0.model</modelPackage>

@@ -1,0 +1,3 @@
+[submodule "module"]
+	path = module
+	url = https://github.com/yahoojp-marketing/ads-search-api-documents.git
