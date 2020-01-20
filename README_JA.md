@@ -27,6 +27,7 @@ src/main/
 
 download/                         : 各種Downloadサービスを実行した際に、ダウンロードしたデータがファイルとして格納されるディレクトリです。
 
+module/                           : 各種サンプルを起動するために必要なモジュールです。
 
 --------------------------------
 【Feature説明】
@@ -39,9 +40,10 @@ src/main/java/jp/co/yahoo/adssearchapi/sample/feature/
 --------------------------------
 Java環境を構築するために、以下をインストールしてください。
 
-1. Java 1.8 Java SE Development Kit 8、またはそれ以上のバージョン
+1. Java 1.8 Java SE Development Kit 8
 2. Apache Maven 3.5.3、またはそれ以上のバージョン
-3. resourcesディレクトリ配下にあるapi_config.propertiesに各IDを記述します。
+3. resourcesディレクトリ配下にあるapi_config.properties.distをapi_config.propertiesにリネームしてください。
+4. api_config.propertiesに各IDを記述します。
   - ACCOUNT_ID          : アカウントIDを記述してください(必須)。
   - CLIENT_ID           : クライアントIDを記述してください(必須)。
   - CLIENT_SECRET       : クライアントシークレットを記述してください(必須)。
@@ -50,7 +52,12 @@ Java環境を構築するために、以下をインストールしてくださ�
 --------------------------------
 【実行】
 --------------------------------
-cloneしたサンプルプログラムのディレクトリに移動し、以下のコマンドを実行します。
+cloneしたサンプルプログラムのディレクトリに移動し、以下のコマンドを実行してモジュールを最新の状態にアップデートします。
+```
+git submodule update --init --recursive
+```
+
+その後、以下のコマンドを実行します。
 ```
 mvn clean install
 ```
