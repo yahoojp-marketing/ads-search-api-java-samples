@@ -3,20 +3,20 @@
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroupfeed;
 
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupFeed;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupFeedServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupFeedServiceList;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupFeedServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupFeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupFeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupFeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupFeedServiceValue;
-import jp.co.yahoo.adssearchapi.v0.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v0.model.FeedItemServicePlaceholderType;
 import jp.co.yahoo.adssearchapi.sample.basic.feeditem.FeedItemServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeed;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceList;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceOperation;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceValue;
+import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServicePlaceholderType;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -3,10 +3,10 @@
  */
 package jp.co.yahoo.adssearchapi.sample.repository;
 
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupCriterionServiceValue;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupCriterionServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;

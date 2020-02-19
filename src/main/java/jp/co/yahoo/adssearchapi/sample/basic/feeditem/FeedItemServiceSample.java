@@ -3,11 +3,38 @@
  */
 package jp.co.yahoo.adssearchapi.sample.basic.feeditem;
 
-import jp.co.yahoo.adssearchapi.v0.model.*;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItem;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceAttribute;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceCriterionTypeFeedItem;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceDayOfWeek;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceDevicePreference;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceFeedAttributeValue;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceGeoRestriction;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceIsRemove;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceKeywordMatchType;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceLocation;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceMinuteOfHour;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceMultipleFeedItemAttribute;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceOperation;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServicePlaceholderField;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceSchedule;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceScheduling;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceSelector;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceSimpleFeedItemAttribute;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceTargetingAdGroup;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceTargetingCampaign;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceTargetingKeyword;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceValue;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -3,27 +3,27 @@
  */
 package jp.co.yahoo.adssearchapi.sample.basic.reportdefinition;
 
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinition;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceDownloadSelector;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceGetReportFields;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceGetReportFieldsResponse;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceOperation;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceReportCompressType;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceReportDateRangeType;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceReportDownloadEncode;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceReportDownloadFormat;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceReportFieldAttribute;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceReportIncludeDeleted;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceReportIncludeZeroImpressions;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceReportLanguage;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceReportSortField;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceReportSortType;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceReportType;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceSelector;
-import jp.co.yahoo.adssearchapi.v0.model.ReportDefinitionServiceValue;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinition;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceDownloadSelector;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceGetReportFields;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceGetReportFieldsResponse;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceOperation;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportCompressType;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportDateRangeType;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportDownloadEncode;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportDownloadFormat;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportFieldAttribute;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportIncludeDeleted;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportIncludeZeroImpressions;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportLanguage;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportSortField;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportSortType;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportType;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceSelector;
+import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,34 +38,34 @@ public class ReportDefinitionServiceSample {
   private static final String SERVICE_NAME = "ReportDefinitionService";
 
   private static final List<String> CAMPAIGN_REPORT_FIELDS = Arrays.asList( //
-      "CAMPAIGN_ID", //
-      "CAMPAIGN_NAME", //
-      "CAMPAIGN_DISTRIBUTION_SETTINGS", //
-      "CAMPAIGN_DISTRIBUTION_STATUS", //
-      "DAILY_SPENDING_LIMIT", //
-      "CAMPAIGN_START_DATE", //
-      "CAMPAIGN_END_DATE", //
-      "TRACKING_URL", //
-      "CUSTOM_PARAMETERS", //
-      "CAMPAIGN_TRACKING_ID", //
-      "CONVERSIONS", //
-      "CONV_VALUE", //
-      "VALUE_PER_CONV", //
-      "CAMPAIGN_MOBILE_BID_MODIFIER", //
-      "NETWORK", //
-      "CLICK_TYPE", //
-      "DEVICE", //
-      "DAY", //
-      "DAY_OF_WEEK", //
-      "QUARTER", //
-      "YEAR", //
-      "MONTH", //
-      "MONTH_OF_YEAR", //
-      "WEEK", //
-      "HOUR_OF_DAY", //
-      "OBJECT_OF_CONVERSION_TRACKING", //
-      "CONVERSION_NAME", //
-      "CAMPAIGN_TYPE" //
+    "CAMPAIGN_ID", //
+    "CAMPAIGN_NAME", //
+    "CAMPAIGN_DISTRIBUTION_SETTINGS", //
+    "CAMPAIGN_DISTRIBUTION_STATUS", //
+    "DAILY_SPENDING_LIMIT", //
+    "CAMPAIGN_START_DATE", //
+    "CAMPAIGN_END_DATE", //
+    "TRACKING_URL", //
+    "CUSTOM_PARAMETERS", //
+    "CAMPAIGN_TRACKING_ID", //
+    "CONVERSIONS", //
+    "CONV_VALUE", //
+    "VALUE_PER_CONV", //
+    "CAMPAIGN_MOBILE_BID_MODIFIER", //
+    "NETWORK", //
+    "CLICK_TYPE", //
+    "DEVICE", //
+    "DAY", //
+    "DAY_OF_WEEK", //
+    "QUARTER", //
+    "YEAR", //
+    "MONTH", //
+    "MONTH_OF_YEAR", //
+    "WEEK", //
+    "HOUR_OF_DAY", //
+    "OBJECT_OF_CONVERSION_TRACKING", //
+    "CONVERSION_NAME", //
+    "CAMPAIGN_TYPE" //
   );
 
   /**
@@ -96,7 +96,7 @@ public class ReportDefinitionServiceSample {
       // =================================================================
       // create request.
       ReportDefinitionServiceOperation addRequest = buildExampleMutateRequest( //
-          accountId, Collections.singletonList(createExampleReportDefinition()) //
+        accountId, Collections.singletonList(createExampleReportDefinition()) //
       );
 
       // run
@@ -215,7 +215,7 @@ public class ReportDefinitionServiceSample {
     ReportDefinitionServiceReportSortField reportSortField = new ReportDefinitionServiceReportSortField();
     reportSortField.setReportSortType(ReportDefinitionServiceReportSortType.ASC);
     reportSortField.setField(CAMPAIGN_REPORT_FIELDS.get(0));
-    reportDefinition.setSortFields(reportSortField);
+    reportDefinition.setSortFields(Arrays.asList(reportSortField));
 
     reportDefinition.setReportDownloadFormat(ReportDefinitionServiceReportDownloadFormat.CSV);
     reportDefinition.setReportDownloadEncode(ReportDefinitionServiceReportDownloadEncode.UTF_8);
