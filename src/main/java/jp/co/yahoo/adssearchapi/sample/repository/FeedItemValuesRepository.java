@@ -3,10 +3,10 @@
  */
 package jp.co.yahoo.adssearchapi.sample.repository;
 
-import jp.co.yahoo.adssearchapi.v0.model.FeedItem;
-import jp.co.yahoo.adssearchapi.v0.model.FeedItemServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v0.model.FeedItemServiceValue;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItem;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;

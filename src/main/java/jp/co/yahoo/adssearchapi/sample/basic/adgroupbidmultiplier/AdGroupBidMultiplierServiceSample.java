@@ -3,18 +3,18 @@
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroupbidmultiplier;
 
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupBidMultiplier;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupBidMultiplierServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupBidMultiplierServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupBidMultiplierServiceOperation;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupBidMultiplierServicePlatformType;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupBidMultiplierServiceSelector;
-import jp.co.yahoo.adssearchapi.v0.model.AdGroupBidMultiplierServiceValue;
-import jp.co.yahoo.adssearchapi.v0.model.CampaignServiceType;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplier;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServiceOperation;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServicePlatformType;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServiceSelector;
+import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServiceValue;
+import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -3,10 +3,18 @@
  */
 package jp.co.yahoo.adssearchapi.sample.basic.feed;
 
-import jp.co.yahoo.adssearchapi.v0.model.*;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v1.model.Feed;
+import jp.co.yahoo.adssearchapi.v1.model.FeedServiceAttribute;
+import jp.co.yahoo.adssearchapi.v1.model.FeedServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v1.model.FeedServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v1.model.FeedServiceOperation;
+import jp.co.yahoo.adssearchapi.v1.model.FeedServicePlaceholderField;
+import jp.co.yahoo.adssearchapi.v1.model.FeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v1.model.FeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v1.model.FeedServiceValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;

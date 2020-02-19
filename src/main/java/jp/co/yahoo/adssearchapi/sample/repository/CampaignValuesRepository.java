@@ -3,11 +3,11 @@
  */
 package jp.co.yahoo.adssearchapi.sample.repository;
 
-import jp.co.yahoo.adssearchapi.v0.model.Campaign;
-import jp.co.yahoo.adssearchapi.v0.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v0.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v0.model.CampaignServiceValue;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v1.model.Campaign;
+import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceAppStore;
+import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
