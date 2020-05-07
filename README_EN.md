@@ -5,10 +5,14 @@ v1
 
 ■ Change logs
 -----------
+May 2020
+- bug fix  
+
 February 2020
-- v1 is now available.
-October 2019
-- v0 is now available.
+- v1 is now available.  
+  
+October 2019   
+- v0 is now available.  
 
 --------------------------------
 [Overview]

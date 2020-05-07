@@ -37,6 +37,7 @@ import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceTargetingKeyword;
 import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceValue;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -209,8 +210,8 @@ public class FeedItemServiceSample {
     // set feedItem
     FeedItem feedItem = new FeedItem();
     feedItem.setFeedId(feedId);
-    feedItem.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now()));
-    feedItem.setEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now().plusMonths(1L)));
+    feedItem.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo"))));
+    feedItem.setEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo")).plusMonths(1L)));
 
     // set feedItemAttribute
     FeedItemServiceSimpleFeedItemAttribute feedItemAttributeInteger = new FeedItemServiceSimpleFeedItemAttribute();
@@ -370,8 +371,8 @@ public class FeedItemServiceSample {
 
 
     FeedItem feedItem = new FeedItem();
-    feedItem.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now()));
-    feedItem.setEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now().plusMonths(1L)));
+    feedItem.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo"))));
+    feedItem.setEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo")).plusMonths(1L)));
     feedItem.setDevicePreference(FeedItemServiceDevicePreference.SMART_PHONE);
     feedItem.setFeedItemAttribute(Arrays.asList( //
             linkText, //
@@ -419,8 +420,8 @@ public class FeedItemServiceSample {
     scheduling.setSchedules(Arrays.asList(schedule1, schedule2));
 
     FeedItem feedItem = new FeedItem();
-    feedItem.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now()));
-    feedItem.setEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now().plusMonths(1L)));
+    feedItem.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo"))));
+    feedItem.setEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo")).plusMonths(1L)));
     feedItem.setDevicePreference(FeedItemServiceDevicePreference.SMART_PHONE);
     feedItem.setFeedItemAttribute(Collections.singletonList(callPhoneNumber));
     feedItem.setScheduling(scheduling);
@@ -460,8 +461,8 @@ public class FeedItemServiceSample {
     scheduling.setSchedules(Arrays.asList(schedule1, schedule2));
 
     FeedItem feedItem = new FeedItem();
-    feedItem.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now()));
-    feedItem.setEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now().plusMonths(1L)));
+    feedItem.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo"))));
+    feedItem.setEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo")).plusMonths(1L)));
     feedItem.setDevicePreference(FeedItemServiceDevicePreference.SMART_PHONE);
     feedItem.setFeedItemAttribute(Collections.singletonList(calloutText));
     feedItem.setScheduling(scheduling);
@@ -477,8 +478,8 @@ public class FeedItemServiceSample {
   public static FeedItem createExampleStructuredSnippet() {
     // set feedItem
     FeedItem feedItem = new FeedItem();
-    feedItem.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now()));
-    feedItem.setEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now().plusMonths(1L)));
+    feedItem.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo"))));
+    feedItem.setEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo")).plusMonths(1L)));
     feedItem.setDevicePreference(FeedItemServiceDevicePreference.SMART_PHONE);
 
     // set feedItemAttribute

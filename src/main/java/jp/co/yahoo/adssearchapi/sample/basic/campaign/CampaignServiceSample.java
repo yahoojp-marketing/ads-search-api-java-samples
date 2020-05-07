@@ -38,6 +38,7 @@ import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceValue;
 import jp.co.yahoo.adssearchapi.v1.model.FeedServicePlaceholderType;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -251,7 +252,7 @@ public class CampaignServiceSample {
     Campaign campaign = new Campaign();
     campaign.setCampaignName(campaignNamePrefix + ApiUtils.getCurrentTimestamp());
     campaign.setUserStatus(CampaignServiceUserStatus.ACTIVE);
-    campaign.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now()));
+    campaign.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo"))));
     campaign.setEndDate("20301231");
     campaign.setType(CampaignServiceType.STANDARD);
     campaign.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
@@ -303,7 +304,7 @@ public class CampaignServiceSample {
     Campaign campaign = new Campaign();
     campaign.setCampaignName(campaignNamePrefix + ApiUtils.getCurrentTimestamp());
     campaign.setUserStatus(CampaignServiceUserStatus.ACTIVE);
-    campaign.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now()));
+    campaign.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo"))));
     campaign.setEndDate("20301231");
     campaign.setType(CampaignServiceType.MOBILE_APP);
     campaign.setAppStore(CampaignServiceAppStore.IOS);
@@ -350,7 +351,7 @@ public class CampaignServiceSample {
     Campaign campaign = new Campaign();
     campaign.setCampaignName(campaignNamePrefix + ApiUtils.getCurrentTimestamp());
     campaign.setUserStatus(CampaignServiceUserStatus.ACTIVE);
-    campaign.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now()));
+    campaign.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo"))));
     campaign.setEndDate("20301231");
     campaign.setType(CampaignServiceType.MOBILE_APP);
     campaign.setAppStore(CampaignServiceAppStore.ANDROID);
@@ -410,7 +411,7 @@ public class CampaignServiceSample {
     Campaign campaign = new Campaign();
     campaign.setCampaignName(campaignNamePrefix + ApiUtils.getCurrentTimestamp());
     campaign.setUserStatus(CampaignServiceUserStatus.ACTIVE);
-    campaign.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now()));
+    campaign.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo"))));
     campaign.setEndDate("20301231");
     campaign.setType(CampaignServiceType.DYNAMIC_ADS_FOR_SEARCH);
     campaign.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
