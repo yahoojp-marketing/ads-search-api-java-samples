@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroupfeed;
 
@@ -7,16 +7,16 @@ import jp.co.yahoo.adssearchapi.sample.basic.feeditem.FeedItemServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeed;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceList;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupFeedServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupFeed;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupFeedServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupFeedServiceList;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupFeedServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupFeedServiceOperation;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupFeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupFeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupFeedServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServicePlaceholderType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -143,10 +143,10 @@ public class AdGroupFeedServiceSample {
     selector.setAdGroupIds(Collections.singletonList(adGroupId));
     selector.setFeedItemIds(Collections.singletonList(feedItemId));
     selector.setPlaceholderTypes(Arrays.asList( //
-        AdGroupFeedServicePlaceholderType.QUICKLINK, //
-        AdGroupFeedServicePlaceholderType.CALLEXTENSION, //
-        AdGroupFeedServicePlaceholderType.CALLOUT, //
-        AdGroupFeedServicePlaceholderType.STRUCTURED_SNIPPET //
+      AdGroupFeedServicePlaceholderType.QUICKLINK, //
+      AdGroupFeedServicePlaceholderType.CALLEXTENSION, //
+      AdGroupFeedServicePlaceholderType.CALLOUT, //
+      AdGroupFeedServicePlaceholderType.STRUCTURED_SNIPPET //
     ));
 
     selector.setStartIndex(1);

@@ -1,13 +1,13 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.repository;
 
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.Campaign;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.Campaign;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceAppStore;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ public class CampaignValuesRepository {
       return campaignIds;
     }
     for (CampaignServiceValue value : this.valuesHolder.getCampaignServiceValueList()) {
-        campaignIds.add(value.getCampaign().getCampaignId());
+      campaignIds.add(value.getCampaign().getCampaignId());
     }
     return campaignIds;
   }

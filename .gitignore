@@ -27,3 +27,4 @@ nbdist/
 .nb-gradle/
 
 src/main/resources/api_config.properties
+src/main/java/jp/co/yahoo/adssearchapi/*/model

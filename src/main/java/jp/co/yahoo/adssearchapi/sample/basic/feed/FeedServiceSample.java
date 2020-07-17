@@ -1,20 +1,20 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.feed;
 
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.Feed;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServiceAttribute;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServicePlaceholderField;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.Feed;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServiceAttribute;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServiceOperation;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServicePlaceholderField;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServiceValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -111,7 +111,7 @@ public class FeedServiceSample {
     ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
 
     FeedServiceOperation removeFeedOperation =
-        buildExampleMutateRequest(accountId, valuesRepositoryFacade.getFeedValueRepository().getFeeds());
+      buildExampleMutateRequest(accountId, valuesRepositoryFacade.getFeedValueRepository().getFeeds());
 
     mutate(removeFeedOperation, "remove");
   }

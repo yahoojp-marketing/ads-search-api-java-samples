@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.campaign;
 
@@ -8,34 +8,34 @@ import jp.co.yahoo.adssearchapi.sample.basic.feed.FeedServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v1.model.Campaign;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceBiddingStrategy;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceBiddingStrategyType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceBudget;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceBudgetPeriod;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceDynamicAdsForSearchSetting;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceEnhancedCpcEnabled;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceGeoTargetType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceGeoTargetTypeSetting;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceManualCpcBiddingScheme;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceOperation;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceSelector;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceSettingType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceSettings;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceTargetSpendBiddingScheme;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v2.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v2.model.Campaign;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceAppStore;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceBiddingStrategy;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceBiddingStrategyType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceBudget;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceBudgetPeriod;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceDynamicAdsForSearchSetting;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceEnhancedCpcEnabled;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceGeoTargetType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceGeoTargetTypeSetting;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceManualCpcBiddingScheme;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceOperation;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceSelector;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceSettingType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceSettings;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceTargetSpendBiddingScheme;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServicePlaceholderType;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -116,7 +116,7 @@ public class CampaignServiceSample {
       // =================================================================
       // create request.
       CampaignServiceOperation removeCampaignOperation =
-          buildExampleMutateRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns());
+        buildExampleMutateRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns());
 
       // run
       mutate(removeCampaignOperation, "remove");
@@ -503,7 +503,7 @@ public class CampaignServiceSample {
     ValuesHolder parentValuesHolder = setup();
     ValuesRepositoryFacade parentValuesRepositoryFacade = new ValuesRepositoryFacade(parentValuesHolder);
     Long feedId = parentValuesRepositoryFacade.getFeedValueRepository().findFeedId(
-        FeedServicePlaceholderType.DYNAMIC_AD_FOR_SEARCH_PAGE_FEEDS
+      FeedServicePlaceholderType.DYNAMIC_AD_FOR_SEARCH_PAGE_FEEDS
     );
     long accountId = ApiUtils.ACCOUNT_ID;
 
@@ -541,7 +541,7 @@ public class CampaignServiceSample {
     if (valuesHolder.getCampaignServiceValueList().size() > 0) {
       ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
       CampaignServiceOperation removeCampaignOperation =
-          buildExampleMutateRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns());
+        buildExampleMutateRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns());
 
       mutate(removeCampaignOperation, "remove");
     }

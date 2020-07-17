@@ -1,14 +1,14 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.repository;
 
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.Feed;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServiceAttribute;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServicePlaceholderField;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.Feed;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServiceAttribute;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServicePlaceholderField;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;

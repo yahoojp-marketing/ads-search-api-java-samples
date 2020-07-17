@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.campaigntarget;
 
@@ -7,24 +7,24 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTarget;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceDayOfWeek;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceExcludedType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceLocationTarget;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceMinuteOfHour;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceNetworkCoverageType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceNetworkTarget;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceOperation;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServicePlatformTarget;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServicePlatformType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceScheduleTarget;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceSelector;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceTarget;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceTargetType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignTargetServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTarget;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceDayOfWeek;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceExcludedType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceLocationTarget;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceMinuteOfHour;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceNetworkCoverageType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceNetworkTarget;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceOperation;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServicePlatformTarget;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServicePlatformType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceScheduleTarget;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceSelector;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceTarget;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceTargetType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignTargetServiceValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -334,16 +334,16 @@ public class CampaignTargetServiceSample {
     selector.setTargetIds(targetIds);
 
     selector.setTargetTypes(Arrays.asList(//
-            CampaignTargetServiceTargetType.LOCATION, //
-            CampaignTargetServiceTargetType.SCHEDULE, //
-            CampaignTargetServiceTargetType.NETWORK, //
-            CampaignTargetServiceTargetType.PLATFORM //
+      CampaignTargetServiceTargetType.LOCATION, //
+      CampaignTargetServiceTargetType.SCHEDULE, //
+      CampaignTargetServiceTargetType.NETWORK, //
+      CampaignTargetServiceTargetType.PLATFORM //
     ));
     selector.setExcludedType(CampaignTargetServiceExcludedType.INCLUDED);
     selector.setPlatformTypes(Arrays.asList( //
-            CampaignTargetServicePlatformType.SMART_PHONE, //
-            CampaignTargetServicePlatformType.TABLET, //
-            CampaignTargetServicePlatformType.DESKTOP //
+      CampaignTargetServicePlatformType.SMART_PHONE, //
+      CampaignTargetServicePlatformType.TABLET, //
+      CampaignTargetServicePlatformType.DESKTOP //
     ));
 
     // Set Paging

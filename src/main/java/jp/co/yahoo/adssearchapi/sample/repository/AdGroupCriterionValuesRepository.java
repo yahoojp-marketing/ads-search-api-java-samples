@@ -1,12 +1,12 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.repository;
 
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupCriterionServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,8 +67,8 @@ public class AdGroupCriterionValuesRepository {
     }
     for (AdGroupCriterionServiceValue value : this.valuesHolder.getAdGroupCriterionServiceValueList()) {
       if(value.getAdGroupCriterion().getCampaignId().equals(campaignId)
-          && value.getAdGroupCriterion().getAdGroupId().equals(adGroupId)
-          && value.getAdGroupCriterion().getUse() == adGroupCriterionUse){
+        && value.getAdGroupCriterion().getAdGroupId().equals(adGroupId)
+        && value.getAdGroupCriterion().getUse() == adGroupCriterionUse){
         return value.getAdGroupCriterion().getCriterion().getCriterionId();
       }
     }

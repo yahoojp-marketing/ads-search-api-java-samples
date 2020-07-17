@@ -1,29 +1,29 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.reportdefinition;
 
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinition;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceDownloadSelector;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceGetReportFields;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceGetReportFieldsResponse;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceOperation;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportCompressType;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportDateRangeType;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportDownloadEncode;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportDownloadFormat;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportFieldAttribute;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportIncludeDeleted;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportIncludeZeroImpressions;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportLanguage;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportSortField;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportSortType;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceReportType;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceSelector;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinition;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceDownloadSelector;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceGetReportFields;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceGetReportFieldsResponse;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceOperation;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceReportCompressType;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceReportDateRangeType;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceReportDownloadEncode;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceReportDownloadFormat;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceReportFieldAttribute;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceReportIncludeDeleted;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceReportIncludeZeroImpressions;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceReportLanguage;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceReportSortField;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceReportSortType;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceReportType;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceSelector;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;

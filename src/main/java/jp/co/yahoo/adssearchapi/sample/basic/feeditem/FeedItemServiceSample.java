@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.feeditem;
 
@@ -7,34 +7,34 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItem;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceAttribute;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceCriterionTypeFeedItem;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceDayOfWeek;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceDevicePreference;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceFeedAttributeValue;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceGeoRestriction;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceIsRemove;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceKeywordMatchType;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceLocation;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceMinuteOfHour;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceMultipleFeedItemAttribute;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceOperation;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServicePlaceholderField;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceSchedule;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceScheduling;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceSelector;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceSimpleFeedItemAttribute;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceTargetingAdGroup;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceTargetingCampaign;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceTargetingKeyword;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItem;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceAttribute;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceCriterionTypeFeedItem;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceDayOfWeek;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceDevicePreference;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceFeedAttributeValue;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceGeoRestriction;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceIsRemove;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceKeywordMatchType;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceLocation;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceMinuteOfHour;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceMultipleFeedItemAttribute;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceOperation;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServicePlaceholderField;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceSchedule;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceScheduling;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceSelector;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceSimpleFeedItemAttribute;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceTargetingAdGroup;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceTargetingCampaign;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceTargetingKeyword;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceValue;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -239,10 +239,10 @@ public class FeedItemServiceSample {
     string.setFeedAttributeId(feedAttributeIds.get("AD_CUSTOMIZER_STRING"));
 
     feedItem.setFeedItemAttribute(Arrays.asList( //
-            integer, //
-            price, //
-            date, //
-            string //
+      integer, //
+      price, //
+      date, //
+      string //
     ));
 
     // set scheduling
@@ -375,12 +375,12 @@ public class FeedItemServiceSample {
     feedItem.setEndDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo")).plusMonths(1L)));
     feedItem.setDevicePreference(FeedItemServiceDevicePreference.SMART_PHONE);
     feedItem.setFeedItemAttribute(Arrays.asList( //
-            linkText, //
-            advancedUrl, //
-            advancedMobileUrl, //
-            trackingUrl, //
-            additionalAdvancedUrls, //
-            additionalAdvancedMobileUrls //
+      linkText, //
+      advancedUrl, //
+      advancedMobileUrl, //
+      trackingUrl, //
+      additionalAdvancedUrls, //
+      additionalAdvancedMobileUrls //
     ));
     feedItem.setScheduling(scheduling);
     feedItem.setCustomParameters(customParameters);
@@ -573,19 +573,19 @@ public class FeedItemServiceSample {
     }
 
     selector.setPlaceholderTypes(Arrays.asList( //
-            FeedItemServicePlaceholderType.QUICKLINK, //
-            FeedItemServicePlaceholderType.CALLEXTENSION, //
-            FeedItemServicePlaceholderType.AD_CUSTOMIZER, //
-            FeedItemServicePlaceholderType.CALLOUT, //
-            FeedItemServicePlaceholderType.STRUCTURED_SNIPPET //
+      FeedItemServicePlaceholderType.QUICKLINK, //
+      FeedItemServicePlaceholderType.CALLEXTENSION, //
+      FeedItemServicePlaceholderType.AD_CUSTOMIZER, //
+      FeedItemServicePlaceholderType.CALLOUT, //
+      FeedItemServicePlaceholderType.STRUCTURED_SNIPPET //
     ));
 
     selector.setApprovalStatuses(Arrays.asList( //
-            FeedItemServiceApprovalStatus.APPROVED, //
-            FeedItemServiceApprovalStatus.APPROVED_WITH_REVIEW, //
-            FeedItemServiceApprovalStatus.REVIEW, //
-            FeedItemServiceApprovalStatus.PRE_DISAPPROVED, //
-            FeedItemServiceApprovalStatus.POST_DISAPPROVED //
+      FeedItemServiceApprovalStatus.APPROVED, //
+      FeedItemServiceApprovalStatus.APPROVED_WITH_REVIEW, //
+      FeedItemServiceApprovalStatus.REVIEW, //
+      FeedItemServiceApprovalStatus.PRE_DISAPPROVED, //
+      FeedItemServiceApprovalStatus.POST_DISAPPROVED //
     ));
 
     selector.setStartIndex(1);
@@ -644,7 +644,7 @@ public class FeedItemServiceSample {
     if (valuesHolder.getFeedItemServiceValueList().size() > 0) {
       ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
       FeedItemServiceOperation removeRequest =
-              buildExampleMutateRequest(ApiUtils.ACCOUNT_ID, FeedItemServicePlaceholderType.QUICKLINK, valuesRepositoryFacade.getFeedItemValuesRepository().getFeedItems());
+        buildExampleMutateRequest(ApiUtils.ACCOUNT_ID, FeedItemServicePlaceholderType.QUICKLINK, valuesRepositoryFacade.getFeedItemValuesRepository().getFeedItems());
       mutate(removeRequest, "remove");
     }
     AdGroupServiceSample.cleanup(valuesHolder);

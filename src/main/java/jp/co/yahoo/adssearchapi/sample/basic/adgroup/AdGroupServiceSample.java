@@ -1,35 +1,34 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroup;
-
-import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
-import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
-import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
-import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroup;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceAdGroupAdRotationMode;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceAdRotationMode;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceBid;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceOperation;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceSelector;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceSettings;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceUrlApprovalStatus;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
+import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
+import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
+import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroup;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceAdGroupAdRotationMode;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceAdRotationMode;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceBid;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceOperation;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceSelector;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceSettings;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceUrlApprovalStatus;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceType;
 
 /**
  * example AdGroupService operation and Utility method collection.

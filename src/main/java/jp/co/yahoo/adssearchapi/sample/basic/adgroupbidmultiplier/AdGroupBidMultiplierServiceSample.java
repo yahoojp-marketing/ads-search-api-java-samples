@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroupbidmultiplier;
 
@@ -7,14 +7,14 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplier;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServiceOperation;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServicePlatformType;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServiceSelector;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupBidMultiplierServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupBidMultiplier;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupBidMultiplierServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupBidMultiplierServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupBidMultiplierServiceOperation;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupBidMultiplierServicePlatformType;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupBidMultiplierServiceSelector;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupBidMultiplierServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
