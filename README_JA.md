@@ -1,18 +1,7 @@
 --------------------------------
 【バージョン】
 --------------------------------
-v1
-
-■変更履歴
------------
-2020/5
-- bug fix  
-
-2020/2 
-- v1に対応しました。  
-
-2019/10 
-- v0に対応しました。
+v2
 
 --------------------------------
 【概要】
@@ -58,24 +47,19 @@ Java環境を構築するために、以下をインストールしてくださ�
 --------------------------------
 【実行】
 --------------------------------
-cloneしたサンプルプログラムのディレクトリに移動し、以下のコマンドを実行してモジュールを最新の状態にアップデートします。
+OpenAPI Generatorを実行しJava用のmodelを生成します。
 ```
-git submodule update --init --recursive
-```
-
-その後、以下のコマンドを実行します。
-```
-mvn clean install
+openapi-generator generate -i https://raw.githubusercontent.com/yahoojp-marketing/ads-search-api-documents/master/design/v2/Route.yaml -g java --global-property=models --model-package jp.co.yahoo.adssearchapi.v2.model
 ```
 
 OpenAPI generatorによって生成されたモデルは以下に出力されます。
 ```
-target/generated-sources/annotations/jp/co/yahoo/adssearchapi/v1/model
+src/main/java/jp/co/yahoo/adssearchapi/v2/model
 ```
 
 --------------------------------
-ご注意：　Yahoo!広告 検索広告 API - サンプルコードの利用に関して
+ご注意：Yahoo!広告 検索広告 API - サンプルコードの利用に関して
 --------------------------------
 
-Yahoo! JAPANの提供するAPIに関するサンプルコードは、別途Yahoo! JAPANとの間で締結いただいた当該APIの提供に関する契約に基づき、APIユーザー様に提供されるものであり、Yahoo! JAPANとの間で当該契約を締結いただいていない場合は、サンプルコードをご利用いただけません。
-また、APIユーザー様に予め通知することなく、サンプルコードの内容や仕様の変更または提供の停止もしくは中止をする場合があります。ご了承のうえご利用ください。
+Yahoo! JAPANの提供するAPIに関するサンプルコードは、別途Yahoo! JAPANとの間で締結いただいた当該APIの提供に関する契約に基づき、APIユーザー様に提供されるものであり、Yahoo! JAPANとの間で当該契約を締結いただいていない場合は、サンプルコードをご利用いただけません。  
+また、APIユーザー様に予め通知することなく、サンプルコードの内容や仕様の変更または提供の停止もしくは中止をする場合があります。ご了承のうえご利用ください。  

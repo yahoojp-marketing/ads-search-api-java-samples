@@ -1,12 +1,12 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.repository;
 
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAd;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceAdType;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAd;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceAdType;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,8 +67,8 @@ public class AdGroupAdValuesRepository {
     }
     for (AdGroupAdServiceValue value : this.valuesHolder.getAdGroupAdServiceValueList()) {
       if(value.getAdGroupAd().getCampaignId() == campaignId
-      && value.getAdGroupAd().getAdGroupId() == adGroupId
-      && value.getAdGroupAd().getAd().getAdType().equals(adType)){
+        && value.getAdGroupAd().getAdGroupId() == adGroupId
+        && value.getAdGroupAd().getAd().getAdType().equals(adType)){
         return value.getAdGroupAd().getAdId();
       }
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.campaignfeed;
 
@@ -7,16 +7,16 @@ import jp.co.yahoo.adssearchapi.sample.basic.feeditem.FeedItemServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignFeed;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignFeedServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignFeedServiceList;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignFeedServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignFeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignFeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignFeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignFeedServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignFeed;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignFeedServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignFeedServiceList;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignFeedServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignFeedServiceOperation;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignFeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignFeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignFeedServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServicePlaceholderType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -172,10 +172,10 @@ public class CampaignFeedServiceSample {
     selector.setCampaignIds(campaignIds);
     selector.setFeedItemIds(feedItemIds);
     selector.setPlaceholderTypes(Arrays.asList( //
-            CampaignFeedServicePlaceholderType.QUICKLINK, //
-            CampaignFeedServicePlaceholderType.CALLEXTENSION, //
-            CampaignFeedServicePlaceholderType.CALLOUT, //
-            CampaignFeedServicePlaceholderType.STRUCTURED_SNIPPET //
+      CampaignFeedServicePlaceholderType.QUICKLINK, //
+      CampaignFeedServicePlaceholderType.CALLEXTENSION, //
+      CampaignFeedServicePlaceholderType.CALLOUT, //
+      CampaignFeedServicePlaceholderType.STRUCTURED_SNIPPET //
     ));
     selector.setStartIndex(1);
     selector.setNumberResults(20);

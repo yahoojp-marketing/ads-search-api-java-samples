@@ -46,32 +46,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.openapitools</groupId>
-                <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>4.1.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/module/design/v1/Route.yaml</inputSpec>
-                            <output>${project.build.directory}/generated-sources</output>
-                            <generatorName>java</generatorName>
-                            <modelPackage>jp.co.yahoo.adssearchapi.v1.model</modelPackage>
-                            <generateModelTests>false</generateModelTests>
-                            <generateApis>false</generateApis>
-                            <generateApiDocumentation>false</generateApiDocumentation>
-                            <generateModelDocumentation>false</generateModelDocumentation>
-                            <generateSupportingFiles>false</generateSupportingFiles>
-                            <configOptions>
-                                <sourceFolder>annotations</sourceFolder>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 

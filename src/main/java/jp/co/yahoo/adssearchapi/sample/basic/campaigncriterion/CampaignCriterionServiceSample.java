@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.campaigncriterion;
 
@@ -7,18 +7,18 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignCriterion;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignCriterionServiceCriterion;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignCriterionServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignCriterionServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignCriterionServiceKeyword;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignCriterionServiceKeywordMatchType;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignCriterionServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignCriterion;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignCriterionServiceCriterion;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignCriterionServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignCriterionServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignCriterionServiceKeyword;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignCriterionServiceKeywordMatchType;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignCriterionServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceType;
 
 import java.util.ArrayList;
 import java.util.List;

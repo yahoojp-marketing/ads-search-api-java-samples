@@ -1,19 +1,19 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.util;
 
-import jp.co.yahoo.adssearchapi.v1.model.AccountSharedServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.BiddingStrategyServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.FeedItemServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.FeedServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.LabelServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.ReportDefinitionServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.RetargetingListServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.AccountSharedServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.FeedServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.LabelServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.RetargetingListServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;

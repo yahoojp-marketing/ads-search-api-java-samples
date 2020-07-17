@@ -1,37 +1,36 @@
 /**
- * Copyright (C) 2019 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroupad;
-
-import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
-import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
-import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
-import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAd;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceAd;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceAdType;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceAdditionalAdvancedMobileUrls;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceAdditionalAdvancedUrls;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceAppAd;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceDevicePreference;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceExtendedTextAd;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceOperation;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceSelector;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v1.model.AdGroupAdServiceValue;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v1.model.CampaignServiceType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
+import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
+import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
+import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAd;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceAd;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceAdType;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceAdditionalAdvancedMobileUrls;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceAdditionalAdvancedUrls;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceAppAd;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceDevicePreference;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceExtendedTextAd;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceOperation;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceSelector;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceAppStore;
+import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceType;
 
 
 /**
@@ -170,8 +169,8 @@ public class AdGroupAdServiceSample {
     AdGroupAdServiceAd ad = new AdGroupAdServiceAd();
     ad.setAdType(AdGroupAdServiceAdType.EXTENDED_TEXT_AD);
     ad.setExtendedTextAd(extendedTextAd);
-    ad.setHeadline("sample headline");
-    ad.setDescription("sample ad desc");
+    ad.setHeadline1("sample headline");
+    ad.setDescription1("sample ad desc");
     ad.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
     ad.setAdvancedUrl("http://www.yahoo.co.jp");
     ad.setAdditionalAdvancedUrls(Arrays.asList(additionalAdvancedUrls1, additionalAdvancedUrls2, additionalAdvancedUrls3));
@@ -213,8 +212,8 @@ public class AdGroupAdServiceSample {
     AdGroupAdServiceAd ad = new AdGroupAdServiceAd();
     ad.setAdType(AdGroupAdServiceAdType.APP_AD);
     ad.setAppAd(appAd);
-    ad.setHeadline("sample headline");
-    ad.setDescription("sample ad desc");
+    ad.setHeadline1("sample headline");
+    ad.setDescription1("sample ad desc");
     ad.setDevicePreference(AdGroupAdServiceDevicePreference.SMART_PHONE);
     ad.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
     ad.setAdvancedUrl("http://www.apple.com/jp/itunes/app/appname/" + appId);
@@ -247,8 +246,8 @@ public class AdGroupAdServiceSample {
     AdGroupAdServiceAd ad = new AdGroupAdServiceAd();
     ad.setAdType(AdGroupAdServiceAdType.APP_AD);
     ad.setAppAd(appAd);
-    ad.setHeadline("sample headline");
-    ad.setDescription("sample ad desc");
+    ad.setHeadline1("sample headline");
+    ad.setDescription1("sample ad desc");
     ad.setDevicePreference(AdGroupAdServiceDevicePreference.SMART_PHONE);
     ad.setAdvancedUrl("https://play.google.com/store/apps/details?id=" + appId);
 
@@ -279,43 +278,43 @@ public class AdGroupAdServiceSample {
     // example KeywordInsertion
     AdGroupAd keywordInsertion = createExampleExtendedTextAd(campaignId, adGroupId);
     keywordInsertion.setAdName("KeywordInsertion_" + ApiUtils.getCurrentTimestamp());
-    keywordInsertion.getAd().setDescription("sample {KEYWORD:keyword}");
+    keywordInsertion.getAd().setDescription1("sample {KEYWORD:keyword}");
     adGroupAds.add(keywordInsertion);
 
     // example CountdownOption
     AdGroupAd countdownOption = createExampleExtendedTextAd(campaignId, adGroupId);
     countdownOption.setAdName("SampleCountdownOption_" + ApiUtils.getCurrentTimestamp());
-    countdownOption.getAd().setDescription("{=COUNTDOWN(\"2020/12/15 18:00:00\",\"ja\")}");
+    countdownOption.getAd().setDescription1("{=COUNTDOWN(\"2020/12/15 18:00:00\",\"ja\")}");
     adGroupAds.add(countdownOption);
 
     // example CountdownOption & AdCustomizerDate
     AdGroupAd countdownOptionAdOfAdCustomizer = createExampleExtendedTextAd(campaignId, adGroupId);
     countdownOptionAdOfAdCustomizer.setAdName("CountdownOfAdCustomizer_" + ApiUtils.getCurrentTimestamp());
-    countdownOptionAdOfAdCustomizer.getAd().setDescription("{=COUNTDOWN(" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_DATE") + ",\"ja\")}");
+    countdownOptionAdOfAdCustomizer.getAd().setDescription1("{=COUNTDOWN(" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_DATE") + ",\"ja\")}");
     adGroupAds.add(countdownOptionAdOfAdCustomizer);
 
     // example DefaultText & AdCustomizerString
     AdGroupAd defaultTextOfAdCustomizer = createExampleExtendedTextAd(campaignId, adGroupId);
     defaultTextOfAdCustomizer.setAdName("DefaultTextOfAdCustomizer_" + ApiUtils.getCurrentTimestamp());
-    defaultTextOfAdCustomizer.getAd().setHeadline("{=" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_STRING") + ":default}headline");
+    defaultTextOfAdCustomizer.getAd().setHeadline1("{=" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_STRING") + ":default}headline");
     defaultTextOfAdCustomizer.getAd().getExtendedTextAd().setHeadline2("{=" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_STRING") + ":default}headline2");
-    defaultTextOfAdCustomizer.getAd().setDescription("{=" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_STRING") + ":default}Description");
+    defaultTextOfAdCustomizer.getAd().setDescription1("{=" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_STRING") + ":default}Description");
     adGroupAds.add(defaultTextOfAdCustomizer);
 
     // example Mobile specification with IF function
     AdGroupAd ifFunction = createExampleExtendedTextAd(campaignId, adGroupId);
     ifFunction.setAdName("IF_Function_" + ApiUtils.getCurrentTimestamp());
-    ifFunction.getAd().setHeadline("{=IF(device=mobile,MOBILE):PC}Headline");
+    ifFunction.getAd().setHeadline1("{=IF(device=mobile,MOBILE):PC}Headline");
     ifFunction.getAd().getExtendedTextAd().setHeadline2("{=IF(device=mobile,MOBILE):PC}Headline2");
-    ifFunction.getAd().setDescription("{=IF(device=mobile,MOBILE):PC}Description");
+    ifFunction.getAd().setDescription1("{=IF(device=mobile,MOBILE):PC}Description");
     adGroupAds.add(ifFunction);
 
     // example Mobile specification with IF function & DefaultText AdCustomizerString
     AdGroupAd ifFunctionDefaultTextOfAdCustomizer = createExampleExtendedTextAd(campaignId, adGroupId);
     ifFunctionDefaultTextOfAdCustomizer.setAdName("IF_Function_DefaultTextOfAdCustomizer_" + ApiUtils.getCurrentTimestamp());
-    ifFunctionDefaultTextOfAdCustomizer.getAd().setHeadline("{=IF(device=mobile,MOBILE):PC}test {=" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_STRING") + ":default}headline");
+    ifFunctionDefaultTextOfAdCustomizer.getAd().setHeadline1("{=IF(device=mobile,MOBILE):PC}test {=" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_STRING") + ":default}headline");
     ifFunctionDefaultTextOfAdCustomizer.getAd().getExtendedTextAd().setHeadline2("{=IF(device=mobile,MOBILE):PC}test {=" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_STRING") + ":default}headline2");
-    ifFunctionDefaultTextOfAdCustomizer.getAd().setDescription("{=IF(device=mobile,MOBILE):PC}test {=" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_STRING") + ":default}description");
+    ifFunctionDefaultTextOfAdCustomizer.getAd().setDescription1("{=IF(device=mobile,MOBILE):PC}test {=" + feedFolderName + "." + feedAttributeNames.get("AD_CUSTOMIZER_STRING") + ":default}description");
     adGroupAds.add(ifFunctionDefaultTextOfAdCustomizer);
 
     return adGroupAds;
@@ -340,7 +339,7 @@ public class AdGroupAdServiceSample {
     // ad
     AdGroupAdServiceAd ad = new AdGroupAdServiceAd();
     ad.setAdType(AdGroupAdServiceAdType.DYNAMIC_SEARCH_LINKED_AD);
-    ad.setDescription("sample ad desc");
+    ad.setDescription1("sample ad desc");
     ad.setDevicePreference(AdGroupAdServiceDevicePreference.SMART_PHONE);
     ad.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
     ad.setCustomParameters(customParameters);
@@ -405,17 +404,17 @@ public class AdGroupAdServiceSample {
     selector.setAdIds(adIds);
 
     selector.setAdTypes(Arrays.asList( //
-        AdGroupAdServiceAdType.APP_AD, //
-        AdGroupAdServiceAdType.EXTENDED_TEXT_AD, //
-        AdGroupAdServiceAdType.DYNAMIC_SEARCH_LINKED_AD //
+      AdGroupAdServiceAdType.APP_AD, //
+      AdGroupAdServiceAdType.EXTENDED_TEXT_AD, //
+      AdGroupAdServiceAdType.DYNAMIC_SEARCH_LINKED_AD //
     ));
     selector.setUserStatuses(Arrays.asList(AdGroupAdServiceUserStatus.ACTIVE, AdGroupAdServiceUserStatus.PAUSED));
     selector.setApprovalStatuses(Arrays.asList( //
-        AdGroupAdServiceApprovalStatus.APPROVED, //
-        AdGroupAdServiceApprovalStatus.APPROVED_WITH_REVIEW, //
-        AdGroupAdServiceApprovalStatus.REVIEW, //
-        AdGroupAdServiceApprovalStatus.PRE_DISAPPROVED, //
-        AdGroupAdServiceApprovalStatus.POST_DISAPPROVED //
+      AdGroupAdServiceApprovalStatus.APPROVED, //
+      AdGroupAdServiceApprovalStatus.APPROVED_WITH_REVIEW, //
+      AdGroupAdServiceApprovalStatus.REVIEW, //
+      AdGroupAdServiceApprovalStatus.PRE_DISAPPROVED, //
+      AdGroupAdServiceApprovalStatus.POST_DISAPPROVED //
     ));
 
     selector.setStartIndex(1);
@@ -492,7 +491,7 @@ public class AdGroupAdServiceSample {
 
     // create request.
     AdGroupAdServiceOperation addRequest = buildExampleMutateRequest( //
-        accountId, Collections.singletonList(createExampleExtendedTextAd(campaignId, adGroupId)) //
+      accountId, Collections.singletonList(createExampleExtendedTextAd(campaignId, adGroupId)) //
     );
 
     // run
