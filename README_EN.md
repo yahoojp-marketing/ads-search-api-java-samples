@@ -59,8 +59,8 @@ src/main/java/jp/co/yahoo/adssearchapi/v2/model
 ```
 
 --------------------------------
-NOTICE：Yahoo! Ads Search Ads API - For use of sample code
+NOTICE：Yahoo! JAPAN Ads Search Ads API - For use of sample code
 --------------------------------
 
-The sample code of Yahoo! Ads API is provided to API users only who concluded the contract of "Application to Use Yahoo! Promotional Ads API" with Yahoo Japan Corporation.  
+The sample code of Yahoo! JAPAN Ads API is provided to API users only who concluded the contract of "Application to Use Yahoo! JAPAN Promotional Ads API" with Yahoo Japan Corporation.  
 Additionally, please note that Yahoo Japan Corporation may change the contents and the specification of the sample code, and may discontinue providing the sample code without any notice.  
