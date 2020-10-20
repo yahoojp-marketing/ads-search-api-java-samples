@@ -1,7 +1,7 @@
 --------------------------------
 [Version]
 --------------------------------
-v2
+v3
 
 --------------------------------
 [Overview]
@@ -50,12 +50,12 @@ Install the software below to organize environment.
 --------------------------------
 Execute OpenAPI Generator and generate model for Java.
 ```
-openapi-generator generate -i https://raw.githubusercontent.com/yahoojp-marketing/ads-search-api-documents/master/design/v2/Route.yaml -g java --global-property=models --model-package jp.co.yahoo.adssearchapi.v2.model
+openapi-generator generate -i https://raw.githubusercontent.com/yahoojp-marketing/ads-search-api-documents/master/design/v3/Route.yaml -g java --global-property=models --model-package jp.co.yahoo.adssearchapi.v3.model
 ```
 
 Output the models to below directory by the OpenAPI generator.
 ```
-src/main/java/jp/co/yahoo/adssearchapi/v2/model
+src/main/java/jp/co/yahoo/adssearchapi/v3/model
 ```
 
 --------------------------------
