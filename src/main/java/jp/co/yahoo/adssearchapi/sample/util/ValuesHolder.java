@@ -3,17 +3,17 @@
  */
 package jp.co.yahoo.adssearchapi.sample.util;
 
-import jp.co.yahoo.adssearchapi.v2.model.AccountSharedServiceValue;
-import jp.co.yahoo.adssearchapi.v2.model.AdGroupAdServiceValue;
-import jp.co.yahoo.adssearchapi.v2.model.AdGroupCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v2.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v2.model.BiddingStrategyServiceValue;
-import jp.co.yahoo.adssearchapi.v2.model.CampaignServiceValue;
-import jp.co.yahoo.adssearchapi.v2.model.FeedItemServiceValue;
-import jp.co.yahoo.adssearchapi.v2.model.FeedServiceValue;
-import jp.co.yahoo.adssearchapi.v2.model.LabelServiceValue;
-import jp.co.yahoo.adssearchapi.v2.model.ReportDefinitionServiceValue;
-import jp.co.yahoo.adssearchapi.v2.model.RetargetingListServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.AccountSharedServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.FeedItemServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.FeedServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.LabelServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.ReportDefinitionServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.RetargetingListServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;

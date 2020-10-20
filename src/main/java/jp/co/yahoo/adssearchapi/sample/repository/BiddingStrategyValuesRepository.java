@@ -4,9 +4,9 @@
 package jp.co.yahoo.adssearchapi.sample.repository;
 
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v2.model.BiddingStrategy;
-import jp.co.yahoo.adssearchapi.v2.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v2.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v3.model.BiddingStrategy;
+import jp.co.yahoo.adssearchapi.v3.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v3.model.BiddingStrategyServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
