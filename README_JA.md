@@ -1,7 +1,7 @@
 --------------------------------
 【バージョン】
 --------------------------------
-v3
+v4
 
 --------------------------------
 【概要】
@@ -50,12 +50,17 @@ Java環境を構築するために、以下をインストールしてくださ�
 --------------------------------
 OpenAPI Generatorを実行しJava用のmodelを生成します。
 ```
-openapi-generator generate -i https://raw.githubusercontent.com/yahoojp-marketing/ads-search-api-documents/master/design/v3/Route.yaml -g java --global-property=models --model-package jp.co.yahoo.adssearchapi.v3.model
+openapi-generator generate -i https://raw.githubusercontent.com/yahoojp-marketing/ads-search-api-documents/master/design/v4/Route.yaml -g java --global-property=models --model-package jp.co.yahoo.adssearchapi.v4.model
 ```
 
 OpenAPI generatorによって生成されたモデルは以下に出力されます。
 ```
-src/main/java/jp/co/yahoo/adssearchapi/v3/model
+src/main/java/jp/co/yahoo/adssearchapi/v4/model
+```
+
+実行例
+```
+mvn exec:java -Dexec.mainClass=jp.co.yahoo.adssearchapi.sample.basic.reportdefinition.ReportDefinitionServiceSample
 ```
 
 --------------------------------
