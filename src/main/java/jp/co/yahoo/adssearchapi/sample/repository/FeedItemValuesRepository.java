@@ -4,9 +4,9 @@
 package jp.co.yahoo.adssearchapi.sample.repository;
 
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v3.model.FeedItem;
-import jp.co.yahoo.adssearchapi.v3.model.FeedItemServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v3.model.FeedItemServiceValue;
+import jp.co.yahoo.adssearchapi.v4.model.FeedItem;
+import jp.co.yahoo.adssearchapi.v4.model.FeedItemServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v4.model.FeedItemServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
