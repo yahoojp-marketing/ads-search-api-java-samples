@@ -4,8 +4,8 @@
 package jp.co.yahoo.adssearchapi.sample.repository;
 
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v4.model.AdGroup;
-import jp.co.yahoo.adssearchapi.v4.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v5.model.AdGroup;
+import jp.co.yahoo.adssearchapi.v5.model.AdGroupServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
