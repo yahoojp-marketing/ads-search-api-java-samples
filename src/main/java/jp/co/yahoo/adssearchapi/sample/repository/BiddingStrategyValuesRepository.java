@@ -4,9 +4,9 @@
 package jp.co.yahoo.adssearchapi.sample.repository;
 
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategy;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategy;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +64,7 @@ public class BiddingStrategyValuesRepository {
       return null;
     }
     for (BiddingStrategyServiceValue value : this.valuesHolder.getBiddingStrategyServiceValueList()) {
-      if (value.getBiddingStrategy().getType().equals(biddingStrategyType)) {
+      if (value.getBiddingStrategy().getBiddingScheme().getType().equals(biddingStrategyType)) {
         return value.getBiddingStrategy();
       }
     }
@@ -80,7 +80,7 @@ public class BiddingStrategyValuesRepository {
       return null;
     }
     for (BiddingStrategyServiceValue value : this.valuesHolder.getBiddingStrategyServiceValueList()) {
-      if (value.getBiddingStrategy().getType().equals(biddingStrategyType)) {
+      if (value.getBiddingStrategy().getBiddingScheme().getType().equals(biddingStrategyType)) {
         return value.getBiddingStrategy().getBiddingStrategyId();
       }
     }

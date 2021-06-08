@@ -6,17 +6,17 @@ package jp.co.yahoo.adssearchapi.sample.basic.biddingstrategy;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategy;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceOperation;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceSelector;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceTargetCpaBiddingScheme;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceTargetRoasBiddingScheme;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceTargetSpendBiddingScheme;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v4.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategy;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceOperation;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceSelector;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceTargetCpaBiddingScheme;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceTargetRoasBiddingScheme;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceTargetSpendBiddingScheme;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v5.model.BiddingStrategyServiceValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -254,7 +254,7 @@ public class BiddingStrategyServiceSample {
         operand.setBiddingScheme(biddingScheme);
 
         // TargetSpendBiddingScheme
-      } else if (biddingStrategy.getType().equals(BiddingStrategyServiceType.TARGET_SPEND)) {
+      } else if (biddingStrategy.getBiddingScheme().getType().equals(BiddingStrategyServiceType.TARGET_SPEND)) {
         BiddingStrategyServiceBiddingScheme biddingScheme = new BiddingStrategyServiceBiddingScheme();
         BiddingStrategyServiceTargetSpendBiddingScheme setTargetSpendBiddingScheme = new BiddingStrategyServiceTargetSpendBiddingScheme();
         setTargetSpendBiddingScheme.setBidCeiling((long) 750);
@@ -264,7 +264,7 @@ public class BiddingStrategyServiceSample {
         operand.setBiddingScheme(biddingScheme);
 
         // TargetRoasBiddingScheme
-      } else if (biddingStrategy.getType().equals(BiddingStrategyServiceType.TARGET_ROAS)) {
+      } else if (biddingStrategy.getBiddingScheme().getType().equals(BiddingStrategyServiceType.TARGET_ROAS)) {
         BiddingStrategyServiceBiddingScheme biddingScheme = new BiddingStrategyServiceBiddingScheme();
         BiddingStrategyServiceTargetRoasBiddingScheme setTargetRoasBiddingScheme = new BiddingStrategyServiceTargetRoasBiddingScheme();
         setTargetRoasBiddingScheme.setTargetRoas(15.00);
