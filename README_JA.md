@@ -37,7 +37,7 @@ Java環境を構築するために、以下をインストールしてくださ�
 
 1. Java 1.8 Java SE Development Kit 8
 2. Apache Maven 3.5.3、またはそれ以上のバージョン
-3. OpenAPI generator 4.3.1以上
+3. OpenAPI generator 4.3.1以上の4.x系
 4. resourcesディレクトリ配下にあるapi_config.properties.distをapi_config.propertiesにリネームしてください。
 5. api_config.propertiesに各IDを記述します。
   - ACCOUNT_ID          : アカウントIDを記述してください(必須)。
