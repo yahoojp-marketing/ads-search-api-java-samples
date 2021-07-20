@@ -48,16 +48,6 @@ Install the software below to organize environment.
 --------------------------------
 [How to execute Sample Code]
 --------------------------------
-Execute OpenAPI Generator and generate model for Java.
-```
-openapi-generator generate -i https://raw.githubusercontent.com/yahoojp-marketing/ads-search-api-documents/master/design/v5/Route.yaml -g java --global-property=models --model-package jp.co.yahoo.adssearchapi.v5.model
-```
-
-Output the models to below directory by the OpenAPI generator.
-```
-src/main/java/jp/co/yahoo/adssearchapi/v5/model
-```
-
 Example
 ```
 mvn exec:java -Dexec.mainClass=jp.co.yahoo.adssearchapi.sample.basic.reportdefinition.ReportDefinitionServiceSample
