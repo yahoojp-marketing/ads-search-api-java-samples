@@ -3,15 +3,14 @@
  */
 package jp.co.yahoo.adssearchapi.sample.util;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
@@ -22,7 +21,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import javax.net.ssl.HttpsURLConnection;
 
 /**
@@ -40,7 +38,7 @@ public class ApiUtils {
 
   private final static String REFRESH_TOKEN;
 
-  private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+  private static final ObjectMapper objectMapper = new ObjectMapper();
 
   /*
    * static initializer
@@ -97,7 +95,7 @@ public class ApiUtils {
 
     URL url = getServiceEndPointURL(serviceName, action);
 
-    byte[] body = gson.toJson(request).getBytes(StandardCharsets.UTF_8);
+    byte[] body = objectMapper.writeValueAsString(request).getBytes(StandardCharsets.UTF_8);
 
     HttpsURLConnection connection = createConnection(url, "application/json", body.length);
     connection.setRequestProperty("Authorization", "Bearer " + accessToken);
@@ -112,9 +110,9 @@ public class ApiUtils {
       connection.disconnect();
     }
 
-    System.out.println("### RequestBody \n" +  gson.toJson(request));
+    System.out.println("### RequestBody \n" +  objectMapper.writeValueAsString(request));
     System.out.println("### ResponseHeader \n" + connection.getHeaderFields());
-    System.out.println("### ResponseBody \n" + gson.toJson(response));
+    System.out.println("### ResponseBody \n" + objectMapper.writeValueAsString(response));
     return response;
   }
 
@@ -143,7 +141,7 @@ public class ApiUtils {
 
     URL url = getServiceEndPointURL(serviceName, action);
 
-    byte[] body = gson.toJson(request).getBytes(StandardCharsets.UTF_8);
+    byte[] body = objectMapper.writeValueAsString(request).getBytes(StandardCharsets.UTF_8);
 
     HttpsURLConnection connection = createConnection(url, "application/json", body.length);
     connection.setRequestProperty("Authorization", "Bearer " + accessToken);
@@ -161,7 +159,7 @@ public class ApiUtils {
       }
     }
 
-    System.out.println("### RequestBody \n" + gson.toJson(request));
+    System.out.println("### RequestBody \n" + objectMapper.writeValueAsString(request));
     System.out.println("### ResponseHeader \n" + connection.getHeaderFields());
     System.out.println("### Downloaded into " + filepath);
   }
@@ -183,7 +181,7 @@ public class ApiUtils {
     try {
       connection.connect();
       request(connection, parameter);
-      response = response(connection, new TypeToken<Map<String, String>>() {});
+      response = response(connection, new TypeReference<Map<String, String>>() {});
     } finally {
       connection.disconnect();
     }
@@ -230,16 +228,18 @@ public class ApiUtils {
   }
 
   private static <T> T response(HttpsURLConnection connection, Class<T> responseType) throws IOException {
-    InputStreamReader inputStream = new InputStreamReader(connection.getInputStream());
-    T response = gson.fromJson(inputStream, responseType);
+    InputStream stream = connection.getInputStream();
+    InputStreamReader inputStream = new InputStreamReader(stream);
+    T response = objectMapper.readValue(inputStream, responseType);
     inputStream.close();
 
     return response;
   }
 
-  private static <T> T response(HttpsURLConnection connection, TypeToken<T> typeReference) throws IOException {
-    InputStreamReader inputStream = new InputStreamReader(connection.getInputStream());
-    T response = gson.fromJson(inputStream, typeReference.getType());
+  private static <T> T response(HttpsURLConnection connection, TypeReference<T> typeReference) throws IOException {
+    InputStream stream = connection.getInputStream();
+    InputStreamReader inputStream = new InputStreamReader(stream);
+    T response = objectMapper.readValue(inputStream, typeReference);
     inputStream.close();
 
     return response;
