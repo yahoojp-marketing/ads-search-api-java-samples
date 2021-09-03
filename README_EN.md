@@ -37,9 +37,8 @@ Install the software below to organize environment.
 
 1. Java 1.8(Java SE Development Kit 8 or above
 2. Apache Maven 3.5.3 or above
-3. OpenAPI generator 4.x series (4.3.1 or above)
-4. Rename src/main/resources/api_config.properties.dist to "api_config.properties".
-5. Write the following each ID in src/main/resources/api_config.properties.
+3. Rename src/main/resources/api_config.properties.dist to "api_config.properties".
+4. Write the following each ID in src/main/resources/api_config.properties.
   - ACCOUNT_ID           : Account ID (required)
   - CLIENT_ID            : Client ID (required)
   - CLIENT_SECRET        : Client secret (required)
