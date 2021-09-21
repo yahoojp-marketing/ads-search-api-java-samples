@@ -4,9 +4,9 @@
 package jp.co.yahoo.adssearchapi.sample.repository;
 
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v5.model.AdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v5.model.AdGroupCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v5.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;

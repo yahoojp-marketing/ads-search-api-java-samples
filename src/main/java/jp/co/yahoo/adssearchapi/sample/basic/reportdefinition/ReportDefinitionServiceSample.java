@@ -4,26 +4,25 @@
 package jp.co.yahoo.adssearchapi.sample.basic.reportdefinition;
 
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinition;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceDownloadSelector;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceGetReportFields;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceGetReportFieldsResponse;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceOperation;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceReportCompressType;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceReportDateRangeType;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceReportDownloadEncode;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceReportDownloadFormat;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceReportFieldAttribute;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceReportIncludeDeleted;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceReportIncludeZeroImpressions;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceReportLanguage;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceReportSortField;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceReportSortType;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceReportType;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceSelector;
-import jp.co.yahoo.adssearchapi.v5.model.ReportDefinitionServiceValue;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinition;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceDownloadSelector;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceGetReportFields;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceGetReportFieldsResponse;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceOperation;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceReportCompressType;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceReportDateRangeType;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceReportDownloadEncode;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceReportDownloadFormat;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceReportFieldAttribute;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceReportIncludeDeleted;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceReportLanguage;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceReportSortField;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceReportSortType;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceReportType;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceSelector;
+import jp.co.yahoo.adssearchapi.v6.model.ReportDefinitionServiceValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,7 +50,6 @@ public class ReportDefinitionServiceSample {
     "CONVERSIONS", //
     "CONV_VALUE", //
     "VALUE_PER_CONV", //
-    "CAMPAIGN_MOBILE_BID_MODIFIER", //
     "NETWORK", //
     "CLICK_TYPE", //
     "DEVICE", //
@@ -60,7 +58,6 @@ public class ReportDefinitionServiceSample {
     "QUARTER", //
     "YEAR", //
     "MONTH", //
-    "MONTH_OF_YEAR", //
     "WEEK", //
     "HOUR_OF_DAY", //
     "OBJECT_OF_CONVERSION_TRACKING", //
@@ -221,7 +218,6 @@ public class ReportDefinitionServiceSample {
     reportDefinition.setReportDownloadEncode(ReportDefinitionServiceReportDownloadEncode.UTF8);
     reportDefinition.setReportLanguage(ReportDefinitionServiceReportLanguage.EN);
     reportDefinition.setReportCompressType(ReportDefinitionServiceReportCompressType.NONE);
-    reportDefinition.setReportIncludeZeroImpressions(ReportDefinitionServiceReportIncludeZeroImpressions.TRUE);
     reportDefinition.setReportIncludeDeleted(ReportDefinitionServiceReportIncludeDeleted.TRUE);
 
     return reportDefinition;
