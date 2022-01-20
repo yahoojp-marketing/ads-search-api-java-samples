@@ -6,17 +6,17 @@ package jp.co.yahoo.adssearchapi.sample.basic.biddingstrategy;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategy;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceTargetCpaBiddingScheme;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceTargetRoasBiddingScheme;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceTargetSpendBiddingScheme;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategy;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceTargetCpaBiddingScheme;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceTargetRoasBiddingScheme;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -189,22 +189,22 @@ public class BiddingStrategyServiceSample {
   }
 
   /**
-   * example TargetSpendBidding request.
+   * example MaximizeClicksBidding request.
    *
    * @return BiddingStrategy
    */
-  public static BiddingStrategy createExampleTargetSpendBidding() {
-    BiddingStrategyServiceBiddingScheme addTargetSpendBiddingScheme = new BiddingStrategyServiceBiddingScheme();
-    BiddingStrategyServiceTargetSpendBiddingScheme targetSpendBiddingScheme = new BiddingStrategyServiceTargetSpendBiddingScheme();
-    targetSpendBiddingScheme.setBidCeiling((long) 700);
-    addTargetSpendBiddingScheme.setTargetSpendBiddingScheme(targetSpendBiddingScheme);
-    addTargetSpendBiddingScheme.setType(BiddingStrategyServiceType.TARGET_SPEND);
+  public static BiddingStrategy createExampleMaximizeClicksBidding() {
+    BiddingStrategyServiceBiddingScheme addMaximizeClicksBiddingScheme = new BiddingStrategyServiceBiddingScheme();
+    BiddingStrategyServiceMaximizeClicksBiddingScheme maximizeClicksBiddingScheme = new BiddingStrategyServiceMaximizeClicksBiddingScheme();
+    maximizeClicksBiddingScheme.setBidCeiling((long) 700);
+    addMaximizeClicksBiddingScheme.setMaximizeClicksBiddingScheme(maximizeClicksBiddingScheme);
+    addMaximizeClicksBiddingScheme.setType(BiddingStrategyServiceType.MAXIMIZE_CLICKS);
 
-    BiddingStrategy targetSpendBidding = new BiddingStrategy();
-    targetSpendBidding.setBiddingStrategyName("SampleTargetSpend_CreateOn_" + ApiUtils.getCurrentTimestamp());
-    targetSpendBidding.setBiddingScheme(addTargetSpendBiddingScheme);
+    BiddingStrategy maximizeClicksBidding = new BiddingStrategy();
+    maximizeClicksBidding.setBiddingStrategyName("SampleMaximizeClicks_CreateOn_" + ApiUtils.getCurrentTimestamp());
+    maximizeClicksBidding.setBiddingScheme(addMaximizeClicksBiddingScheme);
 
-    return targetSpendBidding;
+    return maximizeClicksBidding;
   }
 
   /**
@@ -253,13 +253,13 @@ public class BiddingStrategyServiceSample {
 
         operand.setBiddingScheme(biddingScheme);
 
-        // TargetSpendBiddingScheme
-      } else if (biddingStrategy.getBiddingScheme().getType().equals(BiddingStrategyServiceType.TARGET_SPEND)) {
+        // MaximizeClicksBiddingScheme
+      } else if (biddingStrategy.getBiddingScheme().getType().equals(BiddingStrategyServiceType.MAXIMIZE_CLICKS)) {
         BiddingStrategyServiceBiddingScheme biddingScheme = new BiddingStrategyServiceBiddingScheme();
-        BiddingStrategyServiceTargetSpendBiddingScheme setTargetSpendBiddingScheme = new BiddingStrategyServiceTargetSpendBiddingScheme();
-        setTargetSpendBiddingScheme.setBidCeiling((long) 750);
-        biddingScheme.setTargetSpendBiddingScheme(setTargetSpendBiddingScheme);
-        biddingScheme.setType(BiddingStrategyServiceType.TARGET_SPEND);
+        BiddingStrategyServiceMaximizeClicksBiddingScheme setMaximizeClicksBiddingScheme = new BiddingStrategyServiceMaximizeClicksBiddingScheme();
+        setMaximizeClicksBiddingScheme.setBidCeiling((long) 750);
+        biddingScheme.setMaximizeClicksBiddingScheme(setMaximizeClicksBiddingScheme);
+        biddingScheme.setType(BiddingStrategyServiceType.MAXIMIZE_CLICKS);
 
         operand.setBiddingScheme(biddingScheme);
 
@@ -297,7 +297,7 @@ public class BiddingStrategyServiceSample {
     }
     selector.setBiddingStrategyTypes(Arrays.asList(
       BiddingStrategyServiceType.TARGET_CPA, //
-      BiddingStrategyServiceType.TARGET_SPEND, //
+      BiddingStrategyServiceType.MAXIMIZE_CLICKS, //
       BiddingStrategyServiceType.TARGET_ROAS //
     ));
 
