@@ -11,24 +11,24 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroup;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceAdGroupAdRotationMode;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceAdRotationMode;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceBid;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceSettings;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceUrlApprovalStatus;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroup;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceAdGroupAdRotationMode;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceAdRotationMode;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceBid;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceSettings;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceUrlApprovalStatus;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
 
 /**
  * example AdGroupService operation and Utility method collection.
@@ -154,7 +154,7 @@ public class AdGroupServiceSample {
 
     // bid
     AdGroupServiceBid bid = new AdGroupServiceBid();
-    bid.setMaxCpc((long) 100);
+    bid.setCpc((long) 100);
 
     // settings
     AdGroupServiceTargetingSetting targetingSetting = new AdGroupServiceTargetingSetting();
@@ -199,7 +199,7 @@ public class AdGroupServiceSample {
 
     // bid
     AdGroupServiceBid bid = new AdGroupServiceBid();
-    bid.setMaxCpc((long) 100);
+    bid.setCpc((long) 100);
 
     // settings
     AdGroupServiceTargetingSetting targetingSetting = new AdGroupServiceTargetingSetting();
@@ -243,7 +243,7 @@ public class AdGroupServiceSample {
 
     // bid
     AdGroupServiceBid bid = new AdGroupServiceBid();
-    bid.setMaxCpc((long) 100);
+    bid.setCpc((long) 100);
 
     // settings
     AdGroupServiceTargetingSetting targetingSetting = new AdGroupServiceTargetingSetting();
@@ -278,7 +278,7 @@ public class AdGroupServiceSample {
 
     // bid
     AdGroupServiceBid bid = new AdGroupServiceBid();
-    bid.setMaxCpc((long) 100);
+    bid.setCpc((long) 100);
 
     // settings
     AdGroupServiceTargetingSetting targetingSetting = new AdGroupServiceTargetingSetting();
@@ -360,7 +360,7 @@ public class AdGroupServiceSample {
 
       // bid
       AdGroupServiceBid bid = new AdGroupServiceBid();
-      bid.setMaxCpc((long) 150);
+      bid.setCpc((long) 150);
       operand.setBid(bid);
 
       // settings

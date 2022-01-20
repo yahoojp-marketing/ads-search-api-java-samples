@@ -7,27 +7,24 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceAdditionalAdvancedMobileUrls;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceAdditionalAdvancedUrls;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceAdditionalUrl;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceBid;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceBiddableAdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceCriterion;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceKeyword;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceKeywordMatchType;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceBid;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceBiddableAdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceCriterion;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceKeyword;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceKeywordMatchType;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -171,29 +168,7 @@ public class AdGroupCriterionServiceSample {
 
     // bid
     AdGroupCriterionServiceBid bit = new AdGroupCriterionServiceBid();
-    bit.setMaxCpc((long) 100);
-
-    // advanced url
-    AdGroupCriterionServiceAdditionalUrl adGroupCriterionAdditionalUrl1 = new AdGroupCriterionServiceAdditionalUrl();
-    adGroupCriterionAdditionalUrl1.setUrl("http://www1.yahoo.co.jp");
-    AdGroupCriterionServiceAdditionalUrl adGroupCriterionAdditionalUrl2 = new AdGroupCriterionServiceAdditionalUrl();
-    adGroupCriterionAdditionalUrl2.setUrl("http://www2.yahoo.co.jp");
-    AdGroupCriterionServiceAdditionalUrl adGroupCriterionAdditionalUrl3 = new AdGroupCriterionServiceAdditionalUrl();
-    adGroupCriterionAdditionalUrl3.setUrl("http://www3.yahoo.co.jp");
-    AdGroupCriterionServiceAdditionalAdvancedUrls additionalAdvancedUrls = new AdGroupCriterionServiceAdditionalAdvancedUrls();
-    additionalAdvancedUrls.setAdditionalAdvancedUrl(Arrays.asList( //
-      adGroupCriterionAdditionalUrl1, adGroupCriterionAdditionalUrl2, adGroupCriterionAdditionalUrl3));
-
-    // advanced mobile url
-    AdGroupCriterionServiceAdditionalUrl adGroupCriterionAdditionalMobileUrl1 = new AdGroupCriterionServiceAdditionalUrl();
-    adGroupCriterionAdditionalMobileUrl1.setUrl("http://www1.yahoo.co.jp/mobile");
-    AdGroupCriterionServiceAdditionalUrl adGroupCriterionAdditionalMobileUrl2 = new AdGroupCriterionServiceAdditionalUrl();
-    adGroupCriterionAdditionalMobileUrl2.setUrl("http://www2.yahoo.co.jp/mobile");
-    AdGroupCriterionServiceAdditionalUrl adGroupCriterionAdditionalMobileUrl3 = new AdGroupCriterionServiceAdditionalUrl();
-    adGroupCriterionAdditionalMobileUrl3.setUrl("http://www3.yahoo.co.jp/mobile");
-    AdGroupCriterionServiceAdditionalAdvancedMobileUrls adGroupCriterionAdditionalAdvancedMobileUrls = new AdGroupCriterionServiceAdditionalAdvancedMobileUrls();
-    adGroupCriterionAdditionalAdvancedMobileUrls.setAdditionalAdvancedMobileUrl(Arrays.asList( //
-      adGroupCriterionAdditionalMobileUrl1, adGroupCriterionAdditionalMobileUrl2, adGroupCriterionAdditionalMobileUrl3));
+    bit.setCpc((long) 100);
 
     // customParameters
     AdGroupCriterionServiceCustomParameter parameter = new AdGroupCriterionServiceCustomParameter();
@@ -207,10 +182,8 @@ public class AdGroupCriterionServiceSample {
     biddableAdGroupCriterion.setUserStatus(AdGroupCriterionServiceUserStatus.ACTIVE);
     biddableAdGroupCriterion.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
     biddableAdGroupCriterion.setBid(bit);
-    biddableAdGroupCriterion.setAdvancedUrl("http://www.yahoo.co.jp");
-    biddableAdGroupCriterion.setAdditionalAdvancedUrls(additionalAdvancedUrls);
-    biddableAdGroupCriterion.setAdvancedMobileUrl("http://www.yahoo.co.jp/mobile");
-    biddableAdGroupCriterion.setAdditionalAdvancedMobileUrls(adGroupCriterionAdditionalAdvancedMobileUrls);
+    biddableAdGroupCriterion.setFinalUrl("http://www.yahoo.co.jp");
+    biddableAdGroupCriterion.setSmartphoneFinalUrl("http://www.yahoo.co.jp/mobile");
     biddableAdGroupCriterion.setCustomParameters(customParameters);
 
     AdGroupCriterion adGroupCriterion = new AdGroupCriterion();
@@ -283,7 +256,7 @@ public class AdGroupCriterionServiceSample {
 
         // bid
         AdGroupCriterionServiceBid bid = new AdGroupCriterionServiceBid();
-        bid.setMaxCpc((long) 150);
+        bid.setCpc((long) 150);
 
         AdGroupCriterionServiceBiddableAdGroupCriterion biddableAdGroupCriterion = new AdGroupCriterionServiceBiddableAdGroupCriterion();
         biddableAdGroupCriterion.setUserStatus(AdGroupCriterionServiceUserStatus.PAUSED);

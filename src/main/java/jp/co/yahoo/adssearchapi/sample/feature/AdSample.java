@@ -17,47 +17,47 @@ import jp.co.yahoo.adssearchapi.sample.basic.feeditem.FeedItemServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroup;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAd;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceValue;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupBidMultiplierServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupBidMultiplierServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupFeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupFeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupFeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v6.model.BiddingStrategyServiceValue;
-import jp.co.yahoo.adssearchapi.v6.model.Campaign;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignCriterion;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignFeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignFeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignFeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignServiceValue;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignTarget;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignTargetServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignTargetServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignTargetServiceValue;
-import jp.co.yahoo.adssearchapi.v6.model.FeedItemServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.FeedItemServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v6.model.FeedItemServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.FeedItemServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroup;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAd;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupBidMultiplierServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupBidMultiplierServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.Campaign;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterion;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceAppStore;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignTarget;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.FeedItemServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.FeedItemServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v7.model.FeedItemServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.FeedItemServiceValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -92,12 +92,12 @@ public class AdSample {
       // ADD
       BiddingStrategyServiceOperation addRequestBiddingStrategy = BiddingStrategyServiceSample.buildExampleMutateRequest(
         accountId,
-        Arrays.asList(BiddingStrategyServiceSample.createExampleTargetSpendBidding())
+        Arrays.asList(BiddingStrategyServiceSample.createExampleMaximizeClicksBidding())
       );
       List<BiddingStrategyServiceValue> addResponseBiddingStrategy = BiddingStrategyServiceSample.mutate(addRequestBiddingStrategy, "add");
       valuesRepositoryFacade.getValuesHolder().setBiddingStrategyServiceValueList(addResponseBiddingStrategy);
 
-      Long biddingStrategyId = valuesRepositoryFacade.getBiddingStrategyValuesRepository().findBiddingStrategyId(BiddingStrategyServiceType.TARGET_SPEND);
+      Long biddingStrategyId = valuesRepositoryFacade.getBiddingStrategyValuesRepository().findBiddingStrategyId(BiddingStrategyServiceType.MAXIMIZE_CLICKS);
 
       // sleep 30 second.
       System.out.println("\n***** sleep 30 seconds *****\n");

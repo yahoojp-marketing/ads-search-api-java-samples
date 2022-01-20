@@ -12,25 +12,23 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAd;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceAd;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceAdType;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceAdditionalAdvancedMobileUrls;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceAdditionalAdvancedUrls;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceAppAd;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceDevicePreference;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceExtendedTextAd;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceOperation;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceSelector;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v6.model.AdGroupAdServiceValue;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v6.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAd;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceAd;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceAdType;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceAppAd;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceDevicePreference;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceExtendedTextAd;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceGetResponse;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceAppStore;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
 
 
 /**
@@ -136,22 +134,6 @@ public class AdGroupAdServiceSample {
    */
   public static AdGroupAd createExampleExtendedTextAd(long campaignId, long adGroupId) {
 
-    // advanced url
-    AdGroupAdServiceAdditionalAdvancedUrls additionalAdvancedUrls1 = new AdGroupAdServiceAdditionalAdvancedUrls();
-    additionalAdvancedUrls1.setAdvancedUrl("http://www1.yahoo.co.jp");
-    AdGroupAdServiceAdditionalAdvancedUrls additionalAdvancedUrls2 = new AdGroupAdServiceAdditionalAdvancedUrls();
-    additionalAdvancedUrls2.setAdvancedUrl("http://www2.yahoo.co.jp");
-    AdGroupAdServiceAdditionalAdvancedUrls additionalAdvancedUrls3 = new AdGroupAdServiceAdditionalAdvancedUrls();
-    additionalAdvancedUrls3.setAdvancedUrl("http://www3.yahoo.co.jp");
-
-    // advanced mobile url
-    AdGroupAdServiceAdditionalAdvancedMobileUrls adGroupAdAdditionalAdvancedMobileUrls1 = new AdGroupAdServiceAdditionalAdvancedMobileUrls();
-    adGroupAdAdditionalAdvancedMobileUrls1.setAdvancedMobileUrl("http://www1.yahoo.co.jp/mobile");
-    AdGroupAdServiceAdditionalAdvancedMobileUrls adGroupAdAdditionalAdvancedMobileUrls2 = new AdGroupAdServiceAdditionalAdvancedMobileUrls();
-    adGroupAdAdditionalAdvancedMobileUrls2.setAdvancedMobileUrl("http://www2.yahoo.co.jp/mobile");
-    AdGroupAdServiceAdditionalAdvancedMobileUrls adGroupAdAdditionalAdvancedMobileUrls3 = new AdGroupAdServiceAdditionalAdvancedMobileUrls();
-    adGroupAdAdditionalAdvancedMobileUrls3.setAdvancedMobileUrl("http://www3.yahoo.co.jp/mobile");
-
     // customParameters
     AdGroupAdServiceCustomParameter customParameter = new AdGroupAdServiceCustomParameter();
     customParameter.setKey("id1");
@@ -172,10 +154,8 @@ public class AdGroupAdServiceSample {
     ad.setHeadline1("sample headline");
     ad.setDescription1("sample ad desc");
     ad.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
-    ad.setAdvancedUrl("http://www.yahoo.co.jp");
-    ad.setAdditionalAdvancedUrls(Arrays.asList(additionalAdvancedUrls1, additionalAdvancedUrls2, additionalAdvancedUrls3));
-    ad.setAdvancedMobileUrl("http://www.yahoo.co.jp/mobile");
-    ad.setAdditionalAdvancedMobileUrls(Arrays.asList(adGroupAdAdditionalAdvancedMobileUrls1, adGroupAdAdditionalAdvancedMobileUrls2, adGroupAdAdditionalAdvancedMobileUrls3));
+    ad.setFinalUrl("http://www.yahoo.co.jp");
+    ad.setSmartphoneFinalUrl("http://www.yahoo.co.jp/mobile");
     ad.setCustomParameters(customParameters);
 
 
@@ -216,7 +196,7 @@ public class AdGroupAdServiceSample {
     ad.setDescription1("sample ad desc");
     ad.setDevicePreference(AdGroupAdServiceDevicePreference.SMART_PHONE);
     ad.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
-    ad.setAdvancedUrl("http://www.apple.com/jp/itunes/app/appname/" + appId);
+    ad.setFinalUrl("http://www.apple.com/jp/itunes/app/appname/" + appId);
     ad.setCustomParameters(customParameters);
 
 
@@ -249,7 +229,7 @@ public class AdGroupAdServiceSample {
     ad.setHeadline1("sample headline");
     ad.setDescription1("sample ad desc");
     ad.setDevicePreference(AdGroupAdServiceDevicePreference.SMART_PHONE);
-    ad.setAdvancedUrl("https://play.google.com/store/apps/details?id=" + appId);
+    ad.setFinalUrl("https://play.google.com/store/apps/details?id=" + appId);
 
 
     AdGroupAd adGroupAd = new AdGroupAd();
