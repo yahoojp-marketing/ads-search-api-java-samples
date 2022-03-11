@@ -1,12 +1,17 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroupcriterion;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.api.AdGroupCriterionServiceApi;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterion;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceApprovalStatus;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceBid;
@@ -15,10 +20,8 @@ import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceCriterion;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceCriterionType;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceCustomParameter;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceGetResponse;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceKeyword;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceKeywordMatchType;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceMutateResponse;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceOperation;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceSelector;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceUse;
@@ -26,17 +29,12 @@ import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceUserStatus;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceValue;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * example AdGroupCriterionService operation and Utility method collection.
  */
 public class AdGroupCriterionServiceSample {
 
-  private static final String SERVICE_NAME = "AdGroupCriterionService";
+  private static final AdGroupCriterionServiceApi adGroupCriterionService = new AdGroupCriterionServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   /**
    * main method for AdGroupCriterionServiceSample
@@ -69,7 +67,7 @@ public class AdGroupCriterionServiceSample {
       }});
 
       // run
-      List<AdGroupCriterionServiceValue> addResponse = mutate(addRequest, "add");
+      List<AdGroupCriterionServiceValue> addResponse = adGroupCriterionService.adGroupCriterionServiceAddPost(addRequest).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setAdGroupCriterionServiceValueList(addResponse);
 
       // =================================================================
@@ -79,17 +77,17 @@ public class AdGroupCriterionServiceSample {
       AdGroupCriterionServiceSelector getRequest = buildExampleGetRequest(accountId, AdGroupCriterionServiceUse.BIDDABLE, valuesRepositoryFacade.getAdGroupCriterionValuesRepository().getAdGroupCriterions());
 
       // run
-      get(getRequest);
+      adGroupCriterionService.adGroupCriterionServiceGetPost(getRequest);
 
       // =================================================================
       // AdGroupCriterionService SET
       // =================================================================
       // create request.
       AdGroupCriterionServiceOperation setRequest =
-        buildExampleMutateRequest(accountId, createExampleSetRequest(valuesRepositoryFacade.getAdGroupCriterionValuesRepository().getAdGroupCriterions()));
+          buildExampleMutateRequest(accountId, createExampleSetRequest(valuesRepositoryFacade.getAdGroupCriterionValuesRepository().getAdGroupCriterions()));
 
       // run
-      mutate(setRequest, "set");
+      adGroupCriterionService.adGroupCriterionServiceSetPost(setRequest);
 
       // =================================================================
       // AdGroupCriterionService REMOVE
@@ -98,7 +96,7 @@ public class AdGroupCriterionServiceSample {
       AdGroupCriterionServiceOperation removeRequest = buildExampleMutateRequest(accountId, valuesRepositoryFacade.getAdGroupCriterionValuesRepository().getAdGroupCriterions());
 
       // run
-      mutate(removeRequest, "remove");
+      adGroupCriterionService.adGroupCriterionServiceRemovePost(removeRequest);
 
     } catch (Exception ex) {
       ex.printStackTrace();
@@ -106,34 +104,6 @@ public class AdGroupCriterionServiceSample {
     } finally {
       cleanup(valuesHolder);
     }
-  }
-
-  /**
-   * example mutate adGroupCriterions.
-   *
-   * @param operation AdGroupCriterionOperation
-   * @return AdGroupCriterionValues
-   */
-  public static List<AdGroupCriterionServiceValue> mutate(AdGroupCriterionServiceOperation operation, String action) throws Exception {
-
-    AdGroupCriterionServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, action, operation, AdGroupCriterionServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
-  }
-
-  /**
-   * Sample Program for AdGroupCriterionService GET.
-   *
-   * @param selector AdGroupCriterionSelector
-   * @return AdGroupCriterionValues
-   */
-  public static List<AdGroupCriterionServiceValue> get(AdGroupCriterionServiceSelector selector) throws Exception {
-
-    AdGroupCriterionServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, "get", selector, AdGroupCriterionServiceGetResponse.class);
-
-    // Response
-    return response.getRval().getValues();
   }
 
   /**
@@ -224,11 +194,11 @@ public class AdGroupCriterionServiceSample {
 
     selector.setUserStatuses(Arrays.asList(AdGroupCriterionServiceUserStatus.ACTIVE, AdGroupCriterionServiceUserStatus.PAUSED));
     selector.setApprovalStatuses(Arrays.asList( //
-      AdGroupCriterionServiceApprovalStatus.APPROVED, //
-      AdGroupCriterionServiceApprovalStatus.APPROVED_WITH_REVIEW, //
-      AdGroupCriterionServiceApprovalStatus.REVIEW, //
-      AdGroupCriterionServiceApprovalStatus.PRE_DISAPPROVED, //
-      AdGroupCriterionServiceApprovalStatus.POST_DISAPPROVED //
+        AdGroupCriterionServiceApprovalStatus.APPROVED, //
+        AdGroupCriterionServiceApprovalStatus.APPROVED_WITH_REVIEW, //
+        AdGroupCriterionServiceApprovalStatus.REVIEW, //
+        AdGroupCriterionServiceApprovalStatus.PRE_DISAPPROVED, //
+        AdGroupCriterionServiceApprovalStatus.POST_DISAPPROVED //
     ));
 
     selector.setStartIndex(1);
@@ -312,11 +282,11 @@ public class AdGroupCriterionServiceSample {
 
     // create request.
     AdGroupCriterionServiceOperation addRequest = buildExampleMutateRequest( //
-      accountId, Collections.singletonList(createExampleBiddableAdGroupCriterion(campaignId, adGroupId)) //
+        accountId, Collections.singletonList(createExampleBiddableAdGroupCriterion(campaignId, adGroupId)) //
     );
 
     // run
-    List<AdGroupCriterionServiceValue> addResponse = mutate(addRequest, "add");
+    List<AdGroupCriterionServiceValue> addResponse = adGroupCriterionService.adGroupCriterionServiceAddPost(addRequest).getRval().getValues();
 
     ValuesHolder seflValuesHolder = new ValuesHolder();
     seflValuesHolder.setBiddingStrategyServiceValueList(parentValuesHolder.getBiddingStrategyServiceValueList());

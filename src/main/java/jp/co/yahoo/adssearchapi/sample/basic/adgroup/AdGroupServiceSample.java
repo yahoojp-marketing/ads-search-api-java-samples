@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroup;
 
@@ -11,6 +11,7 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.api.AdGroupServiceApi;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroup;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceAdGroupAdRotationMode;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceAdRotationMode;
@@ -18,8 +19,6 @@ import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceBid;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceCriterionType;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceCustomParameter;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceMutateResponse;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceOperation;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceSelector;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupServiceSettings;
@@ -35,7 +34,7 @@ import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
  */
 public class AdGroupServiceSample {
 
-  private static final String SERVICE_NAME = "AdGroupService";
+  private static final AdGroupServiceApi adGroupService = new AdGroupServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   /**
    * main method for AdGroupServiceSample
@@ -65,9 +64,8 @@ public class AdGroupServiceSample {
       AdGroupServiceOperation addRequest = buildExampleMutateRequest(accountId, Collections.singletonList(createExampleStandardAdGroup(campaignId)));
 
       // run
-      List<AdGroupServiceValue> addResponse = mutate(addRequest, "add");
+      List<AdGroupServiceValue> addResponse =  adGroupService.adGroupServiceAddPost(addRequest).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setAdGroupServiceValueList(addResponse);
-      System.out.println(addResponse);
 
       // =================================================================
       // AdGroupService GET
@@ -75,7 +73,7 @@ public class AdGroupServiceSample {
       // create request.
       AdGroupServiceSelector getRequest = buildExampleGetRequest(accountId, valuesRepositoryFacade.getAdGroupValuesRepository().getAdGroups());
       // run
-      get(getRequest);
+      adGroupService.adGroupServiceGetPost(getRequest);
       // check review status
       checkStatus(valuesRepositoryFacade.getAdGroupValuesRepository().getAdGroups());
 
@@ -85,7 +83,7 @@ public class AdGroupServiceSample {
       // create request.
       AdGroupServiceOperation setRequest = buildExampleMutateRequest(accountId, createExampleSetRequest(valuesRepositoryFacade.getAdGroupValuesRepository().getAdGroups()));
       // run
-      mutate(setRequest, "set");
+      adGroupService.adGroupServiceSetPost(setRequest);
 
       // =================================================================
       // AdGroupService REMOVE
@@ -93,7 +91,7 @@ public class AdGroupServiceSample {
       // create request.
       AdGroupServiceOperation removeRequest = buildExampleMutateRequest(accountId, valuesRepositoryFacade.getAdGroupValuesRepository().getAdGroups());
       // run
-      mutate(removeRequest, "remove");
+      adGroupService.adGroupServiceSetPost(removeRequest);
       valuesHolder.setAdGroupServiceValueList(new ArrayList<>());
 
     } catch (Exception e) {
@@ -102,35 +100,6 @@ public class AdGroupServiceSample {
     } finally {
       cleanup(valuesHolder);
     }
-  }
-
-  /**
-   * example mutate adGroups.
-   *
-   * @param operation CampaignOperation
-   * @return CampaignValues
-   */
-  public static List<AdGroupServiceValue> mutate(AdGroupServiceOperation operation, String action) throws Exception {
-
-    AdGroupServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, action, operation, AdGroupServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
-  }
-
-  /**
-   * Sample Program for AdGroupService GET.
-   *
-   * @param selector AdGroupSelector
-   * @return AdGroupServiceValue
-   * @throws Exception throw exception
-   */
-  public static List<AdGroupServiceValue> get(AdGroupServiceSelector selector) throws Exception {
-
-    AdGroupServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, "get", selector, AdGroupServiceGetResponse.class);
-
-    // Response
-    return response.getRval().getValues();
   }
 
   /**
@@ -410,7 +379,7 @@ public class AdGroupServiceSample {
 
         AdGroupServiceSelector getRequest = buildExampleGetRequest(ApiUtils.ACCOUNT_ID, adGroups);
 
-        List<AdGroupServiceValue> getResponse = get(getRequest);
+        List<AdGroupServiceValue> getResponse = adGroupService.adGroupServiceGetPost(getRequest).getRval().getValues();
 
         int approvalCount = 0;
         for (AdGroupServiceValue adGroupValues : getResponse) {
@@ -485,7 +454,7 @@ public class AdGroupServiceSample {
     }});
 
     // run
-    List<AdGroupServiceValue> addResponse = mutate(addRequest, "add");
+    List<AdGroupServiceValue> addResponse = adGroupService.adGroupServiceAddPost(addRequest).getRval().getValues();
 
     ValuesHolder selfValuesHolder = new ValuesHolder();
     selfValuesHolder.setBiddingStrategyServiceValueList(parentValuesHolder.getBiddingStrategyServiceValueList());

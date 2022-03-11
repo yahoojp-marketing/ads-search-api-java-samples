@@ -1,21 +1,23 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.reportdefinition;
 
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
+import jp.co.yahoo.adssearchapi.v7.api.ReportDefinitionServiceApi;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinition;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceDownloadSelector;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceGetReportFields;
-import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceGetReportFieldsResponse;
-import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceMutateResponse;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceOperation;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceReportCompressType;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceReportDateRangeType;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceReportDownloadEncode;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceReportDownloadFormat;
-import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceReportFieldAttribute;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceReportIncludeDeleted;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceReportLanguage;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceReportSortField;
@@ -23,46 +25,43 @@ import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceReportSortType;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceReportType;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceSelector;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceValue;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import org.springframework.core.io.Resource;
+import org.springframework.util.StreamUtils;
 
 /**
  * example ReportDefinitionService operation and Utility method collection.
  */
 public class ReportDefinitionServiceSample {
 
-  private static final String SERVICE_NAME = "ReportDefinitionService";
+  private static final ReportDefinitionServiceApi reportDefinitionService = new ReportDefinitionServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   private static final List<String> CAMPAIGN_REPORT_FIELDS = Arrays.asList( //
-    "CAMPAIGN_ID", //
-    "CAMPAIGN_NAME", //
-    "CAMPAIGN_DISTRIBUTION_SETTINGS", //
-    "CAMPAIGN_DISTRIBUTION_STATUS", //
-    "DAILY_SPENDING_LIMIT", //
-    "CAMPAIGN_START_DATE", //
-    "CAMPAIGN_END_DATE", //
-    "TRACKING_URL", //
-    "CUSTOM_PARAMETERS", //
-    "CAMPAIGN_TRACKING_ID", //
-    "CONVERSIONS", //
-    "CONV_VALUE", //
-    "VALUE_PER_CONV", //
-    "NETWORK", //
-    "CLICK_TYPE", //
-    "DEVICE", //
-    "DAY", //
-    "DAY_OF_WEEK", //
-    "QUARTER", //
-    "YEAR", //
-    "MONTH", //
-    "WEEK", //
-    "HOUR_OF_DAY", //
-    "OBJECT_OF_CONVERSION_TRACKING", //
-    "CONVERSION_NAME", //
-    "CAMPAIGN_TYPE" //
+      "CAMPAIGN_ID", //
+      "CAMPAIGN_NAME", //
+      "CAMPAIGN_DISTRIBUTION_SETTINGS", //
+      "CAMPAIGN_DISTRIBUTION_STATUS", //
+      "DAILY_SPENDING_LIMIT", //
+      "CAMPAIGN_START_DATE", //
+      "CAMPAIGN_END_DATE", //
+      "TRACKING_URL", //
+      "CUSTOM_PARAMETERS", //
+      "CAMPAIGN_TRACKING_ID", //
+      "CONVERSIONS", //
+      "CONV_VALUE", //
+      "VALUE_PER_CONV", //
+      "NETWORK", //
+      "CLICK_TYPE", //
+      "DEVICE", //
+      "DAY", //
+      "DAY_OF_WEEK", //
+      "QUARTER", //
+      "YEAR", //
+      "MONTH", //
+      "WEEK", //
+      "HOUR_OF_DAY", //
+      "OBJECT_OF_CONVERSION_TRACKING", //
+      "CONVERSION_NAME", //
+      "CAMPAIGN_TYPE" //
   );
 
   /**
@@ -86,18 +85,18 @@ public class ReportDefinitionServiceSample {
       getReportFieldsRequest.setReportType(ReportDefinitionServiceReportType.CAMPAIGN);
 
       // run
-      getReportFields(getReportFieldsRequest);
+      reportDefinitionService.reportDefinitionServiceGetReportFieldsPost(getReportFieldsRequest);
 
       // =================================================================
       // ReportDefinitionService ADD
       // =================================================================
       // create request.
       ReportDefinitionServiceOperation addRequest = buildExampleMutateRequest( //
-        accountId, Collections.singletonList(createExampleReportDefinition()) //
+          accountId, Collections.singletonList(createExampleReportDefinition()) //
       );
 
       // run
-      List<ReportDefinitionServiceValue> addResponse = mutate(addRequest, "add");
+      List<ReportDefinitionServiceValue> addResponse = reportDefinitionService.reportDefinitionServiceAddPost(addRequest).getRval().getValues();
       List<ReportDefinition> reportDefinitionList = new ArrayList<>();
       List<Long> reportJobIds = new ArrayList<>();
       for (ReportDefinitionServiceValue values : addResponse) {
@@ -115,7 +114,7 @@ public class ReportDefinitionServiceSample {
       ReportDefinitionServiceSelector selector = buildExampleGetRequest(accountId, reportJobIds);
 
       // run
-      List<ReportDefinitionServiceValue> getResponse = get(selector);
+      List<ReportDefinitionServiceValue> getResponse = reportDefinitionService.reportDefinitionServiceGetPost(selector).getRval().getValues();
 
       long getJobIds = 0;
       for (ReportDefinitionServiceValue values : getResponse) {
@@ -126,7 +125,8 @@ public class ReportDefinitionServiceSample {
       // ReportDefinitionService download (http request)
       // =================================================================
       ReportDefinitionServiceDownloadSelector downloadSelector = buildExampleDownloadRequest(accountId, getJobIds);
-      ApiUtils.download(SERVICE_NAME, "download", downloadSelector, "reportDownloadSample.csv");
+      Resource report = reportDefinitionService.reportDefinitionServiceDownloadPost(downloadSelector);
+      System.out.println("### reportString=\n" + StreamUtils.copyToString(report.getInputStream(), StandardCharsets.UTF_8));
 
       // =================================================================
       // ReportDefinitionService REMOVE
@@ -135,25 +135,12 @@ public class ReportDefinitionServiceSample {
       ReportDefinitionServiceOperation removeRequest = buildExampleMutateRequest(accountId, reportDefinitionList);
 
       // run
-      mutate(removeRequest, "remove");
+      reportDefinitionService.reportDefinitionServiceRemovePost(removeRequest);
 
     } catch (Exception e) {
       e.printStackTrace();
       throw e;
     }
-  }
-
-  /**
-   * example getReportFields ReportDefinitions.
-   *
-   * @param getReportFieldsRequest ReportDefinitionServiceGetReportFields
-   * @return ReportFieldAttribute
-   */
-  private static List<ReportDefinitionServiceReportFieldAttribute> getReportFields(ReportDefinitionServiceGetReportFields getReportFieldsRequest) throws Exception {
-
-    ReportDefinitionServiceGetReportFieldsResponse response = ApiUtils.execute(SERVICE_NAME, "getReportFields", getReportFieldsRequest, ReportDefinitionServiceGetReportFieldsResponse.class);
-
-    return response.getRval().getFields();
   }
 
   /**
@@ -224,34 +211,6 @@ public class ReportDefinitionServiceSample {
   }
 
   /**
-   * example get reportDefinition.
-   *
-   * @param selector ReportDefinitionServiceSelector
-   * @return List<ReportDefinitionServiceValue>
-   */
-  public static List<ReportDefinitionServiceValue> get(ReportDefinitionServiceSelector selector) throws Exception {
-
-    ReportDefinitionServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, "get", selector, ReportDefinitionServiceGetResponse.class);
-
-    // Response
-    return response.getRval().getValues();
-  }
-
-  /**
-   * example mutate reportDefinition.
-   *
-   * @param operation ReportDefinitionServiceOperation
-   * @return ReportDefinitionServiceValue
-   */
-  public static List<ReportDefinitionServiceValue> mutate(ReportDefinitionServiceOperation operation, String acrion) throws Exception {
-
-    ReportDefinitionServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, acrion, operation, ReportDefinitionServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
-  }
-
-  /**
    * example check Report job status.
    *
    * @param reportJobIds    List<Long>
@@ -267,7 +226,7 @@ public class ReportDefinitionServiceSample {
 
       // get
       ReportDefinitionServiceSelector selector = buildExampleGetRequest(ApiUtils.ACCOUNT_ID, reportJobIds);
-      List<ReportDefinitionServiceValue> reportDefinitionValues = get(selector);
+      List<ReportDefinitionServiceValue> reportDefinitionValues = reportDefinitionService.reportDefinitionServiceGetPost(selector).getRval().getValues();
 
       int completedCount = 0;
 
@@ -294,4 +253,5 @@ public class ReportDefinitionServiceSample {
     }
     throw new Exception("Fail to get Report.");
   }
+
 }

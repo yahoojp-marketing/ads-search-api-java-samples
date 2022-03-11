@@ -1,34 +1,31 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroupfeed;
-
-import jp.co.yahoo.adssearchapi.sample.basic.feeditem.FeedItemServiceSample;
-import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
-import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
-import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeed;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceList;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceValue;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v7.model.FeedItemServicePlaceholderType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import jp.co.yahoo.adssearchapi.sample.basic.feeditem.FeedItemServiceSample;
+import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
+import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
+import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.api.AdGroupFeedServiceApi;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeed;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceList;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v7.model.FeedItemServicePlaceholderType;
 
 /**
  * example AdGroupFeedService operation and Utility method collection.
  */
 public class AdGroupFeedServiceSample {
 
-  private static final String SERVICE_NAME = "AdGroupFeedService";
+  private static final AdGroupFeedServiceApi adGroupFeedService = new AdGroupFeedServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   public static void main(String[] args) throws Exception {
     // =================================================================
@@ -56,7 +53,7 @@ public class AdGroupFeedServiceSample {
       AdGroupFeedServiceOperation setRequest = buildExampleMutateRequest(accountId, adGroupFeedLists);
 
       // run
-      mutate(setRequest, "set");
+      adGroupFeedService.adGroupFeedServiceSetPost(setRequest);
 
       // =================================================================
       // AdGroupFeedServiceSample GET
@@ -65,7 +62,7 @@ public class AdGroupFeedServiceSample {
       AdGroupFeedServiceSelector getRequest = buildExampleGetRequest(accountId, campaignId, adGroupId, feedItemId);
 
       // run
-      get(getRequest);
+      adGroupFeedService.adGroupFeedServiceGetPost(getRequest);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -113,20 +110,6 @@ public class AdGroupFeedServiceSample {
   }
 
   /**
-   * example mutate adGroupFeed.
-   *
-   * @param operation adGroupFeedOperation
-   * @return CampaignFeedValues
-   */
-  public static List<AdGroupFeedServiceValue> mutate(AdGroupFeedServiceOperation operation, String action) throws Exception {
-
-    AdGroupFeedServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, action, operation, AdGroupFeedServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
-  }
-
-  /**
    * example get request.
    *
    * @param accountId long
@@ -143,10 +126,10 @@ public class AdGroupFeedServiceSample {
     selector.setAdGroupIds(Collections.singletonList(adGroupId));
     selector.setFeedItemIds(Collections.singletonList(feedItemId));
     selector.setPlaceholderTypes(Arrays.asList( //
-      AdGroupFeedServicePlaceholderType.QUICKLINK, //
-      AdGroupFeedServicePlaceholderType.CALLEXTENSION, //
-      AdGroupFeedServicePlaceholderType.CALLOUT, //
-      AdGroupFeedServicePlaceholderType.STRUCTURED_SNIPPET //
+        AdGroupFeedServicePlaceholderType.QUICKLINK, //
+        AdGroupFeedServicePlaceholderType.CALLEXTENSION, //
+        AdGroupFeedServicePlaceholderType.CALLOUT, //
+        AdGroupFeedServicePlaceholderType.STRUCTURED_SNIPPET //
     ));
 
     selector.setStartIndex(1);
@@ -172,20 +155,6 @@ public class AdGroupFeedServiceSample {
    */
   public static void cleanup(ValuesHolder valuesHolder) throws Exception {
     FeedItemServiceSample.cleanup(valuesHolder);
-  }
-
-
-  /**
-   * Sample Program for AdGroupFeedService GET.
-   *
-   * @param selector AdGroupFeedSelector
-   * @return AdGroupoFeedValues
-   */
-  public static List<AdGroupFeedServiceValue> get(AdGroupFeedServiceSelector selector) throws Exception {
-
-    AdGroupFeedServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, "get", selector, AdGroupFeedServiceGetResponse.class);
-
-    return response.getRval().getValues();
   }
 
 }

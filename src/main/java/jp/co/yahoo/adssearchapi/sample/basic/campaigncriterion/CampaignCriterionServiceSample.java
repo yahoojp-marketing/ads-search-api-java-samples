@@ -1,34 +1,32 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.campaigncriterion;
 
+import java.util.ArrayList;
+import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.api.CampaignCriterionServiceApi;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterion;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceCriterion;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceGetResponse;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceKeyword;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceKeywordMatchType;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceMutateResponse;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceOperation;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceSelector;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceUse;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignCriterionServiceValue;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * example CampaignService operation and Utility method collection.
  */
 public class CampaignCriterionServiceSample {
 
-  private static final String SERVICE_NAME = "CampaignCriterionService";
+  private static final CampaignCriterionServiceApi campaignCriterionService = new CampaignCriterionServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   /**
    * main method for CampaignCriterionServiceSample
@@ -60,7 +58,7 @@ public class CampaignCriterionServiceSample {
       }});
 
       // run
-      List<CampaignCriterionServiceValue> addCampaignCriterionValues = mutate(addCampaignCriterionOperation, "add");
+      List<CampaignCriterionServiceValue> addCampaignCriterionValues = campaignCriterionService.campaignCriterionServiceAddPost(addCampaignCriterionOperation).getRval().getValues();
 
       List<CampaignCriterion> campaignCriterions = new ArrayList<>();
       for (CampaignCriterionServiceValue campaignCriterionValues: addCampaignCriterionValues) {
@@ -74,7 +72,7 @@ public class CampaignCriterionServiceSample {
       CampaignCriterionServiceSelector campaignCriterionSelector = buildExampleGetRequest(accountId, campaignCriterions);
 
       // run
-      get(campaignCriterionSelector, "get");
+      campaignCriterionService.campaignCriterionServiceGetPost(campaignCriterionSelector);
 
       // =================================================================
       // CampaignCriterionService REMOVE
@@ -83,7 +81,7 @@ public class CampaignCriterionServiceSample {
       CampaignCriterionServiceOperation removeCampaignCriterionOperation = buildExampleMutateRequest(accountId, campaignCriterions);
 
       // run
-      mutate(removeCampaignCriterionOperation, "remove");
+      campaignCriterionService.campaignCriterionServiceRemovePost(removeCampaignCriterionOperation);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -102,20 +100,6 @@ public class CampaignCriterionServiceSample {
     operation.setOperand(operand);
 
     return operation;
-  }
-
-  /**
-   * example mutate campaignCriterions.
-   *
-   * @param operation CampaignCriterionOperation
-   * @return CampaignCriterionValues
-   */
-  public static List<CampaignCriterionServiceValue> mutate(CampaignCriterionServiceOperation operation, String action) throws Exception {
-
-    CampaignCriterionServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, action, operation, CampaignCriterionServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
   }
 
   /**
@@ -165,21 +149,6 @@ public class CampaignCriterionServiceSample {
    */
   public static void cleanup(ValuesHolder valuesHolder) throws Exception {
     CampaignServiceSample.cleanup(valuesHolder);
-  }
-
-  /**
-   * Sample Program for CampaignCriterionService GET.
-   *
-   * @param selector CampaignCriterionSelector
-   * @return CampaignCriterionValues
-   * @throws Exception throw exception
-   */
-  public static List<CampaignCriterionServiceValue> get(CampaignCriterionServiceSelector selector, String action) throws Exception {
-
-    CampaignCriterionServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, action, selector, CampaignCriterionServiceGetResponse.class);
-
-    // Response
-    return response.getRval().getValues();
   }
 
   /**

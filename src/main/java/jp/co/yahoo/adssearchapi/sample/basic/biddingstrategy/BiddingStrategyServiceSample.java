@@ -1,34 +1,32 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.biddingstrategy;
-
-import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
-import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
-import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategy;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceOperation;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceSelector;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceTargetCpaBiddingScheme;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceTargetRoasBiddingScheme;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceMaximizeClicksBiddingScheme;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
+import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
+import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.api.BiddingStrategyServiceApi;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategy;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceTargetCpaBiddingScheme;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceTargetRoasBiddingScheme;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceValue;
 
 /**
  * example BiddingStrategyService operation and Utility method collection.
  */
 public class BiddingStrategyServiceSample {
 
-  private static final String SERVICE_NAME = "BiddingStrategyService";
+  private static final BiddingStrategyServiceApi biddingStrategyService = new BiddingStrategyServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   /**
    * main method for BiddingStrategyServiceSample
@@ -51,7 +49,7 @@ public class BiddingStrategyServiceSample {
       BiddingStrategyServiceOperation addBiddingStrategyOperation = buildExampleMutateRequest(accountId, Collections.singletonList(createExampleTargetCpaBidding()));
 
       // run
-      List<BiddingStrategyServiceValue> biddingStrategyValues = mutate(addBiddingStrategyOperation, "add");
+      List<BiddingStrategyServiceValue> biddingStrategyValues = biddingStrategyService.biddingStrategyServiceAddPost(addBiddingStrategyOperation).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setBiddingStrategyServiceValueList(biddingStrategyValues);
 
       // =================================================================
@@ -59,10 +57,10 @@ public class BiddingStrategyServiceSample {
       // =================================================================
       // create request.
       BiddingStrategyServiceOperation setBiddingStrategyOperation =
-        buildExampleMutateRequest(accountId, createExampleSetRequest(valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategies()));
+          buildExampleMutateRequest(accountId, createExampleSetRequest(valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategies()));
 
       // run
-      mutate(setBiddingStrategyOperation, "set");
+      biddingStrategyService.biddingStrategyServiceSetPost( setBiddingStrategyOperation);
 
       // =================================================================
       // BiddingStrategyService::GET
@@ -71,17 +69,17 @@ public class BiddingStrategyServiceSample {
       BiddingStrategyServiceSelector biddingStrategySelector = buildExampleGetRequest(accountId, valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategyIds());
 
       // run
-      get(biddingStrategySelector);
+      biddingStrategyService.biddingStrategyServiceGetPost(biddingStrategySelector);
 
       // =================================================================
       // BiddingStrategyService::REMOVE
       // =================================================================
       // create request.
       BiddingStrategyServiceOperation removeBiddingStrategyOperation =
-        buildExampleMutateRequest(accountId, valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategies());
+          buildExampleMutateRequest(accountId, valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategies());
 
       // run
-      mutate(removeBiddingStrategyOperation, "remove");
+      biddingStrategyService.biddingStrategyServiceRemovePost(removeBiddingStrategyOperation);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -102,7 +100,7 @@ public class BiddingStrategyServiceSample {
     BiddingStrategyServiceOperation addBiddingStrategyOperation = buildExampleMutateRequest(accountId, Collections.singletonList(createExampleTargetCpaBidding()));
 
     // Run
-    List<BiddingStrategyServiceValue> biddingStrategyValues = mutate(addBiddingStrategyOperation, "add");
+    List<BiddingStrategyServiceValue> biddingStrategyValues = biddingStrategyService.biddingStrategyServiceAddPost(addBiddingStrategyOperation).getRval().getValues();
     valuesHolder.setBiddingStrategyServiceValueList(biddingStrategyValues);
     return valuesHolder;
   }
@@ -122,38 +120,10 @@ public class BiddingStrategyServiceSample {
     ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
 
     BiddingStrategyServiceOperation removeBiddingStrategyOperation =
-      buildExampleMutateRequest(accountId, valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategies());
+        buildExampleMutateRequest(accountId, valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategies());
 
     // Run
-    mutate(removeBiddingStrategyOperation, "remove");
-  }
-
-  /**
-   * Sample Program for BiddingStrategyService MUTATE.
-   *
-   * @param operation BiddingStrategyOperation
-   * @return BiddingStrategyValues
-   */
-  public static List<BiddingStrategyServiceValue> mutate(BiddingStrategyServiceOperation operation, String action) throws Exception {
-
-    BiddingStrategyServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, action, operation, BiddingStrategyServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
-  }
-
-  /**
-   * example get biddingStrategies.
-   *
-   * @param selector BiddingStrategySelector
-   * @return BiddingStrategyValues
-   */
-  public static List<BiddingStrategyServiceValue> get(BiddingStrategyServiceSelector selector) throws Exception {
-
-    BiddingStrategyServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, "get", selector, BiddingStrategyServiceGetResponse.class);
-
-    // Response
-    return response.getRval().getValues();
+    biddingStrategyService.biddingStrategyServiceRemovePost(removeBiddingStrategyOperation);
   }
 
   /**
@@ -296,9 +266,9 @@ public class BiddingStrategyServiceSample {
       selector.setBiddingStrategyIds(biddingStrategyIds);
     }
     selector.setBiddingStrategyTypes(Arrays.asList(
-      BiddingStrategyServiceType.TARGET_CPA, //
-      BiddingStrategyServiceType.MAXIMIZE_CLICKS, //
-      BiddingStrategyServiceType.TARGET_ROAS //
+        BiddingStrategyServiceType.TARGET_CPA, //
+        BiddingStrategyServiceType.MAXIMIZE_CLICKS, //
+        BiddingStrategyServiceType.TARGET_ROAS //
     ));
 
     selector.setStartIndex(1);

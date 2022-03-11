@@ -1,15 +1,14 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
 import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategy;
 import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceType;
 import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Utility method collection for Java Sample Program.
