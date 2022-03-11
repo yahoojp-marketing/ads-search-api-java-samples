@@ -1,34 +1,31 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.campaignfeed;
-
-import jp.co.yahoo.adssearchapi.sample.basic.feeditem.FeedItemServiceSample;
-import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
-import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
-import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignFeed;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServiceList;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServiceMutateResponse;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServiceValue;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v7.model.FeedItemServicePlaceholderType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import jp.co.yahoo.adssearchapi.sample.basic.feeditem.FeedItemServiceSample;
+import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
+import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
+import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.api.CampaignFeedServiceApi;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignFeed;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServiceList;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServiceOperation;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignFeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v7.model.FeedItemServicePlaceholderType;
 
 /**
  * example CampaignFeedService operation and Utility method collection.
  */
 public class CampaignFeedServiceSample {
 
-  private static final String SERVICE_NAME = "CampaignFeedService";
+  private static final CampaignFeedServiceApi campaignFeedService = new CampaignFeedServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   public static void main(String[] args) throws Exception {
 
@@ -56,7 +53,7 @@ public class CampaignFeedServiceSample {
       CampaignFeedServiceOperation setRequest = buildExampleMutateRequest(accountId, campaignFeedLists);
 
       // run
-      mutate(setRequest, "set");
+      campaignFeedService.campaignFeedServiceSetPost(setRequest);
 
       // =================================================================
       // CampaignFeedServiceSample GET
@@ -65,7 +62,7 @@ public class CampaignFeedServiceSample {
       CampaignFeedServiceSelector campaignFeedSelector = buildExampleGetRequest(accountId, Collections.singletonList(campaignId), Collections.singletonList(feedItemId));
 
       // run
-      get(campaignFeedSelector, "get");
+      campaignFeedService.campaignFeedServiceGetPost(campaignFeedSelector);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -131,33 +128,6 @@ public class CampaignFeedServiceSample {
   }
 
   /**
-   * example mutate campaignFeed.
-   *
-   * @param operation CampaignFeedOperation
-   * @return CampaignFeedValues
-   */
-  public static List<CampaignFeedServiceValue> mutate(CampaignFeedServiceOperation operation, String action) throws Exception {
-
-    CampaignFeedServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, action, operation, CampaignFeedServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
-  }
-
-  /**
-   * Sample Program for CampaignFeedService GET.
-   *
-   * @param selector CampaignFeedSelector
-   * @return CampaignFeedValues
-   */
-  public static List<CampaignFeedServiceValue> get(CampaignFeedServiceSelector selector, String action) throws Exception {
-
-    CampaignFeedServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, action, selector, CampaignFeedServiceGetResponse.class);
-
-    return response.getRval().getValues();
-  }
-
-  /**
    * example get request.
    *
    * @param accountId long
@@ -172,10 +142,10 @@ public class CampaignFeedServiceSample {
     selector.setCampaignIds(campaignIds);
     selector.setFeedItemIds(feedItemIds);
     selector.setPlaceholderTypes(Arrays.asList( //
-      CampaignFeedServicePlaceholderType.QUICKLINK, //
-      CampaignFeedServicePlaceholderType.CALLEXTENSION, //
-      CampaignFeedServicePlaceholderType.CALLOUT, //
-      CampaignFeedServicePlaceholderType.STRUCTURED_SNIPPET //
+        CampaignFeedServicePlaceholderType.QUICKLINK, //
+        CampaignFeedServicePlaceholderType.CALLEXTENSION, //
+        CampaignFeedServicePlaceholderType.CALLOUT, //
+        CampaignFeedServicePlaceholderType.STRUCTURED_SNIPPET //
     ));
     selector.setStartIndex(1);
     selector.setNumberResults(20);

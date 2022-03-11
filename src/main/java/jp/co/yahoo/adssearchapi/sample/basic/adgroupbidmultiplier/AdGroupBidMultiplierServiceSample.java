@@ -1,32 +1,30 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroupbidmultiplier;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.api.AdGroupBidMultiplierServiceApi;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupBidMultiplier;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupBidMultiplierServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupBidMultiplierServiceMutateResponse;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupBidMultiplierServiceOperation;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupBidMultiplierServicePlatformType;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupBidMultiplierServiceSelector;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupBidMultiplierServiceValue;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * example AdGroupBidMultiplierService operation and Utility method collection.
  */
 public class AdGroupBidMultiplierServiceSample {
 
-  private static final String SERVICE_NAME = "AdGroupBidMultiplierService";
+  private static final AdGroupBidMultiplierServiceApi adGroupBidMultiplierService = new AdGroupBidMultiplierServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   /**
    * main method for AdGroupBidMultiplierServiceSample
@@ -57,7 +55,7 @@ public class AdGroupBidMultiplierServiceSample {
       AdGroupBidMultiplierServiceOperation setRequest = buildExampleMutateRequest(accountId, createExampleSetRequest(campaignId, adGroupId));
 
       // run
-      List<AdGroupBidMultiplierServiceValue> setResponse = mutate(setRequest, "set");
+      List<AdGroupBidMultiplierServiceValue> setResponse = adGroupBidMultiplierService.adGroupBidMultiplierServiceSetPost(setRequest).getRval().getValues();
 
       List<AdGroupBidMultiplier> adGroupBidMultipliers = new ArrayList<>();
       for (AdGroupBidMultiplierServiceValue adGroupBidMultiplierValue: setResponse) {
@@ -71,7 +69,7 @@ public class AdGroupBidMultiplierServiceSample {
       AdGroupBidMultiplierServiceSelector adGroupBidMultiplierSelector = buildExampleGetRequest(accountId, campaignId, adGroupId);
 
       // run
-      get(adGroupBidMultiplierSelector);
+      adGroupBidMultiplierService.adGroupBidMultiplierServiceGetPost(adGroupBidMultiplierSelector);
 
       // =================================================================
       // AdGroupBidMultiplierService REMOVE
@@ -80,7 +78,7 @@ public class AdGroupBidMultiplierServiceSample {
       AdGroupBidMultiplierServiceOperation removeRequest = buildExampleMutateRequest(accountId, adGroupBidMultipliers);
 
       // run
-      mutate(removeRequest, "remove");
+      adGroupBidMultiplierService.adGroupBidMultiplierServiceRemovePost(removeRequest);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -153,21 +151,6 @@ public class AdGroupBidMultiplierServiceSample {
     return selector;
   }
 
-
-  /**
-   * example mutate adGroupCriterions.
-   *
-   * @param operation AdGroupCriterionOperation
-   * @return AdGroupCriterionValues
-   */
-  public static List<AdGroupBidMultiplierServiceValue> mutate(AdGroupBidMultiplierServiceOperation operation, String action) throws Exception {
-
-    AdGroupBidMultiplierServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, action, operation, AdGroupBidMultiplierServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
-  }
-
   /**
    * check & create upper service object.
    *
@@ -188,20 +171,6 @@ public class AdGroupBidMultiplierServiceSample {
   public static void cleanup(ValuesHolder valuesHolder) throws Exception {
 
     AdGroupServiceSample.cleanup(valuesHolder);
-  }
-
-  /**
-   * Sample Program for AdGroupBidMultiplierService GET.
-   *
-   * @param adGroupBidMultiplierSelector AdGroupBidMultiplierSelector
-   * @return AdGroupBidMultiplierValues
-   */
-  public static List<AdGroupBidMultiplierServiceValue> get(AdGroupBidMultiplierServiceSelector adGroupBidMultiplierSelector) throws Exception {
-
-    AdGroupBidMultiplierServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, "get", adGroupBidMultiplierSelector, AdGroupBidMultiplierServiceGetResponse.class);
-
-    // Response
-    return response.getRval().getValues();
   }
 
 }

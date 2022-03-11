@@ -1,31 +1,29 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.feed;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.api.FeedServiceApi;
 import jp.co.yahoo.adssearchapi.v7.model.Feed;
 import jp.co.yahoo.adssearchapi.v7.model.FeedServiceAttribute;
-import jp.co.yahoo.adssearchapi.v7.model.FeedServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v7.model.FeedServiceMutateResponse;
 import jp.co.yahoo.adssearchapi.v7.model.FeedServiceOperation;
 import jp.co.yahoo.adssearchapi.v7.model.FeedServicePlaceholderField;
 import jp.co.yahoo.adssearchapi.v7.model.FeedServicePlaceholderType;
 import jp.co.yahoo.adssearchapi.v7.model.FeedServiceSelector;
 import jp.co.yahoo.adssearchapi.v7.model.FeedServiceValue;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * example FeedService operation and Utility method collection.
  */
 public class FeedServiceSample {
 
-  private static final String SERVICE_NAME = "FeedService";
+  private static final FeedServiceApi feedService = new FeedServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   /**
    * main method for FeedServiceSample
@@ -50,7 +48,7 @@ public class FeedServiceSample {
       }});
 
       // run
-      List<FeedServiceValue> feedServiceValue = mutate(addFeedServiceOperation, "add");
+      List<FeedServiceValue> feedServiceValue = feedService.feedServiceAddPost(addFeedServiceOperation).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setFeedServiceValueList(feedServiceValue);
 
       // =================================================================
@@ -60,7 +58,7 @@ public class FeedServiceSample {
       FeedServiceOperation setFeedServiceOperation = buildExampleMutateRequest( accountId, createExampleSetRequest(valuesRepositoryFacade.getFeedValueRepository().getFeeds()));
 
       // run
-      mutate(setFeedServiceOperation, "set");
+      feedService.feedServiceSetPost(setFeedServiceOperation);
 
       // =================================================================
       // FeedService GET
@@ -69,7 +67,7 @@ public class FeedServiceSample {
       FeedServiceSelector feedServiceSelector = buildExampleGetRequest(accountId, valuesRepositoryFacade.getFeedValueRepository().getFeedIds());
 
       // run
-      get(feedServiceSelector, "get");
+      feedService.feedServiceGetPost(feedServiceSelector);
 
       // =================================================================
       // FeedService REMOVE
@@ -78,7 +76,7 @@ public class FeedServiceSample {
       FeedServiceOperation removeFeedServiceOperation = buildExampleMutateRequest(accountId, valuesRepositoryFacade.getFeedValueRepository().getFeeds());
 
       // run
-      mutate(removeFeedServiceOperation, "remove");
+      feedService.feedServiceRemovePost(removeFeedServiceOperation);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -97,7 +95,7 @@ public class FeedServiceSample {
     }});
 
     // Run
-    List<FeedServiceValue> feedServiceValue = mutate(addFeedOperation, "add");
+    List<FeedServiceValue> feedServiceValue = feedService.feedServiceAddPost(addFeedOperation).getRval().getValues();
     valuesHolder.setFeedServiceValueList(feedServiceValue);
     return valuesHolder;
   }
@@ -111,9 +109,9 @@ public class FeedServiceSample {
     ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
 
     FeedServiceOperation removeFeedOperation =
-      buildExampleMutateRequest(accountId, valuesRepositoryFacade.getFeedValueRepository().getFeeds());
+        buildExampleMutateRequest(accountId, valuesRepositoryFacade.getFeedValueRepository().getFeeds());
 
-    mutate(removeFeedOperation, "remove");
+    feedService.feedServiceRemovePost(removeFeedOperation);
   }
 
   /**
@@ -175,34 +173,6 @@ public class FeedServiceSample {
     feed.setDomain("https://www.yahoo.co.jp");
 
     return feed;
-  }
-
-  /**
-   * example mutate FeedService.
-   *
-   * @param operation FeedService
-   * @return FeedServiceValue
-   */
-  public static List<FeedServiceValue> mutate(FeedServiceOperation operation, String action) throws Exception {
-
-    FeedServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, action, operation, FeedServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
-  }
-
-  /**
-   * Sample Program for FeedService GET.
-   *
-   * @param selector FeedSelector
-   * @return FeedValue
-   */
-  public static List<FeedServiceValue> get(FeedServiceSelector selector, String action) throws Exception {
-
-    FeedServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, action, selector, FeedServiceGetResponse.class);
-
-    // Response
-    return response.getRval().getValues();
   }
 
   /**

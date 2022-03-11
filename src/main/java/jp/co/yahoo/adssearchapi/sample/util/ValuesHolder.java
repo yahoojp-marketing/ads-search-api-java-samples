@@ -1,8 +1,10 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.util;
 
+import java.util.ArrayList;
+import java.util.List;
 import jp.co.yahoo.adssearchapi.v7.model.AccountSharedServiceValue;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceValue;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupCriterionServiceValue;
@@ -14,9 +16,6 @@ import jp.co.yahoo.adssearchapi.v7.model.FeedServiceValue;
 import jp.co.yahoo.adssearchapi.v7.model.LabelServiceValue;
 import jp.co.yahoo.adssearchapi.v7.model.ReportDefinitionServiceValue;
 import jp.co.yahoo.adssearchapi.v7.model.RetargetingListServiceValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Utility method collection for Java Sample Program.

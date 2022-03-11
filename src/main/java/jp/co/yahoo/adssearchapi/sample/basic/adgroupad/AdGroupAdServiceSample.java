@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroupad;
 
@@ -12,6 +12,7 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.api.AdGroupAdServiceApi;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAd;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceAd;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceAdType;
@@ -21,8 +22,6 @@ import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceCustomParameter;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceCustomParameters;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceDevicePreference;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceExtendedTextAd;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceMutateResponse;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceOperation;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceSelector;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceUserStatus;
@@ -30,13 +29,12 @@ import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceValue;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceAppStore;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
 
-
 /**
  * example AdGroupAd operation and Utility method collection.
  */
 public class AdGroupAdServiceSample {
 
-  private static final String SERVICE_NAME = "AdGroupAdService";
+  private static final AdGroupAdServiceApi adGroupAdService = new AdGroupAdServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   /**
    * main method for AdGroupAdServiceSample
@@ -76,7 +74,7 @@ public class AdGroupAdServiceSample {
       }});
 
       // run
-      List<AdGroupAdServiceValue> addResponse = mutate(addRequest, "add");
+      List<AdGroupAdServiceValue> addResponse = adGroupAdService.adGroupAdServiceAddPost(addRequest).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setAdGroupAdServiceValueList(addResponse);
 
       // =================================================================
@@ -86,7 +84,7 @@ public class AdGroupAdServiceSample {
       AdGroupAdServiceOperation setRequest = buildExampleMutateRequest(accountId, createExampleSetRequest(valuesRepositoryFacade.getAdGroupAdValuesRepository().getAdGroupAds()));
 
       // run
-      mutate(setRequest, "set");
+      adGroupAdService.adGroupAdServiceSetPost(setRequest);
 
       // =================================================================
       // AdGroupAdService GET
@@ -95,7 +93,7 @@ public class AdGroupAdServiceSample {
       AdGroupAdServiceSelector adGroupAdSelector = buildExampleGetRequest(accountId, valuesRepositoryFacade.getAdGroupAdValuesRepository().getAdGroupAds());
 
       // run
-      get(adGroupAdSelector);
+      adGroupAdService.adGroupAdServiceGetPost(adGroupAdSelector);
 
       // =================================================================
       // AdGroupAdService REMOVE
@@ -104,7 +102,7 @@ public class AdGroupAdServiceSample {
       AdGroupAdServiceOperation removeRequest = buildExampleMutateRequest(accountId, valuesRepositoryFacade.getAdGroupAdValuesRepository().getAdGroupAds());
 
       //run
-      mutate(removeRequest, "remove");
+      adGroupAdService.adGroupAdServiceRemovePost(removeRequest);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -384,52 +382,23 @@ public class AdGroupAdServiceSample {
     selector.setAdIds(adIds);
 
     selector.setAdTypes(Arrays.asList( //
-      AdGroupAdServiceAdType.APP_AD, //
-      AdGroupAdServiceAdType.EXTENDED_TEXT_AD, //
-      AdGroupAdServiceAdType.DYNAMIC_SEARCH_LINKED_AD //
+        AdGroupAdServiceAdType.APP_AD, //
+        AdGroupAdServiceAdType.EXTENDED_TEXT_AD, //
+        AdGroupAdServiceAdType.DYNAMIC_SEARCH_LINKED_AD //
     ));
     selector.setUserStatuses(Arrays.asList(AdGroupAdServiceUserStatus.ACTIVE, AdGroupAdServiceUserStatus.PAUSED));
     selector.setApprovalStatuses(Arrays.asList( //
-      AdGroupAdServiceApprovalStatus.APPROVED, //
-      AdGroupAdServiceApprovalStatus.APPROVED_WITH_REVIEW, //
-      AdGroupAdServiceApprovalStatus.REVIEW, //
-      AdGroupAdServiceApprovalStatus.PRE_DISAPPROVED, //
-      AdGroupAdServiceApprovalStatus.POST_DISAPPROVED //
+        AdGroupAdServiceApprovalStatus.APPROVED, //
+        AdGroupAdServiceApprovalStatus.APPROVED_WITH_REVIEW, //
+        AdGroupAdServiceApprovalStatus.REVIEW, //
+        AdGroupAdServiceApprovalStatus.PRE_DISAPPROVED, //
+        AdGroupAdServiceApprovalStatus.POST_DISAPPROVED //
     ));
 
     selector.setStartIndex(1);
     selector.setNumberResults(20);
 
     return selector;
-  }
-
-  /**
-   * example mutate adGroupAds.
-   *
-   * @param operation AdGroupAdServiceOperation
-   * @return AdGroupAdValues
-   */
-  public static List<AdGroupAdServiceValue> mutate(AdGroupAdServiceOperation operation, String action) throws Exception {
-
-    AdGroupAdServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, action, operation, AdGroupAdServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
-  }
-
-  /**
-   * Sample Program for AdGroupAdService GET.
-   *
-   * @param adGroupAdSelector AdGroupAdSelector
-   * @return AdGroupAdValues
-   * @throws Exception throw exception
-   */
-  public static List<AdGroupAdServiceValue> get(AdGroupAdServiceSelector adGroupAdSelector) throws Exception {
-
-    AdGroupAdServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, "get", adGroupAdSelector, AdGroupAdServiceGetResponse.class);
-
-    // Response
-    return response.getRval().getValues();
   }
 
   /**
@@ -471,11 +440,11 @@ public class AdGroupAdServiceSample {
 
     // create request.
     AdGroupAdServiceOperation addRequest = buildExampleMutateRequest( //
-      accountId, Collections.singletonList(createExampleExtendedTextAd(campaignId, adGroupId)) //
+        accountId, Collections.singletonList(createExampleExtendedTextAd(campaignId, adGroupId)) //
     );
 
     // run
-    List<AdGroupAdServiceValue> addResponse = mutate(addRequest, "add");
+    List<AdGroupAdServiceValue> addResponse = adGroupAdService.adGroupAdServiceAddPost(addRequest).getRval().getValues();
 
     ValuesHolder seflValuesHolder = new ValuesHolder();
     seflValuesHolder.setBiddingStrategyServiceValueList(parentValuesHolder.getBiddingStrategyServiceValueList());

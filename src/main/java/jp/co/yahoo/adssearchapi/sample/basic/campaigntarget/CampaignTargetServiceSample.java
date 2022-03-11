@@ -1,20 +1,22 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.campaigntarget;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.api.CampaignTargetServiceApi;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignTarget;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceDayOfWeek;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceExcludedType;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceGetResponse;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceLocationTarget;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceMinuteOfHour;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceMutateResponse;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceNetworkCoverageType;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceNetworkTarget;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceOperation;
@@ -26,16 +28,12 @@ import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceTarget;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceTargetType;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignTargetServiceValue;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * example CampaignTargetService operation and Utility method collection.
  */
 public class CampaignTargetServiceSample {
 
-  private static final String SERVICE_NAME = "CampaignTargetService";
+  private static final CampaignTargetServiceApi campaignTargetService = new CampaignTargetServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   /**
    * main method for CampaignTargetServiceSample
@@ -72,7 +70,7 @@ public class CampaignTargetServiceSample {
       }});
 
       // run
-      List<CampaignTargetServiceValue> addCampaignTargetValues = mutate(addCampaignTargetOperation, "add");
+      List<CampaignTargetServiceValue> addCampaignTargetValues = campaignTargetService.campaignTargetServiceAddPost(addCampaignTargetOperation).getRval().getValues();
 
       List<CampaignTarget> campaignTargets = new ArrayList<>();
       for (CampaignTargetServiceValue campaignTargetValues: addCampaignTargetValues) {
@@ -86,7 +84,7 @@ public class CampaignTargetServiceSample {
       CampaignTargetServiceOperation setCampaignTargetOperation = buildExampleMutateRequest(accountId, createExampleSetRequest(campaignTargets));
 
       // run
-      mutate(setCampaignTargetOperation, "set");
+      campaignTargetService.campaignTargetServiceSetPost(setCampaignTargetOperation);
 
       // =================================================================
       // CampaignTargetService::GET
@@ -95,7 +93,7 @@ public class CampaignTargetServiceSample {
       CampaignTargetServiceSelector campaignTargetSelector = buildExampleGetRequest(accountId, campaignTargets);
 
       // run
-      get(campaignTargetSelector, "get");
+      campaignTargetService.campaignTargetServiceGetPost(campaignTargetSelector);
 
       // =================================================================
       // CampaignTargetService::REMOVE
@@ -104,7 +102,7 @@ public class CampaignTargetServiceSample {
       CampaignTargetServiceOperation removeCampaignTargetOperation = buildExampleMutateRequest(accountId, campaignTargets);
 
       // run
-      mutate(removeCampaignTargetOperation, "remove");
+      campaignTargetService.campaignTargetServiceRemovePost(removeCampaignTargetOperation);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -208,20 +206,6 @@ public class CampaignTargetServiceSample {
   }
 
   /**
-   * example mutate campaignTargets.
-   *
-   * @param operation CampaignTargetOperation
-   * @return CampaignTargetValues
-   */
-  public static List<CampaignTargetServiceValue> mutate(CampaignTargetServiceOperation operation, String action) throws Exception {
-
-    CampaignTargetServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, action, operation, CampaignTargetServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
-  }
-
-  /**
    * example campaigns set request.
    *
    * @param campaignTargets List<CampaignTarget>
@@ -265,7 +249,7 @@ public class CampaignTargetServiceSample {
 
     // set PlatformTarget for TABLET
     CampaignTargetServicePlatformTarget tablet = new CampaignTargetServicePlatformTarget();
-    smartPhone.setPlatformType(CampaignTargetServicePlatformType.TABLET);
+    tablet.setPlatformType(CampaignTargetServicePlatformType.TABLET);
 
     CampaignTargetServiceTarget targetTablet = new CampaignTargetServiceTarget();
     targetTablet.setTargetType(CampaignTargetServiceTargetType.PLATFORM);
@@ -281,7 +265,7 @@ public class CampaignTargetServiceSample {
 
     // set PlatformTarget for DESKTOP
     CampaignTargetServicePlatformTarget desktop = new CampaignTargetServicePlatformTarget();
-    smartPhone.setPlatformType(CampaignTargetServicePlatformType.DESKTOP);
+    desktop.setPlatformType(CampaignTargetServicePlatformType.DESKTOP);
 
     CampaignTargetServiceTarget targetDesktop = new CampaignTargetServiceTarget();
     targetDesktop.setTargetType(CampaignTargetServiceTargetType.PLATFORM);
@@ -296,20 +280,6 @@ public class CampaignTargetServiceSample {
     operands.add(desktopOperand);
 
     return operands;
-  }
-
-  /**
-   * Sample Program for CampaignTargetService GET.
-   *
-   * @param selector CampaignTargetSelector
-   * @return CampaignTargetValues
-   */
-  public static List<CampaignTargetServiceValue> get(CampaignTargetServiceSelector selector, String action) throws Exception {
-
-    CampaignTargetServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, action, selector, CampaignTargetServiceGetResponse.class);
-
-    // Response
-    return response.getRval().getValues();
   }
 
   /**
@@ -334,16 +304,16 @@ public class CampaignTargetServiceSample {
     selector.setTargetIds(targetIds);
 
     selector.setTargetTypes(Arrays.asList(//
-      CampaignTargetServiceTargetType.LOCATION, //
-      CampaignTargetServiceTargetType.SCHEDULE, //
-      CampaignTargetServiceTargetType.NETWORK, //
-      CampaignTargetServiceTargetType.PLATFORM //
+        CampaignTargetServiceTargetType.LOCATION, //
+        CampaignTargetServiceTargetType.SCHEDULE, //
+        CampaignTargetServiceTargetType.NETWORK, //
+        CampaignTargetServiceTargetType.PLATFORM //
     ));
     selector.setExcludedType(CampaignTargetServiceExcludedType.INCLUDED);
     selector.setPlatformTypes(Arrays.asList( //
-      CampaignTargetServicePlatformType.SMART_PHONE, //
-      CampaignTargetServicePlatformType.TABLET, //
-      CampaignTargetServicePlatformType.DESKTOP //
+        CampaignTargetServicePlatformType.SMART_PHONE, //
+        CampaignTargetServicePlatformType.TABLET, //
+        CampaignTargetServicePlatformType.DESKTOP //
     ));
 
     // Set Paging

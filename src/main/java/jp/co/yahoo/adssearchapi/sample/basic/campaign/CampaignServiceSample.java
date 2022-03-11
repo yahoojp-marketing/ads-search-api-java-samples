@@ -1,13 +1,21 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.campaign;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.basic.biddingstrategy.BiddingStrategyServiceSample;
 import jp.co.yahoo.adssearchapi.sample.basic.feed.FeedServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.api.CampaignServiceApi;
 import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceType;
 import jp.co.yahoo.adssearchapi.v7.model.Campaign;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceAppStore;
@@ -23,34 +31,24 @@ import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceDynamicAdsForSearchSetti
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceEnhancedCpcEnabled;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceGeoTargetType;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceGeoTargetTypeSetting;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceGetResponse;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceMutateResponse;
+import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceMaximizeClicksBiddingScheme;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceOperation;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceSelector;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceSettingType;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceSettings;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceMaximizeClicksBiddingScheme;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceTargetingSetting;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceUserStatus;
 import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceValue;
 import jp.co.yahoo.adssearchapi.v7.model.FeedServicePlaceholderType;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * example CampaignService operation and Utility method collection.
  */
 public class CampaignServiceSample {
 
-  private static final String SERVICE_NAME = "CampaignService";
+  private static final CampaignServiceApi campaignService = new CampaignServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
   /**
    * main method for CampaignServiceSample
@@ -87,7 +85,7 @@ public class CampaignServiceSample {
       }});
 
       // run
-      List<CampaignServiceValue> addCampaignValues = mutate(addCampaignOperation, "add");
+      List<CampaignServiceValue> addCampaignValues = campaignService.campaignServiceAddPost(addCampaignOperation).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setCampaignServiceValueList(addCampaignValues);
 
       // =================================================================
@@ -97,7 +95,7 @@ public class CampaignServiceSample {
       CampaignServiceSelector campaignSelector = buildExampleGetRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaignIds());
 
       // run
-      get(campaignSelector, "get");
+      campaignService.campaignServiceGetPost(campaignSelector);
 
       // check review status
       checkStatus(valuesRepositoryFacade.getCampaignValuesRepository().getCampaignIds());
@@ -109,17 +107,17 @@ public class CampaignServiceSample {
       CampaignServiceOperation setCampaignOperation = buildExampleMutateRequest(accountId, createExampleSetRequest(valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns()));
 
       // run
-      mutate(setCampaignOperation, "set");
+      campaignService.campaignServiceSetPost(setCampaignOperation);
 
       // =================================================================
       // CampaignService::REMOVE
       // =================================================================
       // create request.
       CampaignServiceOperation removeCampaignOperation =
-        buildExampleMutateRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns());
+          buildExampleMutateRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns());
 
       // run
-      mutate(removeCampaignOperation, "remove");
+      campaignService.campaignServiceRemovePost(removeCampaignOperation);
       valuesHolder.setCampaignServiceValueList(new ArrayList<>());
 
     } catch (Exception e) {
@@ -128,20 +126,6 @@ public class CampaignServiceSample {
     } finally {
       cleanup(valuesHolder);
     }
-  }
-
-  /**
-   * example mutate campaigns.
-   *
-   * @param operation CampaignOperation
-   * @return CampaignValues
-   */
-  public static List<CampaignServiceValue> mutate(CampaignServiceOperation operation, String action) throws Exception {
-
-    CampaignServiceMutateResponse response = ApiUtils.execute(SERVICE_NAME, action, operation, CampaignServiceMutateResponse.class);
-
-    // Response
-    return response.getRval().getValues();
   }
 
   /**
@@ -437,7 +421,7 @@ public class CampaignServiceSample {
         Thread.sleep(30000);
 
         CampaignServiceSelector campaignSelector = buildExampleGetRequest(ApiUtils.ACCOUNT_ID, campaignIds);
-        List<CampaignServiceValue> getCampaignValues = get(campaignSelector, "get");
+        List<CampaignServiceValue> getCampaignValues = campaignService.campaignServiceGetPost(campaignSelector).getRval().getValues();
 
         int approvalCount = 0;
         for (CampaignServiceValue campaignValues : getCampaignValues) {
@@ -501,7 +485,7 @@ public class CampaignServiceSample {
     ValuesHolder parentValuesHolder = setup();
     ValuesRepositoryFacade parentValuesRepositoryFacade = new ValuesRepositoryFacade(parentValuesHolder);
     Long feedId = parentValuesRepositoryFacade.getFeedValueRepository().findFeedId(
-      FeedServicePlaceholderType.DYNAMIC_AD_FOR_SEARCH_PAGE_FEEDS
+        FeedServicePlaceholderType.DYNAMIC_AD_FOR_SEARCH_PAGE_FEEDS
     );
     long accountId = ApiUtils.ACCOUNT_ID;
 
@@ -517,7 +501,7 @@ public class CampaignServiceSample {
       add(createExampleDynamicAdsForSearchCampaign("SampleCpcDynamicAdsForSearchCampaign_", feedIds, createManualBiddingCampaignBiddingStrategy()));
     }});
 
-    List<CampaignServiceValue> addCampaignValues = mutate(addCampaignOperation, "add");
+    List<CampaignServiceValue> addCampaignValues = campaignService.campaignServiceAddPost(addCampaignOperation).getRval().getValues();
 
     ValuesHolder selfValuesHolder = new ValuesHolder();
     selfValuesHolder.setBiddingStrategyServiceValueList(parentValuesHolder.getBiddingStrategyServiceValueList());
@@ -539,26 +523,12 @@ public class CampaignServiceSample {
     if (valuesHolder.getCampaignServiceValueList().size() > 0) {
       ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
       CampaignServiceOperation removeCampaignOperation =
-        buildExampleMutateRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns());
+          buildExampleMutateRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns());
 
-      mutate(removeCampaignOperation, "remove");
+      campaignService.campaignServiceRemovePost(removeCampaignOperation);
     }
     BiddingStrategyServiceSample.cleanup(valuesHolder);
     FeedServiceSample.cleanup(valuesHolder);
-  }
-
-  /**
-   * Sample Program for CampaignService GET.
-   *
-   * @param selector CampaignSelector
-   * @return CampaignValues
-   */
-  public static List<CampaignServiceValue> get(CampaignServiceSelector selector, String action) throws Exception {
-
-    CampaignServiceGetResponse response = ApiUtils.execute(SERVICE_NAME, action, selector, CampaignServiceGetResponse.class);
-
-    // Response
-    return response.getRval().getValues();
   }
 
   /**

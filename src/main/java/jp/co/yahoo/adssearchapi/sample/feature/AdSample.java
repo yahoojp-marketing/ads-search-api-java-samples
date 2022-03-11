@@ -1,8 +1,12 @@
 /**
- * Copyright (C) 2020 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.feature;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroupad.AdGroupAdServiceSample;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroupbidmultiplier.AdGroupBidMultiplierServiceSample;
@@ -17,6 +21,18 @@ import jp.co.yahoo.adssearchapi.sample.basic.feeditem.FeedItemServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v7.YahooJapanAdsApiClient;
+import jp.co.yahoo.adssearchapi.v7.api.AdGroupAdServiceApi;
+import jp.co.yahoo.adssearchapi.v7.api.AdGroupBidMultiplierServiceApi;
+import jp.co.yahoo.adssearchapi.v7.api.AdGroupCriterionServiceApi;
+import jp.co.yahoo.adssearchapi.v7.api.AdGroupFeedServiceApi;
+import jp.co.yahoo.adssearchapi.v7.api.AdGroupServiceApi;
+import jp.co.yahoo.adssearchapi.v7.api.BiddingStrategyServiceApi;
+import jp.co.yahoo.adssearchapi.v7.api.CampaignCriterionServiceApi;
+import jp.co.yahoo.adssearchapi.v7.api.CampaignFeedServiceApi;
+import jp.co.yahoo.adssearchapi.v7.api.CampaignServiceApi;
+import jp.co.yahoo.adssearchapi.v7.api.CampaignTargetServiceApi;
+import jp.co.yahoo.adssearchapi.v7.api.FeedItemServiceApi;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroup;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAd;
 import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceOperation;
@@ -59,16 +75,23 @@ import jp.co.yahoo.adssearchapi.v7.model.FeedItemServicePlaceholderType;
 import jp.co.yahoo.adssearchapi.v7.model.FeedItemServiceSelector;
 import jp.co.yahoo.adssearchapi.v7.model.FeedItemServiceValue;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-
 /**
  * example Ad operation and Utility method collection.
  */
 public class AdSample {
+
+  private static final YahooJapanAdsApiClient yahooJapanAdsApiClient = ApiUtils.getYahooJapanAdsApiClient();
+  private static final AdGroupAdServiceApi adGroupAdService = new AdGroupAdServiceApi(yahooJapanAdsApiClient);
+  private static final AdGroupBidMultiplierServiceApi adGroupBidMultiplierService = new AdGroupBidMultiplierServiceApi(yahooJapanAdsApiClient);
+  private static final AdGroupCriterionServiceApi adGroupCriterionService = new AdGroupCriterionServiceApi(yahooJapanAdsApiClient);
+  private static final AdGroupFeedServiceApi adGroupFeedService = new AdGroupFeedServiceApi(yahooJapanAdsApiClient);
+  private static final AdGroupServiceApi adGroupService = new AdGroupServiceApi(yahooJapanAdsApiClient);
+  private static final BiddingStrategyServiceApi biddingStrategyService = new BiddingStrategyServiceApi(yahooJapanAdsApiClient);
+  private static final CampaignCriterionServiceApi campaignCriterionService = new CampaignCriterionServiceApi(yahooJapanAdsApiClient);
+  private static final CampaignFeedServiceApi campaignFeedService = new CampaignFeedServiceApi(yahooJapanAdsApiClient);
+  private static final CampaignServiceApi campaignService = new CampaignServiceApi(yahooJapanAdsApiClient);
+  private static final CampaignTargetServiceApi campaignTargetService = new CampaignTargetServiceApi(yahooJapanAdsApiClient);
+  private static final FeedItemServiceApi feedItemService= new FeedItemServiceApi(yahooJapanAdsApiClient);
 
   /**
    * main method for AdSample
@@ -91,10 +114,10 @@ public class AdSample {
       // =================================================================
       // ADD
       BiddingStrategyServiceOperation addRequestBiddingStrategy = BiddingStrategyServiceSample.buildExampleMutateRequest(
-        accountId,
-        Arrays.asList(BiddingStrategyServiceSample.createExampleMaximizeClicksBidding())
+          accountId,
+          Arrays.asList(BiddingStrategyServiceSample.createExampleMaximizeClicksBidding())
       );
-      List<BiddingStrategyServiceValue> addResponseBiddingStrategy = BiddingStrategyServiceSample.mutate(addRequestBiddingStrategy, "add");
+      List<BiddingStrategyServiceValue> addResponseBiddingStrategy = biddingStrategyService.biddingStrategyServiceAddPost(addRequestBiddingStrategy).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setBiddingStrategyServiceValueList(addResponseBiddingStrategy);
 
       Long biddingStrategyId = valuesRepositoryFacade.getBiddingStrategyValuesRepository().findBiddingStrategyId(BiddingStrategyServiceType.MAXIMIZE_CLICKS);
@@ -105,17 +128,17 @@ public class AdSample {
 
       // SET
       BiddingStrategyServiceOperation setRequestBiddingStrategy = BiddingStrategyServiceSample.buildExampleMutateRequest(
-        accountId,
-        BiddingStrategyServiceSample.createExampleSetRequest(valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategies())
+          accountId,
+          BiddingStrategyServiceSample.createExampleSetRequest(valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategies())
       );
-      BiddingStrategyServiceSample.mutate(setRequestBiddingStrategy, "set");
+      biddingStrategyService.biddingStrategyServiceSetPost(setRequestBiddingStrategy);
 
       // GET
       BiddingStrategyServiceSelector getRequestBiddingStrategy = BiddingStrategyServiceSample.buildExampleGetRequest(
-        accountId,
-        valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategyIds()
+          accountId,
+          valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategyIds()
       );
-      BiddingStrategyServiceSample.get(getRequestBiddingStrategy);
+      biddingStrategyService.biddingStrategyServiceGetPost(getRequestBiddingStrategy);
 
       // sleep 30 second.
       System.out.println("\n***** sleep 30 seconds *****\n");
@@ -126,23 +149,23 @@ public class AdSample {
       // =================================================================
       // ADD
       CampaignServiceOperation addRequestCampaign = CampaignServiceSample.buildExampleMutateRequest(
-        accountId,
-        new ArrayList<Campaign>() {{
-          add(CampaignServiceSample.createExampleStandardCampaign(
-            "SampleStandardCampaign_",
-            CampaignServiceSample.createPortfolioBiddingCampaignBiddingStrategy(biddingStrategyId))
-          );
-          add(CampaignServiceSample.createExampleMobileAppCampaignForIOS(
-            "SampleMobileAppCampaignForIOS_",
-            CampaignServiceSample.createPortfolioBiddingCampaignBiddingStrategy(biddingStrategyId))
-          );
-          add(CampaignServiceSample.createExampleMobileAppCampaignForANDROID(
-            "SampleMobileAppCampaignForANDROID_",
-            CampaignServiceSample.createPortfolioBiddingCampaignBiddingStrategy(biddingStrategyId))
-          );
-        }}
+          accountId,
+          new ArrayList<Campaign>() {{
+            add(CampaignServiceSample.createExampleStandardCampaign(
+                "SampleStandardCampaign_",
+                CampaignServiceSample.createPortfolioBiddingCampaignBiddingStrategy(biddingStrategyId))
+            );
+            add(CampaignServiceSample.createExampleMobileAppCampaignForIOS(
+                "SampleMobileAppCampaignForIOS_",
+                CampaignServiceSample.createPortfolioBiddingCampaignBiddingStrategy(biddingStrategyId))
+            );
+            add(CampaignServiceSample.createExampleMobileAppCampaignForANDROID(
+                "SampleMobileAppCampaignForANDROID_",
+                CampaignServiceSample.createPortfolioBiddingCampaignBiddingStrategy(biddingStrategyId))
+            );
+          }}
       );
-      List<CampaignServiceValue> addResponseCampaign = CampaignServiceSample.mutate(addRequestCampaign, "add");
+      List<CampaignServiceValue> addResponseCampaign = campaignService.campaignServiceAddPost(addRequestCampaign).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setCampaignServiceValueList(addResponseCampaign);
 
       Long campaignIdStandard = valuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(CampaignServiceType.STANDARD);
@@ -156,24 +179,24 @@ public class AdSample {
 
       // SET
       CampaignServiceOperation setRequestCampaign = CampaignServiceSample.buildExampleMutateRequest(
-        accountId,
-        CampaignServiceSample.createExampleSetRequest(valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns())
+          accountId,
+          CampaignServiceSample.createExampleSetRequest(valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns())
       );
-      CampaignServiceSample.mutate(setRequestCampaign, "set");
+      campaignService.campaignServiceSetPost(setRequestCampaign);
 
       // =================================================================
       // CampaignTargetService
       // =================================================================
       // ADD
       CampaignTargetServiceOperation addRequestCampaignTarget = CampaignTargetServiceSample.buildExampleMutateRequest(
-        accountId,
-        new ArrayList<CampaignTarget>() {{
-          add(CampaignTargetServiceSample.createExampleScheduleTarget(accountId, campaignIdStandard));
-          add(CampaignTargetServiceSample.createExampleLocationTarget(accountId, campaignIdStandard));
-          add(CampaignTargetServiceSample.createExampleNetworkTarget(accountId, campaignIdStandard));
-        }}
+          accountId,
+          new ArrayList<CampaignTarget>() {{
+            add(CampaignTargetServiceSample.createExampleScheduleTarget(accountId, campaignIdStandard));
+            add(CampaignTargetServiceSample.createExampleLocationTarget(accountId, campaignIdStandard));
+            add(CampaignTargetServiceSample.createExampleNetworkTarget(accountId, campaignIdStandard));
+          }}
       );
-      List<CampaignTargetServiceValue> addResponseCampaignTarget = CampaignTargetServiceSample.mutate(addRequestCampaignTarget, "add");
+      List<CampaignTargetServiceValue> addResponseCampaignTarget = campaignTargetService.campaignTargetServiceAddPost(addRequestCampaignTarget).getRval().getValues();
       List<CampaignTarget> campaignTargets = new ArrayList<>();
       for (CampaignTargetServiceValue values : addResponseCampaignTarget ) {
         campaignTargets.add(values.getCampaignTarget());
@@ -181,23 +204,23 @@ public class AdSample {
 
       // SET
       CampaignTargetServiceOperation setRequestCampaignTarget = CampaignTargetServiceSample.buildExampleMutateRequest(
-        accountId,
-        CampaignTargetServiceSample.createExampleSetRequest(campaignTargets)
+          accountId,
+          CampaignTargetServiceSample.createExampleSetRequest(campaignTargets)
       );
-      CampaignTargetServiceSample.mutate(setRequestCampaignTarget, "set");
+      campaignTargetService.campaignTargetServiceSetPost(setRequestCampaignTarget);
 
       // GET
       CampaignTargetServiceSelector getRequestCampaignTarget = CampaignTargetServiceSample.buildExampleGetRequest(accountId, campaignTargets);
-      CampaignTargetServiceSample.get(getRequestCampaignTarget, "get");
+      campaignTargetService.campaignTargetServiceGetPost(getRequestCampaignTarget);
 
       // =================================================================
       // CampaignCriterionService
       // =================================================================
       // ADD
       CampaignCriterionServiceOperation addRequestCampaignCriterion = CampaignCriterionServiceSample.buildExampleMutateRequest(
-        accountId, Arrays.asList(CampaignCriterionServiceSample.createExampleNegativeCampaignCriterion(campaignIdStandard))
+          accountId, Arrays.asList(CampaignCriterionServiceSample.createExampleNegativeCampaignCriterion(campaignIdStandard))
       );
-      List<CampaignCriterionServiceValue> addResponseCampaignCriterion = CampaignCriterionServiceSample.mutate(addRequestCampaignCriterion, "add");
+      List<CampaignCriterionServiceValue> addResponseCampaignCriterion = campaignCriterionService.campaignCriterionServiceAddPost(addRequestCampaignCriterion).getRval().getValues();
       List<CampaignCriterion> campaignCriterions = new ArrayList<>();
       for (CampaignCriterionServiceValue values : addResponseCampaignCriterion ) {
         campaignCriterions.add(values.getCampaignCriterion());
@@ -205,21 +228,21 @@ public class AdSample {
 
       // GET
       CampaignCriterionServiceSelector getRequestCampaignCriterion = CampaignCriterionServiceSample.buildExampleGetRequest(accountId, campaignCriterions);
-      CampaignCriterionServiceSample.get(getRequestCampaignCriterion, "get");
+      campaignCriterionService.campaignCriterionServiceGetPost(getRequestCampaignCriterion);
 
       // =================================================================
       // AdGroupService
       // =================================================================
       // ADD
       AdGroupServiceOperation addRequestAdGroup = AdGroupServiceSample.buildExampleMutateRequest(
-        accountId,
-        new ArrayList<AdGroup>() {{
-          add(AdGroupServiceSample.createExampleStandardAdGroup(campaignIdStandard));
-          add(AdGroupServiceSample.createExampleMobileAppIOSAdGroup(campaignIdMobileAppIOS));
-          add(AdGroupServiceSample.createExampleMobileAppANDROIDAdGroup(campaignIdMobileAppAndroid));
-        }}
+          accountId,
+          new ArrayList<AdGroup>() {{
+            add(AdGroupServiceSample.createExampleStandardAdGroup(campaignIdStandard));
+            add(AdGroupServiceSample.createExampleMobileAppIOSAdGroup(campaignIdMobileAppIOS));
+            add(AdGroupServiceSample.createExampleMobileAppANDROIDAdGroup(campaignIdMobileAppAndroid));
+          }}
       );
-      List<AdGroupServiceValue> addResponseAdGroup = AdGroupServiceSample.mutate(addRequestAdGroup, "add");
+      List<AdGroupServiceValue> addResponseAdGroup = adGroupService.adGroupServiceAddPost(addRequestAdGroup).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setAdGroupServiceValueList(addResponseAdGroup);
 
       Long adGroupIdStandard = valuesRepositoryFacade.getAdGroupValuesRepository().findAdGroupId(campaignIdStandard);
@@ -231,130 +254,130 @@ public class AdSample {
 
       // SET
       AdGroupServiceOperation setRequestAdGroup= AdGroupServiceSample.buildExampleMutateRequest(
-        accountId,
-        AdGroupServiceSample.createExampleSetRequest(valuesRepositoryFacade.getAdGroupValuesRepository().getAdGroups())
+          accountId,
+          AdGroupServiceSample.createExampleSetRequest(valuesRepositoryFacade.getAdGroupValuesRepository().getAdGroups())
       );
-      AdGroupServiceSample.mutate(setRequestAdGroup, "set");
+      adGroupService.adGroupServiceSetPost(setRequestAdGroup);
 
       // =================================================================
       // AdGroupCriterionService
       // =================================================================
       // ADD
       AdGroupCriterionServiceOperation addRequestAdGroupCriterion = AdGroupCriterionServiceSample.buildExampleMutateRequest(
-        accountId,
-        new ArrayList<AdGroupCriterion>() {{
-          add(AdGroupCriterionServiceSample.createExampleBiddableAdGroupCriterion(campaignIdStandard, adGroupIdStandard));
-        }}
+          accountId,
+          new ArrayList<AdGroupCriterion>() {{
+            add(AdGroupCriterionServiceSample.createExampleBiddableAdGroupCriterion(campaignIdStandard, adGroupIdStandard));
+          }}
       );
-      List<AdGroupCriterionServiceValue> addResponseAdGroupCriterion = AdGroupCriterionServiceSample.mutate(addRequestAdGroupCriterion, "add");
+      List<AdGroupCriterionServiceValue> addResponseAdGroupCriterion = adGroupCriterionService.adGroupCriterionServiceAddPost(addRequestAdGroupCriterion).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setAdGroupCriterionServiceValueList(addResponseAdGroupCriterion);
 
       // GET
       AdGroupCriterionServiceSelector getRequestAdGroupCriterion = AdGroupCriterionServiceSample.buildExampleGetRequest(
-        accountId, AdGroupCriterionServiceUse.BIDDABLE, valuesRepositoryFacade.getAdGroupCriterionValuesRepository().getAdGroupCriterions()
+          accountId, AdGroupCriterionServiceUse.BIDDABLE, valuesRepositoryFacade.getAdGroupCriterionValuesRepository().getAdGroupCriterions()
       );
-      AdGroupCriterionServiceSample.get(getRequestAdGroupCriterion);
+      adGroupCriterionService.adGroupCriterionServiceGetPost(getRequestAdGroupCriterion);
 
       // SET
       AdGroupCriterionServiceOperation setRequestAdGroupCriterion = AdGroupCriterionServiceSample.buildExampleMutateRequest(
-        accountId,
-        AdGroupCriterionServiceSample.createExampleSetRequest(valuesRepositoryFacade.getAdGroupCriterionValuesRepository().getAdGroupCriterions())
+          accountId,
+          AdGroupCriterionServiceSample.createExampleSetRequest(valuesRepositoryFacade.getAdGroupCriterionValuesRepository().getAdGroupCriterions())
       );
-      AdGroupCriterionServiceSample.mutate(setRequestAdGroupCriterion, "set");
+      adGroupCriterionService.adGroupCriterionServiceSetPost(setRequestAdGroupCriterion);
 
       // =================================================================
       // AdGroupBidMultiplierService
       // =================================================================
       // SET
       AdGroupBidMultiplierServiceOperation setRequestAdGroupBidMultiplier = AdGroupBidMultiplierServiceSample.buildExampleMutateRequest(
-        accountId,
-        AdGroupBidMultiplierServiceSample.createExampleSetRequest(campaignIdStandard, adGroupIdStandard)
+          accountId,
+          AdGroupBidMultiplierServiceSample.createExampleSetRequest(campaignIdStandard, adGroupIdStandard)
       );
-      AdGroupBidMultiplierServiceSample.mutate(setRequestAdGroupBidMultiplier, "set");
+      adGroupBidMultiplierService.adGroupBidMultiplierServiceSetPost(setRequestAdGroupBidMultiplier);
 
       // GET
       AdGroupBidMultiplierServiceSelector getRequestAdGroupBidMultiplier = AdGroupBidMultiplierServiceSample.buildExampleGetRequest(accountId, campaignIdStandard, adGroupIdStandard);
-      AdGroupBidMultiplierServiceSample.get(getRequestAdGroupBidMultiplier);
+      adGroupBidMultiplierService.adGroupBidMultiplierServiceGetPost(getRequestAdGroupBidMultiplier);
 
       // =================================================================
       // AdGroupAdService
       // =================================================================
       // ADD
       AdGroupAdServiceOperation addRequestAdGroupAd = AdGroupAdServiceSample.buildExampleMutateRequest(
-        accountId,
-        new ArrayList<AdGroupAd>() {{
-          add(AdGroupAdServiceSample.createExampleExtendedTextAd(campaignIdStandard, adGroupIdStandard));
-          add(AdGroupAdServiceSample.createExampleAppAdIOS(campaignIdMobileAppIOS, appIdIOS, adGroupIdMobileAppIOS));
-          add(AdGroupAdServiceSample.createExampleAppAdANDROID(campaignIdMobileAppAndroid, appIdAndroid, adGroupIdMobileAppAndroid));
-        }}
+          accountId,
+          new ArrayList<AdGroupAd>() {{
+            add(AdGroupAdServiceSample.createExampleExtendedTextAd(campaignIdStandard, adGroupIdStandard));
+            add(AdGroupAdServiceSample.createExampleAppAdIOS(campaignIdMobileAppIOS, appIdIOS, adGroupIdMobileAppIOS));
+            add(AdGroupAdServiceSample.createExampleAppAdANDROID(campaignIdMobileAppAndroid, appIdAndroid, adGroupIdMobileAppAndroid));
+          }}
       );
-      List<AdGroupAdServiceValue> addResponseAdGroupAd = AdGroupAdServiceSample.mutate(addRequestAdGroupAd, "add");
+      List<AdGroupAdServiceValue> addResponseAdGroupAd = adGroupAdService.adGroupAdServiceAddPost(addRequestAdGroupAd).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setAdGroupAdServiceValueList(addResponseAdGroupAd);
 
       // SET
       AdGroupAdServiceOperation setRequestAdGroupAd = AdGroupAdServiceSample.buildExampleMutateRequest(
-        accountId,
-        AdGroupAdServiceSample.createExampleSetRequest(valuesRepositoryFacade.getAdGroupAdValuesRepository().getAdGroupAds())
+          accountId,
+          AdGroupAdServiceSample.createExampleSetRequest(valuesRepositoryFacade.getAdGroupAdValuesRepository().getAdGroupAds())
       );
-      AdGroupAdServiceSample.mutate(setRequestAdGroupAd, "set");
+      adGroupAdService.adGroupAdServiceSetPost(setRequestAdGroupAd);
 
       // GET
       AdGroupAdServiceSelector getRequestAdGroupAd = AdGroupAdServiceSample.buildExampleGetRequest(accountId, valuesRepositoryFacade.getAdGroupAdValuesRepository().getAdGroupAds());
-      AdGroupAdServiceSample.get(getRequestAdGroupAd);
+      adGroupAdService.adGroupAdServiceGetPost(getRequestAdGroupAd);
 
       // =================================================================
       // FeedItemService
       // =================================================================
       // ADD
       FeedItemServiceOperation addRequestFeedItem = FeedItemServiceSample.buildExampleMutateRequest(
-        accountId,
-        FeedItemServicePlaceholderType.QUICKLINK,
-        Arrays.asList(FeedItemServiceSample.createExampleQuicklink())
+          accountId,
+          FeedItemServicePlaceholderType.QUICKLINK,
+          Arrays.asList(FeedItemServiceSample.createExampleQuicklink())
       );
-      List<FeedItemServiceValue> addResponseFeedItem = FeedItemServiceSample.mutate(addRequestFeedItem, "add");
+      List<FeedItemServiceValue> addResponseFeedItem = feedItemService.feedItemServiceAddPost(addRequestFeedItem).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setFeedItemServiceValueList(addResponseFeedItem);
 
       Long feedItemId = valuesRepositoryFacade.getFeedItemValuesRepository().findFeedItemId(FeedItemServicePlaceholderType.QUICKLINK);
 
       // GET
       FeedItemServiceSelector getRequestFeedItem = FeedItemServiceSample.buildExampleGetRequest(accountId, valuesRepositoryFacade.getFeedItemValuesRepository().getFeedItemIds());
-      FeedItemServiceSample.get(getRequestFeedItem, "get");
+      feedItemService.feedItemServiceGetPost(getRequestFeedItem);
 
       // SET
       FeedItemServiceOperation setRequestFeedItem = FeedItemServiceSample.buildExampleMutateRequest(
-        accountId,
-        FeedItemServicePlaceholderType.QUICKLINK,
-        FeedItemServiceSample.createExampleSetRequest(valuesRepositoryFacade.getFeedItemValuesRepository().getFeedItems())
+          accountId,
+          FeedItemServicePlaceholderType.QUICKLINK,
+          FeedItemServiceSample.createExampleSetRequest(valuesRepositoryFacade.getFeedItemValuesRepository().getFeedItems())
       );
-      FeedItemServiceSample.mutate(setRequestFeedItem, "set");
+      feedItemService.feedItemServiceSetPost(setRequestFeedItem);
 
       // =================================================================
       // CampaignFeedService
       // =================================================================
       // SET
       CampaignFeedServiceOperation setRequestCampaignFeed = CampaignFeedServiceSample.buildExampleMutateRequest(
-        accountId,
-        Arrays.asList(CampaignFeedServiceSample.createExampleSetRequest(accountId, campaignIdStandard, feedItemId, CampaignFeedServicePlaceholderType.QUICKLINK))
+          accountId,
+          Arrays.asList(CampaignFeedServiceSample.createExampleSetRequest(accountId, campaignIdStandard, feedItemId, CampaignFeedServicePlaceholderType.QUICKLINK))
       );
-      CampaignFeedServiceSample.mutate(setRequestCampaignFeed, "set");
+      campaignFeedService.campaignFeedServiceSetPost(setRequestCampaignFeed);
 
       // GET
       CampaignFeedServiceSelector getRequestCampaignFeed = CampaignFeedServiceSample.buildExampleGetRequest(accountId, Collections.singletonList(campaignIdStandard), Collections.singletonList(feedItemId));
-      CampaignFeedServiceSample.get(getRequestCampaignFeed, "get");
+      campaignFeedService.campaignFeedServiceGetPost(getRequestCampaignFeed);
 
       // =================================================================
       // AdGroupFeedService
       // =================================================================
       // SET
       AdGroupFeedServiceOperation setRequestAdGroupFeed = AdGroupFeedServiceSample.buildExampleMutateRequest(
-        accountId,
-        Arrays.asList(AdGroupFeedServiceSample.createExampleSetRequest(accountId, campaignIdStandard, adGroupIdStandard, feedItemId, AdGroupFeedServicePlaceholderType.QUICKLINK))
+          accountId,
+          Arrays.asList(AdGroupFeedServiceSample.createExampleSetRequest(accountId, campaignIdStandard, adGroupIdStandard, feedItemId, AdGroupFeedServicePlaceholderType.QUICKLINK))
       );
-      AdGroupFeedServiceSample.mutate(setRequestAdGroupFeed, "set");
+      adGroupFeedService.adGroupFeedServiceSetPost(setRequestAdGroupFeed);
 
       // GET
       AdGroupFeedServiceSelector getRequestAdGroupFeed = AdGroupFeedServiceSample.buildExampleGetRequest(accountId, campaignIdStandard, adGroupIdStandard, feedItemId);
-      AdGroupFeedServiceSample.get(getRequestAdGroupFeed);
+      adGroupFeedService.adGroupFeedServiceGetPost(getRequestAdGroupFeed);
 
     } catch (Exception e) {
       e.printStackTrace();
