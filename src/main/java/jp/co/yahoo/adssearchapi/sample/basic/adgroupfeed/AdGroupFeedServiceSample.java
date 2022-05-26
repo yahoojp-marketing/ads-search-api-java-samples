@@ -11,14 +11,14 @@ import jp.co.yahoo.adssearchapi.sample.basic.feeditem.FeedItemServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v7.api.AdGroupFeedServiceApi;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeed;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceList;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupFeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v7.model.FeedItemServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v8.api.AdGroupFeedServiceApi;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupFeed;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupFeedServiceList;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupFeedServiceOperation;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupFeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupFeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v8.model.FeedItemServicePlaceholderType;
 
 /**
  * example AdGroupFeedService operation and Utility method collection.

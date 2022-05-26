@@ -9,14 +9,14 @@ import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v7.api.FeedServiceApi;
-import jp.co.yahoo.adssearchapi.v7.model.Feed;
-import jp.co.yahoo.adssearchapi.v7.model.FeedServiceAttribute;
-import jp.co.yahoo.adssearchapi.v7.model.FeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v7.model.FeedServicePlaceholderField;
-import jp.co.yahoo.adssearchapi.v7.model.FeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v7.model.FeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v7.model.FeedServiceValue;
+import jp.co.yahoo.adssearchapi.v8.api.FeedServiceApi;
+import jp.co.yahoo.adssearchapi.v8.model.Feed;
+import jp.co.yahoo.adssearchapi.v8.model.FeedServiceAttribute;
+import jp.co.yahoo.adssearchapi.v8.model.FeedServiceOperation;
+import jp.co.yahoo.adssearchapi.v8.model.FeedServicePlaceholderField;
+import jp.co.yahoo.adssearchapi.v8.model.FeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v8.model.FeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v8.model.FeedServiceValue;
 
 /**
  * example FeedService operation and Utility method collection.

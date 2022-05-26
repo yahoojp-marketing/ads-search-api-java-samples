@@ -10,16 +10,16 @@ import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v7.api.BiddingStrategyServiceApi;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategy;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceMaximizeClicksBiddingScheme;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceOperation;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceSelector;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceTargetCpaBiddingScheme;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceTargetRoasBiddingScheme;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v7.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v8.api.BiddingStrategyServiceApi;
+import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategy;
+import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceOperation;
+import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceSelector;
+import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceTargetCpaBiddingScheme;
+import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceTargetRoasBiddingScheme;
+import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceValue;
 
 /**
  * example BiddingStrategyService operation and Utility method collection.
