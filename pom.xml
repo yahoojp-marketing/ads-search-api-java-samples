@@ -17,7 +17,7 @@
     <dependency>
       <groupId>jp.co.yahoo.api-ads</groupId>
       <artifactId>ads-search-api-lib</artifactId>
-      <version>1.0.0</version>
+      <version>2.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>

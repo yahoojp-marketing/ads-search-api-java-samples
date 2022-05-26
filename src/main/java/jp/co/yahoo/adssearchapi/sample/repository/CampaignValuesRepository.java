@@ -6,10 +6,10 @@ package jp.co.yahoo.adssearchapi.sample.repository;
 import java.util.ArrayList;
 import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v7.model.Campaign;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v8.model.Campaign;
+import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceAppStore;
+import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceValue;
 
 /**
  * Utility method collection for Java Sample Program.

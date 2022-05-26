@@ -12,22 +12,22 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v7.api.AdGroupAdServiceApi;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAd;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceAd;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceAdType;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceAppAd;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceDevicePreference;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceExtendedTextAd;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceOperation;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceSelector;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v7.model.AdGroupAdServiceValue;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v7.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v8.api.AdGroupAdServiceApi;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAd;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceAd;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceAdType;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceAppAd;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceDevicePreference;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceExtendedTextAd;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceOperation;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceSelector;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceAppStore;
+import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceType;
 
 /**
  * example AdGroupAd operation and Utility method collection.
