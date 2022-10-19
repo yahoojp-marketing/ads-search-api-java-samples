@@ -3,77 +3,66 @@
  */
 package jp.co.yahoo.adssearchapi.sample.feature;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroupad.AdGroupAdServiceSample;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroupbidmultiplier.AdGroupBidMultiplierServiceSample;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroupcriterion.AdGroupCriterionServiceSample;
-import jp.co.yahoo.adssearchapi.sample.basic.adgroupfeed.AdGroupFeedServiceSample;
 import jp.co.yahoo.adssearchapi.sample.basic.biddingstrategy.BiddingStrategyServiceSample;
 import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.basic.campaigncriterion.CampaignCriterionServiceSample;
-import jp.co.yahoo.adssearchapi.sample.basic.campaignfeed.CampaignFeedServiceSample;
 import jp.co.yahoo.adssearchapi.sample.basic.campaigntarget.CampaignTargetServiceSample;
 import jp.co.yahoo.adssearchapi.sample.basic.feeditem.FeedItemServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v8.YahooJapanAdsApiClient;
-import jp.co.yahoo.adssearchapi.v8.api.AdGroupAdServiceApi;
-import jp.co.yahoo.adssearchapi.v8.api.AdGroupBidMultiplierServiceApi;
-import jp.co.yahoo.adssearchapi.v8.api.AdGroupCriterionServiceApi;
-import jp.co.yahoo.adssearchapi.v8.api.AdGroupFeedServiceApi;
-import jp.co.yahoo.adssearchapi.v8.api.AdGroupServiceApi;
-import jp.co.yahoo.adssearchapi.v8.api.BiddingStrategyServiceApi;
-import jp.co.yahoo.adssearchapi.v8.api.CampaignCriterionServiceApi;
-import jp.co.yahoo.adssearchapi.v8.api.CampaignFeedServiceApi;
-import jp.co.yahoo.adssearchapi.v8.api.CampaignServiceApi;
-import jp.co.yahoo.adssearchapi.v8.api.CampaignTargetServiceApi;
-import jp.co.yahoo.adssearchapi.v8.api.FeedItemServiceApi;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroup;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupAd;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupBidMultiplierServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupBidMultiplierServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupFeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupFeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupFeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.Campaign;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignCriterion;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignFeedServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignFeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignFeedServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignTarget;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignTargetServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignTargetServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignTargetServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.FeedItemServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.FeedItemServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v8.model.FeedItemServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.FeedItemServiceValue;
+import jp.co.yahoo.adssearchapi.v9.YahooJapanAdsApiClient;
+import jp.co.yahoo.adssearchapi.v9.api.AdGroupAdServiceApi;
+import jp.co.yahoo.adssearchapi.v9.api.AdGroupBidMultiplierServiceApi;
+import jp.co.yahoo.adssearchapi.v9.api.AdGroupCriterionServiceApi;
+import jp.co.yahoo.adssearchapi.v9.api.AdGroupFeedServiceApi;
+import jp.co.yahoo.adssearchapi.v9.api.AdGroupServiceApi;
+import jp.co.yahoo.adssearchapi.v9.api.BiddingStrategyServiceApi;
+import jp.co.yahoo.adssearchapi.v9.api.CampaignCriterionServiceApi;
+import jp.co.yahoo.adssearchapi.v9.api.CampaignFeedServiceApi;
+import jp.co.yahoo.adssearchapi.v9.api.CampaignServiceApi;
+import jp.co.yahoo.adssearchapi.v9.api.CampaignTargetServiceApi;
+import jp.co.yahoo.adssearchapi.v9.api.FeedItemServiceApi;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroup;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupAd;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceOperation;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceSelector;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupBidMultiplierServiceOperation;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupBidMultiplierServiceSelector;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceOperation;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceOperation;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceSelector;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.Campaign;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignCriterion;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceAppStore;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceOperation;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignTarget;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignTargetServiceOperation;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignTargetServiceSelector;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignTargetServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.FeedItemServiceSelector;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * example Ad operation and Utility method collection.
@@ -84,11 +73,9 @@ public class AdSample {
   private static final AdGroupAdServiceApi adGroupAdService = new AdGroupAdServiceApi(yahooJapanAdsApiClient);
   private static final AdGroupBidMultiplierServiceApi adGroupBidMultiplierService = new AdGroupBidMultiplierServiceApi(yahooJapanAdsApiClient);
   private static final AdGroupCriterionServiceApi adGroupCriterionService = new AdGroupCriterionServiceApi(yahooJapanAdsApiClient);
-  private static final AdGroupFeedServiceApi adGroupFeedService = new AdGroupFeedServiceApi(yahooJapanAdsApiClient);
   private static final AdGroupServiceApi adGroupService = new AdGroupServiceApi(yahooJapanAdsApiClient);
   private static final BiddingStrategyServiceApi biddingStrategyService = new BiddingStrategyServiceApi(yahooJapanAdsApiClient);
   private static final CampaignCriterionServiceApi campaignCriterionService = new CampaignCriterionServiceApi(yahooJapanAdsApiClient);
-  private static final CampaignFeedServiceApi campaignFeedService = new CampaignFeedServiceApi(yahooJapanAdsApiClient);
   private static final CampaignServiceApi campaignService = new CampaignServiceApi(yahooJapanAdsApiClient);
   private static final CampaignTargetServiceApi campaignTargetService = new CampaignTargetServiceApi(yahooJapanAdsApiClient);
   private static final FeedItemServiceApi feedItemService= new FeedItemServiceApi(yahooJapanAdsApiClient);
@@ -105,7 +92,12 @@ public class AdSample {
     // =================================================================
     ValuesHolder valuesHolder = new ValuesHolder();
     ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
+    Long feedId = valuesRepositoryFacade.getPageFeedAssetSetValuesRepository().findPageFeedAssetSetId();
+
     long accountId = ApiUtils.ACCOUNT_ID;
+
+    List<Long> feedIds = new ArrayList<>();
+    feedIds.add(feedId);
 
     try {
 
@@ -153,14 +145,17 @@ public class AdSample {
           new ArrayList<Campaign>() {{
             add(CampaignServiceSample.createExampleStandardCampaign(
                 "SampleStandardCampaign_",
+                feedIds,
                 CampaignServiceSample.createPortfolioBiddingCampaignBiddingStrategy(biddingStrategyId))
             );
             add(CampaignServiceSample.createExampleMobileAppCampaignForIOS(
                 "SampleMobileAppCampaignForIOS_",
+                feedIds,
                 CampaignServiceSample.createPortfolioBiddingCampaignBiddingStrategy(biddingStrategyId))
             );
             add(CampaignServiceSample.createExampleMobileAppCampaignForANDROID(
                 "SampleMobileAppCampaignForANDROID_",
+                feedIds,
                 CampaignServiceSample.createPortfolioBiddingCampaignBiddingStrategy(biddingStrategyId))
             );
           }}
@@ -306,7 +301,6 @@ public class AdSample {
       AdGroupAdServiceOperation addRequestAdGroupAd = AdGroupAdServiceSample.buildExampleMutateRequest(
           accountId,
           new ArrayList<AdGroupAd>() {{
-            add(AdGroupAdServiceSample.createExampleExtendedTextAd(campaignIdStandard, adGroupIdStandard));
             add(AdGroupAdServiceSample.createExampleAppAdIOS(campaignIdMobileAppIOS, appIdIOS, adGroupIdMobileAppIOS));
             add(AdGroupAdServiceSample.createExampleAppAdANDROID(campaignIdMobileAppAndroid, appIdAndroid, adGroupIdMobileAppAndroid));
           }}
@@ -325,66 +319,10 @@ public class AdSample {
       AdGroupAdServiceSelector getRequestAdGroupAd = AdGroupAdServiceSample.buildExampleGetRequest(accountId, valuesRepositoryFacade.getAdGroupAdValuesRepository().getAdGroupAds());
       adGroupAdService.adGroupAdServiceGetPost(getRequestAdGroupAd);
 
-      // =================================================================
-      // FeedItemService
-      // =================================================================
-      // ADD
-      FeedItemServiceOperation addRequestFeedItem = FeedItemServiceSample.buildExampleMutateRequest(
-          accountId,
-          FeedItemServicePlaceholderType.QUICKLINK,
-          Arrays.asList(FeedItemServiceSample.createExampleQuicklink())
-      );
-      List<FeedItemServiceValue> addResponseFeedItem = feedItemService.feedItemServiceAddPost(addRequestFeedItem).getRval().getValues();
-      valuesRepositoryFacade.getValuesHolder().setFeedItemServiceValueList(addResponseFeedItem);
-
-      Long feedItemId = valuesRepositoryFacade.getFeedItemValuesRepository().findFeedItemId(FeedItemServicePlaceholderType.QUICKLINK);
-
-      // GET
-      FeedItemServiceSelector getRequestFeedItem = FeedItemServiceSample.buildExampleGetRequest(accountId, valuesRepositoryFacade.getFeedItemValuesRepository().getFeedItemIds());
-      feedItemService.feedItemServiceGetPost(getRequestFeedItem);
-
-      // SET
-      FeedItemServiceOperation setRequestFeedItem = FeedItemServiceSample.buildExampleMutateRequest(
-          accountId,
-          FeedItemServicePlaceholderType.QUICKLINK,
-          FeedItemServiceSample.createExampleSetRequest(valuesRepositoryFacade.getFeedItemValuesRepository().getFeedItems())
-      );
-      feedItemService.feedItemServiceSetPost(setRequestFeedItem);
-
-      // =================================================================
-      // CampaignFeedService
-      // =================================================================
-      // SET
-      CampaignFeedServiceOperation setRequestCampaignFeed = CampaignFeedServiceSample.buildExampleMutateRequest(
-          accountId,
-          Arrays.asList(CampaignFeedServiceSample.createExampleSetRequest(accountId, campaignIdStandard, feedItemId, CampaignFeedServicePlaceholderType.QUICKLINK))
-      );
-      campaignFeedService.campaignFeedServiceSetPost(setRequestCampaignFeed);
-
-      // GET
-      CampaignFeedServiceSelector getRequestCampaignFeed = CampaignFeedServiceSample.buildExampleGetRequest(accountId, Collections.singletonList(campaignIdStandard), Collections.singletonList(feedItemId));
-      campaignFeedService.campaignFeedServiceGetPost(getRequestCampaignFeed);
-
-      // =================================================================
-      // AdGroupFeedService
-      // =================================================================
-      // SET
-      AdGroupFeedServiceOperation setRequestAdGroupFeed = AdGroupFeedServiceSample.buildExampleMutateRequest(
-          accountId,
-          Arrays.asList(AdGroupFeedServiceSample.createExampleSetRequest(accountId, campaignIdStandard, adGroupIdStandard, feedItemId, AdGroupFeedServicePlaceholderType.QUICKLINK))
-      );
-      adGroupFeedService.adGroupFeedServiceSetPost(setRequestAdGroupFeed);
-
-      // GET
-      AdGroupFeedServiceSelector getRequestAdGroupFeed = AdGroupFeedServiceSample.buildExampleGetRequest(accountId, campaignIdStandard, adGroupIdStandard, feedItemId);
-      adGroupFeedService.adGroupFeedServiceGetPost(getRequestAdGroupFeed);
-
     } catch (Exception e) {
       e.printStackTrace();
       throw e;
 
-    } finally {
-      FeedItemServiceSample.cleanup(valuesHolder);
     }
   }
 }

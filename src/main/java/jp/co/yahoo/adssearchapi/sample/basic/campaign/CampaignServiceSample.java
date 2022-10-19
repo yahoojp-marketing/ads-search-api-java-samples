@@ -3,6 +3,38 @@
  */
 package jp.co.yahoo.adssearchapi.sample.basic.campaign;
 
+import jp.co.yahoo.adssearchapi.sample.basic.biddingstrategy.BiddingStrategyServiceSample;
+import jp.co.yahoo.adssearchapi.sample.basic.pagefeedasset.PageFeedAssetServiceSample;
+import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
+import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
+import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
+import jp.co.yahoo.adssearchapi.v9.api.CampaignServiceApi;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v9.model.Campaign;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceAppStore;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceBiddingStrategy;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceBiddingStrategyType;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceBudget;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceBudgetPeriod;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceCpcBiddingScheme;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceDynamicAdsForSearchSetting;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceEnhancedCpcEnabled;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceGeoTargetType;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceGeoTargetTypeSetting;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceOperation;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceSelector;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceSettingType;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceSettings;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceValue;
+
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -10,38 +42,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import jp.co.yahoo.adssearchapi.sample.basic.biddingstrategy.BiddingStrategyServiceSample;
-import jp.co.yahoo.adssearchapi.sample.basic.feed.FeedServiceSample;
-import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
-import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
-import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v8.api.CampaignServiceApi;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v8.model.Campaign;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceBiddingStrategy;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceBiddingStrategyType;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceBudget;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceBudgetPeriod;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceCpcBiddingScheme;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceDynamicAdsForSearchSetting;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceEnhancedCpcEnabled;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceGeoTargetType;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceGeoTargetTypeSetting;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceMaximizeClicksBiddingScheme;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceSettingType;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceSettings;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.FeedServicePlaceholderType;
 
 /**
  * example CampaignService operation and Utility method collection.
@@ -70,6 +70,10 @@ public class CampaignServiceSample {
       valuesHolder = setup();
       ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
       Long biddingStrategyId = valuesRepositoryFacade.getBiddingStrategyValuesRepository().findBiddingStrategyId(BiddingStrategyServiceType.TARGET_CPA);
+      Long feedId = valuesRepositoryFacade.getPageFeedAssetSetValuesRepository().findPageFeedAssetSetId();
+
+      List<Long> feedIds = new ArrayList<>();
+      feedIds.add(feedId);
 
       // =================================================================
       // CampaignService::ADD
@@ -77,11 +81,11 @@ public class CampaignServiceSample {
       // create request.
       CampaignServiceOperation addCampaignOperation = buildExampleMutateRequest(accountId, new ArrayList<Campaign>() {{
         // Manual Bidding
-        add(createExampleStandardCampaign("SampleManualCpcStandardCampaign_", createManualBiddingCampaignBiddingStrategy()));
+        add(createExampleStandardCampaign("SampleManualCpcStandardCampaign_", feedIds, createManualBiddingCampaignBiddingStrategy()));
         // Portfolio Bidding
-        add(createExampleStandardCampaign("SamplePortFolioBiddingStandardCampaign_", createPortfolioBiddingCampaignBiddingStrategy(biddingStrategyId)));
+        add(createExampleStandardCampaign("SamplePortFolioBiddingStandardCampaign_", feedIds, createPortfolioBiddingCampaignBiddingStrategy(biddingStrategyId)));
         // Standard Bidding
-        add(createExampleStandardCampaign("SampleStandardBiddingStandardCampaign_", createStandardBiddingCampaignBiddingStrategy()));
+        add(createExampleStandardCampaign("SampleStandardBiddingStandardCampaign_", feedIds, createStandardBiddingCampaignBiddingStrategy()));
       }});
 
       // run
@@ -168,7 +172,7 @@ public class CampaignServiceSample {
   public static CampaignServiceBiddingStrategy createPortfolioBiddingCampaignBiddingStrategy(Long biddingStrategyId) {
 
     CampaignServiceBiddingStrategy campaignBiddingStrategy = new CampaignServiceBiddingStrategy();
-    campaignBiddingStrategy.setBiddingStrategyId(biddingStrategyId);
+    campaignBiddingStrategy.setPortfolioBiddingId(biddingStrategyId);
 
     return campaignBiddingStrategy;
   }
@@ -200,7 +204,7 @@ public class CampaignServiceSample {
    * @param campaignBiddingStrategy CampaignBiddingStrategy
    * @return Campaign
    */
-  public static Campaign createExampleStandardCampaign(String campaignNamePrefix, CampaignServiceBiddingStrategy campaignBiddingStrategy) {
+  public static Campaign createExampleStandardCampaign(String campaignNamePrefix, List<Long> feedIds, CampaignServiceBiddingStrategy campaignBiddingStrategy) {
 
     // budget
     CampaignServiceBudget budget = new CampaignServiceBudget();
@@ -211,6 +215,9 @@ public class CampaignServiceSample {
     CampaignServiceGeoTargetTypeSetting geoTargetTypeSetting = new CampaignServiceGeoTargetTypeSetting();
     geoTargetTypeSetting.setNegativeGeoTargetType(CampaignServiceGeoTargetType.DONT_CARE);
     geoTargetTypeSetting.setPositiveGeoTargetType(CampaignServiceGeoTargetType.AREA_OF_INTENT);
+
+    CampaignServiceDynamicAdsForSearchSetting dynamicAdsForSearchSetting = new CampaignServiceDynamicAdsForSearchSetting();
+    dynamicAdsForSearchSetting.setPageFeedAssetSetIds(feedIds);
 
     CampaignServiceTargetingSetting targetingSetting = new CampaignServiceTargetingSetting();
     targetingSetting.setTargetAll(CampaignServiceTargetAll.ACTIVE);
@@ -223,6 +230,9 @@ public class CampaignServiceSample {
     targetingServiceSetting.setSettingType(CampaignServiceSettingType.TARGET_LIST_SETTING);
     targetingServiceSetting.setTargetingSetting(targetingSetting);
 
+    CampaignServiceSettings dynamicAdsForSearchServiceSetting =new CampaignServiceSettings();
+    dynamicAdsForSearchServiceSetting.setSettingType(CampaignServiceSettingType.DYNAMIC_ADS_FOR_SEARCH_SETTING);
+    dynamicAdsForSearchServiceSetting.setDynamicAdsForSearchSetting(dynamicAdsForSearchSetting);
 
     // customParameters
     CampaignServiceCustomParameter customParameter = new CampaignServiceCustomParameter();
@@ -253,7 +263,7 @@ public class CampaignServiceSample {
    * @param campaignBiddingStrategy CampaignBiddingStrategy
    * @return Campaign
    */
-  public static Campaign createExampleMobileAppCampaignForIOS(String campaignNamePrefix, CampaignServiceBiddingStrategy campaignBiddingStrategy) {
+  public static Campaign createExampleMobileAppCampaignForIOS(String campaignNamePrefix, List<Long> feedIds, CampaignServiceBiddingStrategy campaignBiddingStrategy) {
 
     // budget
     CampaignServiceBudget budget = new CampaignServiceBudget();
@@ -265,6 +275,9 @@ public class CampaignServiceSample {
     geoTargetTypeSetting.setNegativeGeoTargetType(CampaignServiceGeoTargetType.DONT_CARE);
     geoTargetTypeSetting.setPositiveGeoTargetType(CampaignServiceGeoTargetType.AREA_OF_INTENT);
 
+    CampaignServiceDynamicAdsForSearchSetting dynamicAdsForSearchSetting = new CampaignServiceDynamicAdsForSearchSetting();
+    dynamicAdsForSearchSetting.setPageFeedAssetSetIds(feedIds);
+
     CampaignServiceTargetingSetting targetingSetting = new CampaignServiceTargetingSetting();
     targetingSetting.setTargetAll(CampaignServiceTargetAll.ACTIVE);
 
@@ -275,6 +288,10 @@ public class CampaignServiceSample {
     CampaignServiceSettings targetingServiceSetting = new CampaignServiceSettings();
     targetingServiceSetting.setSettingType(CampaignServiceSettingType.TARGET_LIST_SETTING);
     targetingServiceSetting.setTargetingSetting(targetingSetting);
+
+    CampaignServiceSettings dynamicAdsForSearchServiceSetting =new CampaignServiceSettings();
+    dynamicAdsForSearchServiceSetting.setSettingType(CampaignServiceSettingType.DYNAMIC_ADS_FOR_SEARCH_SETTING);
+    dynamicAdsForSearchServiceSetting.setDynamicAdsForSearchSetting(dynamicAdsForSearchSetting);
 
     // customParameters
     CampaignServiceCustomParameter customParameter = new CampaignServiceCustomParameter();
@@ -307,7 +324,7 @@ public class CampaignServiceSample {
    * @param campaignBiddingStrategy CampaignBiddingStrategy
    * @return Campaign
    */
-  public static Campaign createExampleMobileAppCampaignForANDROID(String campaignNamePrefix, CampaignServiceBiddingStrategy campaignBiddingStrategy) {
+  public static Campaign createExampleMobileAppCampaignForANDROID(String campaignNamePrefix, List<Long> feedIds, CampaignServiceBiddingStrategy campaignBiddingStrategy) {
 
     // budget
     CampaignServiceBudget budget = new CampaignServiceBudget();
@@ -319,6 +336,9 @@ public class CampaignServiceSample {
     geoTargetTypeSetting.setNegativeGeoTargetType(CampaignServiceGeoTargetType.DONT_CARE);
     geoTargetTypeSetting.setPositiveGeoTargetType(CampaignServiceGeoTargetType.AREA_OF_INTENT);
 
+    CampaignServiceDynamicAdsForSearchSetting dynamicAdsForSearchSetting = new CampaignServiceDynamicAdsForSearchSetting();
+    dynamicAdsForSearchSetting.setPageFeedAssetSetIds(feedIds);
+
     CampaignServiceTargetingSetting targetingSetting = new CampaignServiceTargetingSetting();
     targetingSetting.setTargetAll(CampaignServiceTargetAll.ACTIVE);
 
@@ -329,6 +349,10 @@ public class CampaignServiceSample {
     CampaignServiceSettings targetingServiceSetting = new CampaignServiceSettings();
     targetingServiceSetting.setSettingType(CampaignServiceSettingType.TARGET_LIST_SETTING);
     targetingServiceSetting.setTargetingSetting(targetingSetting);
+
+    CampaignServiceSettings dynamicAdsForSearchServiceSetting =new CampaignServiceSettings();
+    dynamicAdsForSearchServiceSetting.setSettingType(CampaignServiceSettingType.DYNAMIC_ADS_FOR_SEARCH_SETTING);
+    dynamicAdsForSearchServiceSetting.setDynamicAdsForSearchSetting(dynamicAdsForSearchSetting);
 
     Campaign campaign = new Campaign();
     campaign.setCampaignName(campaignNamePrefix + ApiUtils.getCurrentTimestamp());
@@ -369,7 +393,7 @@ public class CampaignServiceSample {
     targetingSetting.setTargetAll(CampaignServiceTargetAll.ACTIVE);
 
     CampaignServiceDynamicAdsForSearchSetting dynamicAdsForSearchSetting = new CampaignServiceDynamicAdsForSearchSetting();
-    dynamicAdsForSearchSetting.setFeedIds(feedIds);
+    dynamicAdsForSearchSetting.setPageFeedAssetSetIds(feedIds);
 
     CampaignServiceSettings geoTargetTypeServiceSetting = new CampaignServiceSettings();
     geoTargetTypeServiceSetting.setSettingType(CampaignServiceSettingType.GEO_TARGET_TYPE_SETTING);
@@ -461,11 +485,11 @@ public class CampaignServiceSample {
   private static ValuesHolder setup() throws Exception {
 
     ValuesHolder valuesHolderBiddingStrategy = BiddingStrategyServiceSample.create();
-    ValuesHolder valuesHolderFeed = FeedServiceSample.create();
+    ValuesHolder valuesHolderFeed = PageFeedAssetServiceSample.create();
 
     ValuesHolder valuesHolder = new ValuesHolder();
     valuesHolder.setBiddingStrategyServiceValueList(valuesHolderBiddingStrategy.getBiddingStrategyServiceValueList());
-    valuesHolder.setFeedServiceValueList(valuesHolderFeed.getFeedServiceValueList());
+    valuesHolder.setPageFeedAssetSetServiceValueList(valuesHolderFeed.getPageFeedAssetSetServiceValueList());
 
     // sleep 30 second.
     System.out.println("\n***** sleep 30 seconds *****\n");
@@ -484,9 +508,8 @@ public class CampaignServiceSample {
 
     ValuesHolder parentValuesHolder = setup();
     ValuesRepositoryFacade parentValuesRepositoryFacade = new ValuesRepositoryFacade(parentValuesHolder);
-    Long feedId = parentValuesRepositoryFacade.getFeedValueRepository().findFeedId(
-        FeedServicePlaceholderType.DYNAMIC_AD_FOR_SEARCH_PAGE_FEEDS
-    );
+
+    Long feedId = parentValuesRepositoryFacade.getPageFeedAssetSetValuesRepository().findPageFeedAssetSetId();
     long accountId = ApiUtils.ACCOUNT_ID;
 
     List<Long> feedIds = new ArrayList<>();
@@ -494,9 +517,9 @@ public class CampaignServiceSample {
 
     CampaignServiceOperation addCampaignOperation = buildExampleMutateRequest(accountId, new ArrayList<Campaign>() {{
       // Standard Campaign
-      add(createExampleStandardCampaign("SampleCpcStandardCampaign_", createManualBiddingCampaignBiddingStrategy()));
+      add(createExampleStandardCampaign("SampleCpcStandardCampaign_", feedIds, createManualBiddingCampaignBiddingStrategy()));
       // MobileApp Campaign
-      add(createExampleMobileAppCampaignForIOS("SampleCpcIOSCampaign_", createManualBiddingCampaignBiddingStrategy()));
+      add(createExampleMobileAppCampaignForIOS("SampleCpcIOSCampaign_", feedIds, createManualBiddingCampaignBiddingStrategy()));
       // DynamicAdsForSearch Campaign
       add(createExampleDynamicAdsForSearchCampaign("SampleCpcDynamicAdsForSearchCampaign_", feedIds, createManualBiddingCampaignBiddingStrategy()));
     }});
@@ -505,7 +528,7 @@ public class CampaignServiceSample {
 
     ValuesHolder selfValuesHolder = new ValuesHolder();
     selfValuesHolder.setBiddingStrategyServiceValueList(parentValuesHolder.getBiddingStrategyServiceValueList());
-    selfValuesHolder.setFeedServiceValueList(parentValuesHolder.getFeedServiceValueList());
+    selfValuesHolder.setPageFeedAssetSetServiceValueList(parentValuesHolder.getPageFeedAssetSetServiceValueList());
     selfValuesHolder.setCampaignServiceValueList(addCampaignValues);
 
     return selfValuesHolder;
@@ -528,7 +551,7 @@ public class CampaignServiceSample {
       campaignService.campaignServiceRemovePost(removeCampaignOperation);
     }
     BiddingStrategyServiceSample.cleanup(valuesHolder);
-    FeedServiceSample.cleanup(valuesHolder);
+    PageFeedAssetServiceSample.cleanup(valuesHolder);
   }
 
   /**

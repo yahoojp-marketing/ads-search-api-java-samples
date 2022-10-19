@@ -3,19 +3,21 @@
  */
 package jp.co.yahoo.adssearchapi.sample.util;
 
+import jp.co.yahoo.adssearchapi.v9.model.AccountSharedServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.FeedItemServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.FeedServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.LabelServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.PageFeedAssetSetServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.ReportDefinitionServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.RetargetingListServiceValue;
+
 import java.util.ArrayList;
 import java.util.List;
-import jp.co.yahoo.adssearchapi.v8.model.AccountSharedServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupAdServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.FeedItemServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.FeedServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.LabelServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.ReportDefinitionServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.RetargetingListServiceValue;
 
 /**
  * Utility method collection for Java Sample Program.
@@ -243,6 +245,26 @@ public class ValuesHolder {
       this.reportDefinitionServiceValueList = reportDefinitionValuesList;
     } else {
       this.reportDefinitionServiceValueList.addAll(reportDefinitionValuesList);
+    }
+  }
+
+  private List<PageFeedAssetSetServiceValue> pageFeedAssetSetServiceValueList = new ArrayList<>();
+
+  /**
+   * @return PageFeedAssetSetServiceValueList
+   */
+  public List<PageFeedAssetSetServiceValue> getPageFeedAssetSetServiceValueList() {
+    return pageFeedAssetSetServiceValueList;
+  }
+
+  /**
+   * @param pageFeedAssetSetValuesList PageFeedAssetSetServiceValueList
+   */
+  public void setPageFeedAssetSetServiceValueList(List<PageFeedAssetSetServiceValue> pageFeedAssetSetValuesList) {
+    if (this.pageFeedAssetSetServiceValueList.size() == 0) {
+      this.pageFeedAssetSetServiceValueList = pageFeedAssetSetValuesList;
+    } else {
+      this.pageFeedAssetSetServiceValueList.addAll(pageFeedAssetSetValuesList);
     }
   }
 }
