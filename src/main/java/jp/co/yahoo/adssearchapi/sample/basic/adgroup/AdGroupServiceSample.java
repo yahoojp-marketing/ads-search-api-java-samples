@@ -11,23 +11,22 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v8.api.AdGroupServiceApi;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroup;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceAdGroupAdRotationMode;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceAdRotationMode;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceBid;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceSettings;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceUrlApprovalStatus;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v8.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v8.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v9.api.AdGroupServiceApi;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroup;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceBid;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceFrequentlyRunBetterPerformingAdsMode;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceOperation;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceSelector;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceSettings;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceUrlApprovalStatus;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceType;
 
 /**
  * example AdGroupService operation and Utility method collection.
@@ -142,8 +141,7 @@ public class AdGroupServiceSample {
     customParameters.setParameters(Collections.singletonList(customParameter));
 
     // ad rotation mode
-    AdGroupServiceAdGroupAdRotationMode adGroupAdRotationMode = new AdGroupServiceAdGroupAdRotationMode();
-    adGroupAdRotationMode.setAdRotationMode(AdGroupServiceAdRotationMode.ROTATE_FOREVER);
+    AdGroupServiceFrequentlyRunBetterPerformingAdsMode adGroupAdRotationMode = AdGroupServiceFrequentlyRunBetterPerformingAdsMode.DONT_APPLY;
 
     AdGroup adGroup = new AdGroup();
     adGroup.setCampaignId(campaignId);
@@ -153,7 +151,7 @@ public class AdGroupServiceSample {
     adGroup.setBid(bid);
     adGroup.setSettings(setting);
     adGroup.setCustomParameters(customParameters);
-    adGroup.setAdGroupAdRotationMode(adGroupAdRotationMode);
+    adGroup.setFrequentlyRunBetterPerformingAdsMode(adGroupAdRotationMode);
 
     return adGroup;
   }
@@ -186,8 +184,7 @@ public class AdGroupServiceSample {
     customParameters.setParameters(Collections.singletonList(customParameter));
 
     // ad rotation mode
-    AdGroupServiceAdGroupAdRotationMode adGroupAdRotationMode = new AdGroupServiceAdGroupAdRotationMode();
-    adGroupAdRotationMode.setAdRotationMode(AdGroupServiceAdRotationMode.ROTATE_FOREVER);
+    AdGroupServiceFrequentlyRunBetterPerformingAdsMode adGroupAdRotationMode = AdGroupServiceFrequentlyRunBetterPerformingAdsMode.DONT_APPLY;
 
     AdGroup adGroup = new AdGroup();
     adGroup.setCampaignId(campaignId);
@@ -197,7 +194,7 @@ public class AdGroupServiceSample {
     adGroup.setBid(bid);
     adGroup.setSettings(setting);
     adGroup.setCustomParameters(customParameters);
-    adGroup.setAdGroupAdRotationMode(adGroupAdRotationMode);
+    adGroup.setFrequentlyRunBetterPerformingAdsMode(adGroupAdRotationMode);
 
     return adGroup;
   }
@@ -223,8 +220,7 @@ public class AdGroupServiceSample {
     setting.setTargetingSetting(targetingSetting);
 
     // ad rotation mode
-    AdGroupServiceAdGroupAdRotationMode adGroupAdRotationMode = new AdGroupServiceAdGroupAdRotationMode();
-    adGroupAdRotationMode.setAdRotationMode(AdGroupServiceAdRotationMode.ROTATE_FOREVER);
+    AdGroupServiceFrequentlyRunBetterPerformingAdsMode adGroupAdRotationMode = AdGroupServiceFrequentlyRunBetterPerformingAdsMode.DONT_APPLY;
 
     AdGroup adGroup = new AdGroup();
     adGroup.setCampaignId(campaignId);
@@ -232,51 +228,7 @@ public class AdGroupServiceSample {
     adGroup.setUserStatus(AdGroupServiceUserStatus.ACTIVE);
     adGroup.setBid(bid);
     adGroup.setSettings(setting);
-    adGroup.setAdGroupAdRotationMode(adGroupAdRotationMode);
-
-    return adGroup;
-  }
-
-  /**
-   * example DynamicAdsForSearch AdGroup request.
-   *
-   * @param campaignId long
-   * @return AdGroupServiceOperation
-   */
-  private static AdGroup createExampleDynamicAdsForSearchAdGroup(long campaignId) {
-
-    // bid
-    AdGroupServiceBid bid = new AdGroupServiceBid();
-    bid.setCpc((long) 100);
-
-    // settings
-    AdGroupServiceTargetingSetting targetingSetting = new AdGroupServiceTargetingSetting();
-    targetingSetting.setTargetAll(AdGroupServiceTargetAll.ACTIVE);
-
-    AdGroupServiceSettings setting = new AdGroupServiceSettings();
-    setting.setCriterionType(AdGroupServiceCriterionType.TARGET_LIST);
-    setting.setTargetingSetting(targetingSetting);
-
-    // customParameters
-    AdGroupServiceCustomParameter customParameter = new AdGroupServiceCustomParameter();
-    customParameter.setKey("id1");
-    customParameter.setValue("1234");
-    AdGroupServiceCustomParameters customParameters = new AdGroupServiceCustomParameters();
-    customParameters.setParameters(Collections.singletonList(customParameter));
-
-    // ad rotation mode
-    AdGroupServiceAdGroupAdRotationMode adGroupAdRotationMode = new AdGroupServiceAdGroupAdRotationMode();
-    adGroupAdRotationMode.setAdRotationMode(AdGroupServiceAdRotationMode.ROTATE_FOREVER);
-
-    AdGroup adGroup = new AdGroup();
-    adGroup.setCampaignId(campaignId);
-    adGroup.setAdGroupName("SampleDynamicAdsForSearchAdGroup_CreateOn_" + ApiUtils.getCurrentTimestamp());
-    adGroup.setUserStatus(AdGroupServiceUserStatus.ACTIVE);
-    adGroup.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
-    adGroup.setBid(bid);
-    adGroup.setSettings(setting);
-    adGroup.setCustomParameters(customParameters);
-    adGroup.setAdGroupAdRotationMode(adGroupAdRotationMode);
+    adGroup.setFrequentlyRunBetterPerformingAdsMode(adGroupAdRotationMode);
 
     return adGroup;
   }
@@ -342,9 +294,8 @@ public class AdGroupServiceSample {
       operand.setSettings(setting);
 
       // ad rotation mode
-      AdGroupServiceAdGroupAdRotationMode adGroupAdRotationMode = new AdGroupServiceAdGroupAdRotationMode();
-      adGroupAdRotationMode.setAdRotationMode(AdGroupServiceAdRotationMode.ROTATE_FOREVER);
-      operand.setAdGroupAdRotationMode(adGroupAdRotationMode);
+      AdGroupServiceFrequentlyRunBetterPerformingAdsMode adGroupAdRotationMode = AdGroupServiceFrequentlyRunBetterPerformingAdsMode.DONT_APPLY;
+      operand.setFrequentlyRunBetterPerformingAdsMode(adGroupAdRotationMode);
 
       if (!adGroup.getUrlReviewData().getUrlApprovalStatus().equals(AdGroupServiceUrlApprovalStatus.NONE)) {
         operand.setTrackingUrl("http://yahoo.co.jp?url={lpurl}&amp;a={creative}&amp;pid={_id2}");
@@ -444,13 +395,11 @@ public class AdGroupServiceSample {
     long accountId = ApiUtils.ACCOUNT_ID;
     Long campaignIdStandard = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(CampaignServiceType.STANDARD);
     Long campaignIdMobileApp = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(CampaignServiceType.MOBILE_APP);
-    Long campaignIdDynamicAdsForSearch = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(CampaignServiceType.DYNAMIC_ADS_FOR_SEARCH);
 
     // create request.
     AdGroupServiceOperation addRequest = buildExampleMutateRequest(accountId, new ArrayList<AdGroup>() {{
       add(createExampleStandardAdGroup(campaignIdStandard));
       add(createExampleMobileAppIOSAdGroup(campaignIdMobileApp));
-      add(createExampleDynamicAdsForSearchAdGroup(campaignIdDynamicAdsForSearch));
     }});
 
     // run

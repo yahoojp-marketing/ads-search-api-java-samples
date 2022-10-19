@@ -10,16 +10,16 @@ import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v8.api.BiddingStrategyServiceApi;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategy;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceMaximizeClicksBiddingScheme;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceOperation;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceSelector;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceTargetCpaBiddingScheme;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceTargetRoasBiddingScheme;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v8.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v9.api.BiddingStrategyServiceApi;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategy;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceOperation;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceSelector;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceTargetCpaBiddingScheme;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceTargetRoasBiddingScheme;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceValue;
 
 /**
  * example BiddingStrategyService operation and Utility method collection.
@@ -152,7 +152,7 @@ public class BiddingStrategyServiceSample {
     addTargetCpaBiddingScheme.setType(BiddingStrategyServiceType.TARGET_CPA);
 
     BiddingStrategy targetCpaBidding = new BiddingStrategy();
-    targetCpaBidding.setBiddingStrategyName("SampleTargetCpa_CreateOn_" + ApiUtils.getCurrentTimestamp());
+    targetCpaBidding.setPortfolioBiddingName("SampleTargetCpa_CreateOn_" + ApiUtils.getCurrentTimestamp());
     targetCpaBidding.setBiddingScheme(addTargetCpaBiddingScheme);
 
     return targetCpaBidding;
@@ -171,7 +171,7 @@ public class BiddingStrategyServiceSample {
     addMaximizeClicksBiddingScheme.setType(BiddingStrategyServiceType.MAXIMIZE_CLICKS);
 
     BiddingStrategy maximizeClicksBidding = new BiddingStrategy();
-    maximizeClicksBidding.setBiddingStrategyName("SampleMaximizeClicks_CreateOn_" + ApiUtils.getCurrentTimestamp());
+    maximizeClicksBidding.setPortfolioBiddingName("SampleMaximizeClicks_CreateOn_" + ApiUtils.getCurrentTimestamp());
     maximizeClicksBidding.setBiddingScheme(addMaximizeClicksBiddingScheme);
 
     return maximizeClicksBidding;
@@ -192,7 +192,7 @@ public class BiddingStrategyServiceSample {
     addTargetRoasBiddingScheme.setType(BiddingStrategyServiceType.TARGET_ROAS);
 
     BiddingStrategy targetRoasBidding = new BiddingStrategy();
-    targetRoasBidding.setBiddingStrategyName("SampleTargetRoas_CreateOn_" + ApiUtils.getCurrentTimestamp());
+    targetRoasBidding.setPortfolioBiddingName("SampleTargetRoas_CreateOn_" + ApiUtils.getCurrentTimestamp());
     targetRoasBidding.setBiddingScheme(addTargetRoasBiddingScheme);
 
     return targetRoasBidding;
@@ -209,8 +209,8 @@ public class BiddingStrategyServiceSample {
     for (BiddingStrategy biddingStrategy : biddingStrategies) {
       // Set Operand
       BiddingStrategy operand = new BiddingStrategy();
-      operand.setBiddingStrategyId(biddingStrategy.getBiddingStrategyId());
-      operand.setBiddingStrategyName("Sample_UpdateOn_" + biddingStrategy.getBiddingStrategyId() + "_" + ApiUtils.getCurrentTimestamp());
+      operand.setPortfolioBiddingId(biddingStrategy.getPortfolioBiddingId());
+      operand.setPortfolioBiddingName("Sample_UpdateOn_" + biddingStrategy.getPortfolioBiddingId() + "_" + ApiUtils.getCurrentTimestamp());
 
       if (biddingStrategy.getBiddingScheme().getType().equals(BiddingStrategyServiceType.TARGET_CPA)) {
         BiddingStrategyServiceBiddingScheme biddingScheme = new BiddingStrategyServiceBiddingScheme();
@@ -263,7 +263,7 @@ public class BiddingStrategyServiceSample {
     selector.setAccountId(accountId);
 
     if (biddingStrategyIds.size() > 0) {
-      selector.setBiddingStrategyIds(biddingStrategyIds);
+      selector.setPortfolioBiddingIds(biddingStrategyIds);
     }
     selector.setBiddingStrategyTypes(Arrays.asList(
         BiddingStrategyServiceType.TARGET_CPA, //

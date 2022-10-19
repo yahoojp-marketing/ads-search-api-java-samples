@@ -6,7 +6,7 @@ package jp.co.yahoo.adssearchapi.sample.util;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
-import jp.co.yahoo.adssearchapi.v8.YahooJapanAdsApiClient;
+import jp.co.yahoo.adssearchapi.v9.YahooJapanAdsApiClient;
 
 /**
  * Utility method collection for Java Sample Program.
