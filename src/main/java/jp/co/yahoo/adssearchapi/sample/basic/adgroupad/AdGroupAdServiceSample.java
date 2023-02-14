@@ -7,21 +7,21 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v9.api.AdGroupAdServiceApi;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAd;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceAd;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceAdType;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceAppAd;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceDevicePreference;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceOperation;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceSelector;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupAdServiceValue;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v10.api.AdGroupAdServiceApi;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAd;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAdServiceAd;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAdServiceAdType;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAdServiceAppAd;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAdServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAdServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAdServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAdServiceDevicePreference;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAdServiceOperation;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAdServiceSelector;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAdServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceAppOsType;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,7 +54,7 @@ public class AdGroupAdServiceSample {
       // =================================================================
       valuesHolder = setup();
       ValuesRepositoryFacade valuesRepositoryFacade = new ValuesRepositoryFacade(valuesHolder);
-      Long campaignIdMobileApp = valuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(CampaignServiceAppStore.IOS);
+      Long campaignIdMobileApp = valuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(CampaignServiceAppOsType.IOS);
       String appIdIOS = valuesRepositoryFacade.getCampaignValuesRepository().findAppId(campaignIdMobileApp);
       Long adGroupIdMobileApp = valuesRepositoryFacade.getAdGroupValuesRepository().findAdGroupId(campaignIdMobileApp);
 
@@ -134,13 +134,13 @@ public class AdGroupAdServiceSample {
 
     // ad
     AdGroupAdServiceAppAd appAd = new AdGroupAdServiceAppAd();
+    appAd.setHeadline("sample headline");
+    appAd.setDescription("sample ad desc");
     appAd.setDescription2("sample ad desc2");
 
     AdGroupAdServiceAd ad = new AdGroupAdServiceAd();
     ad.setAdType(AdGroupAdServiceAdType.APP_AD);
     ad.setAppAd(appAd);
-    ad.setHeadline1("sample headline");
-    ad.setDescription1("sample ad desc");
     ad.setDevicePreference(AdGroupAdServiceDevicePreference.SMART_PHONE);
     ad.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
     ad.setFinalUrl("http://www.apple.com/jp/itunes/app/appname/" + appId);
@@ -167,14 +167,14 @@ public class AdGroupAdServiceSample {
   public static AdGroupAd createExampleAppAdANDROID(long campaignId, String appId, long adGroupId) {
 
     AdGroupAdServiceAppAd appAd = new AdGroupAdServiceAppAd();
+    appAd.setHeadline("sample headline");
+    appAd.setDescription("sample ad desc");
     appAd.setDescription2("sample ad desc2");
 
     // ad
     AdGroupAdServiceAd ad = new AdGroupAdServiceAd();
     ad.setAdType(AdGroupAdServiceAdType.APP_AD);
     ad.setAppAd(appAd);
-    ad.setHeadline1("sample headline");
-    ad.setDescription1("sample ad desc");
     ad.setDevicePreference(AdGroupAdServiceDevicePreference.SMART_PHONE);
     ad.setFinalUrl("https://play.google.com/store/apps/details?id=" + appId);
 
@@ -291,7 +291,7 @@ public class AdGroupAdServiceSample {
     long accountId = ApiUtils.ACCOUNT_ID;
     Long campaignId = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(CampaignServiceType.STANDARD);
     Long adGroupId = parentValuesRepositoryFacade.getAdGroupValuesRepository().findAdGroupId(campaignId);
-    Long campaignIdMobileApp = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(CampaignServiceAppStore.IOS);
+    Long campaignIdMobileApp = parentValuesRepositoryFacade.getCampaignValuesRepository().findCampaignId(CampaignServiceAppOsType.IOS);
     String appIdIOS = parentValuesRepositoryFacade.getCampaignValuesRepository().findAppId(campaignIdMobileApp);
 
     // create request.

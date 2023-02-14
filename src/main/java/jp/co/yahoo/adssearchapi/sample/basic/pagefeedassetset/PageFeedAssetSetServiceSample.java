@@ -1,18 +1,18 @@
-package jp.co.yahoo.adssearchapi.sample.basic.pagefeedasset;
+package jp.co.yahoo.adssearchapi.sample.basic.pagefeedassetset;
 
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v9.api.PageFeedAssetSetServiceApi;
-import jp.co.yahoo.adssearchapi.v9.model.PageFeedAssetSet;
-import jp.co.yahoo.adssearchapi.v9.model.PageFeedAssetSetServiceOperation;
-import jp.co.yahoo.adssearchapi.v9.model.PageFeedAssetSetServiceSelector;
-import jp.co.yahoo.adssearchapi.v9.model.PageFeedAssetSetServiceValue;
+import jp.co.yahoo.adssearchapi.v10.api.PageFeedAssetSetServiceApi;
+import jp.co.yahoo.adssearchapi.v10.model.PageFeedAssetSet;
+import jp.co.yahoo.adssearchapi.v10.model.PageFeedAssetSetServiceOperation;
+import jp.co.yahoo.adssearchapi.v10.model.PageFeedAssetSetServiceSelector;
+import jp.co.yahoo.adssearchapi.v10.model.PageFeedAssetSetServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PageFeedAssetServiceSample {
+public class PageFeedAssetSetServiceSample {
   private static final PageFeedAssetSetServiceApi pageFeedAssetSetService = new PageFeedAssetSetServiceApi(ApiUtils.getYahooJapanAdsApiClient());
 
 
@@ -54,7 +54,7 @@ public class PageFeedAssetServiceSample {
       // PageFeedAssetSetService GET
       // =================================================================
       // create request.
-      PageFeedAssetSetServiceSelector pageFeedAssetSetServiceSelector = buildExampleGetRequest(accountId, valuesRepositoryFacade.getPageFeedAssetSetValuesRepository().getFeedIds());
+      PageFeedAssetSetServiceSelector pageFeedAssetSetServiceSelector = buildExampleGetRequest(accountId, valuesRepositoryFacade.getPageFeedAssetSetValuesRepository().getPageFeedAssetSetIds());
 
       // run
       pageFeedAssetSetService.pageFeedAssetSetServiceGetPost(pageFeedAssetSetServiceSelector);
@@ -152,16 +152,16 @@ public class PageFeedAssetServiceSample {
    * example get request.
    *
    * @param accountId     long
-   * @param feedIds List<Long>
+   * @param pageFeedAssetSetIds List<Long>
    * @return PageFeedAssetSetServiceSelector
    */
-  public static PageFeedAssetSetServiceSelector buildExampleGetRequest(long accountId, List<Long> feedIds) {
+  public static PageFeedAssetSetServiceSelector buildExampleGetRequest(long accountId, List<Long> pageFeedAssetSetIds) {
     // Set Selector
     PageFeedAssetSetServiceSelector selector = new PageFeedAssetSetServiceSelector();
     selector.setAccountId(accountId);
 
-    if (feedIds.size() > 0) {
-      selector.pageFeedAssetSetIds(feedIds);
+    if (pageFeedAssetSetIds.size() > 0) {
+      selector.pageFeedAssetSetIds(pageFeedAssetSetIds);
     }
 
     selector.setStartIndex(1);

@@ -1,8 +1,8 @@
 package jp.co.yahoo.adssearchapi.sample.repository;
 
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v9.model.PageFeedAssetSet;
-import jp.co.yahoo.adssearchapi.v9.model.PageFeedAssetSetServiceValue;
+import jp.co.yahoo.adssearchapi.v10.model.PageFeedAssetSet;
+import jp.co.yahoo.adssearchapi.v10.model.PageFeedAssetSetServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,34 +34,6 @@ public class PageFeedAssetSetValuesRepository {
   }
 
   /**
-   * @return FeedIds
-   */
-  public List<Long> getFeedIds(){
-    List<Long> feedFolderIds = new ArrayList<>();
-    if (this.valuesHolder.getPageFeedAssetSetServiceValueList().size() == 0) {
-      return feedFolderIds;
-    }
-    for (PageFeedAssetSetServiceValue value : this.valuesHolder.getPageFeedAssetSetServiceValueList()) {
-      feedFolderIds.add(value.getPageFeedAssetSet().getFeedId());
-    }
-    return feedFolderIds;
-  }
-
-  /**
-   * @return Long|null
-   */
-  public Long findFeedId() {
-
-    if (this.valuesHolder.getPageFeedAssetSetServiceValueList().size() == 0) {
-      return null;
-    }
-    for (PageFeedAssetSetServiceValue value : this.valuesHolder.getPageFeedAssetSetServiceValueList()) {
-      return value.getPageFeedAssetSet().getFeedId();
-    }
-    return null;
-  }
-
-  /**
    * @return Long|null
    */
   public Long findPageFeedAssetSetId() {
@@ -73,6 +45,20 @@ public class PageFeedAssetSetValuesRepository {
       return value.getPageFeedAssetSet().getPageFeedAssetSetId();
     }
     return null;
+  }
+
+  /**
+   * @return PageFeedAssetSetIds
+   */
+  public List<Long> getPageFeedAssetSetIds(){
+    List<Long> pageFeedAssetSetIdFolderIds = new ArrayList<>();
+    if (this.valuesHolder.getPageFeedAssetSetServiceValueList().size() == 0) {
+      return pageFeedAssetSetIdFolderIds;
+    }
+    for (PageFeedAssetSetServiceValue value : this.valuesHolder.getPageFeedAssetSetServiceValueList()) {
+      pageFeedAssetSetIdFolderIds.add(value.getPageFeedAssetSet().getPageFeedAssetSetId());
+    }
+    return pageFeedAssetSetIdFolderIds;
   }
 
   /**
