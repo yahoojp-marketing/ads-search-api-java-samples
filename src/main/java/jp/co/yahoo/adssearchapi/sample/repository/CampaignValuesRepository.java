@@ -6,10 +6,10 @@ package jp.co.yahoo.adssearchapi.sample.repository;
 import java.util.ArrayList;
 import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v9.model.Campaign;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v10.model.Campaign;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceAppOsType;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceValue;
 
 /**
  * Utility method collection for Java Sample Program.
@@ -72,15 +72,15 @@ public class CampaignValuesRepository {
   }
 
   /**
-   * @param appStore AppStore
+   * @param appOsType AppOsType
    * @return Long|null
    */
-  public Long findCampaignId(CampaignServiceAppStore appStore) {
+  public Long findCampaignId(CampaignServiceAppOsType appOsType) {
     if (this.valuesHolder.getCampaignServiceValueList().size() == 0) {
       return null;
     }
     for (CampaignServiceValue value : this.valuesHolder.getCampaignServiceValueList()) {
-      if (value.getCampaign().getType().equals(CampaignServiceType.MOBILE_APP) && value.getCampaign().getAppStore().equals(appStore)) {
+      if (value.getCampaign().getType().equals(CampaignServiceType.MOBILE_APP) && value.getCampaign().getAppOsType().equals(appOsType)) {
         return value.getCampaign().getCampaignId();
       }
     }
