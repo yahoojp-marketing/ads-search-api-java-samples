@@ -6,9 +6,9 @@ package jp.co.yahoo.adssearchapi.sample.repository;
 import java.util.ArrayList;
 import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupCriterionServiceValue;
 
 /**
  * Utility method collection for Java Sample Program.

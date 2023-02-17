@@ -11,22 +11,24 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v9.api.AdGroupServiceApi;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroup;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceBid;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceFrequentlyRunBetterPerformingAdsMode;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceOperation;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceSelector;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceSettings;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceUrlApprovalStatus;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v9.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v10.api.AdGroupServiceApi;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroup;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceBiddingStrategyConfiguration;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceCpcBiddingScheme;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceFrequentlyRunBetterPerformingAdsMode;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceOperation;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceSelector;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceSettings;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceUrlApprovalStatus;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v10.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceType;
 
 /**
  * example AdGroupService operation and Utility method collection.
@@ -120,9 +122,13 @@ public class AdGroupServiceSample {
    */
   public static AdGroup createExampleStandardAdGroup(long campaignId) {
 
-    // bid
-    AdGroupServiceBid bid = new AdGroupServiceBid();
-    bid.setCpc((long) 100);
+    // cpc
+    AdGroupServiceBiddingStrategyConfiguration biddingStrategyConfiguration = new AdGroupServiceBiddingStrategyConfiguration();
+    AdGroupServiceBiddingScheme biddingScheme = new AdGroupServiceBiddingScheme();
+    AdGroupServiceCpcBiddingScheme cpcBiddingScheme = new AdGroupServiceCpcBiddingScheme();
+    cpcBiddingScheme.setCpc((long) 100);
+    biddingScheme.setCpcBiddingScheme(cpcBiddingScheme);
+    biddingStrategyConfiguration.setBiddingScheme(biddingScheme);
 
     // settings
     AdGroupServiceTargetingSetting targetingSetting = new AdGroupServiceTargetingSetting();
@@ -148,7 +154,7 @@ public class AdGroupServiceSample {
     adGroup.setAdGroupName("SampleStandardAdGroup_" + campaignId + "_CreateOn_" + ApiUtils.getCurrentTimestamp());
     adGroup.setUserStatus(AdGroupServiceUserStatus.ACTIVE);
     adGroup.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
-    adGroup.setBid(bid);
+    adGroup.setBiddingStrategyConfiguration(biddingStrategyConfiguration);
     adGroup.setSettings(setting);
     adGroup.setCustomParameters(customParameters);
     adGroup.setFrequentlyRunBetterPerformingAdsMode(adGroupAdRotationMode);
@@ -164,9 +170,13 @@ public class AdGroupServiceSample {
    */
   public static AdGroup createExampleMobileAppIOSAdGroup(long campaignId) {
 
-    // bid
-    AdGroupServiceBid bid = new AdGroupServiceBid();
-    bid.setCpc((long) 100);
+    // cpc
+    AdGroupServiceBiddingStrategyConfiguration biddingStrategyConfiguration = new AdGroupServiceBiddingStrategyConfiguration();
+    AdGroupServiceBiddingScheme biddingScheme = new AdGroupServiceBiddingScheme();
+    AdGroupServiceCpcBiddingScheme cpcBiddingScheme = new AdGroupServiceCpcBiddingScheme();
+    cpcBiddingScheme.setCpc((long) 100);
+    biddingScheme.setCpcBiddingScheme(cpcBiddingScheme);
+    biddingStrategyConfiguration.setBiddingScheme(biddingScheme);
 
     // settings
     AdGroupServiceTargetingSetting targetingSetting = new AdGroupServiceTargetingSetting();
@@ -191,7 +201,7 @@ public class AdGroupServiceSample {
     adGroup.setAdGroupName("SampleMobileAppIOSAdGroup_CreateOn_" + ApiUtils.getCurrentTimestamp());
     adGroup.setUserStatus(AdGroupServiceUserStatus.ACTIVE);
     adGroup.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
-    adGroup.setBid(bid);
+    adGroup.setBiddingStrategyConfiguration(biddingStrategyConfiguration);
     adGroup.setSettings(setting);
     adGroup.setCustomParameters(customParameters);
     adGroup.setFrequentlyRunBetterPerformingAdsMode(adGroupAdRotationMode);
@@ -207,9 +217,13 @@ public class AdGroupServiceSample {
    */
   public static AdGroup createExampleMobileAppANDROIDAdGroup(long campaignId) {
 
-    // bid
-    AdGroupServiceBid bid = new AdGroupServiceBid();
-    bid.setCpc((long) 100);
+    // cpc
+    AdGroupServiceBiddingStrategyConfiguration biddingStrategyConfiguration = new AdGroupServiceBiddingStrategyConfiguration();
+    AdGroupServiceBiddingScheme biddingScheme = new AdGroupServiceBiddingScheme();
+    AdGroupServiceCpcBiddingScheme cpcBiddingScheme = new AdGroupServiceCpcBiddingScheme();
+    cpcBiddingScheme.setCpc((long) 100);
+    biddingScheme.setCpcBiddingScheme(cpcBiddingScheme);
+    biddingStrategyConfiguration.setBiddingScheme(biddingScheme);
 
     // settings
     AdGroupServiceTargetingSetting targetingSetting = new AdGroupServiceTargetingSetting();
@@ -226,7 +240,7 @@ public class AdGroupServiceSample {
     adGroup.setCampaignId(campaignId);
     adGroup.setAdGroupName("SampleMobileAppANDROIDAdGroup_CreateOn_" + ApiUtils.getCurrentTimestamp());
     adGroup.setUserStatus(AdGroupServiceUserStatus.ACTIVE);
-    adGroup.setBid(bid);
+    adGroup.setBiddingStrategyConfiguration(biddingStrategyConfiguration);
     adGroup.setSettings(setting);
     adGroup.setFrequentlyRunBetterPerformingAdsMode(adGroupAdRotationMode);
 
@@ -279,10 +293,14 @@ public class AdGroupServiceSample {
       operand.setAdGroupName("Sample_UpdateOn_" + adGroup.getAdGroupId() + "_" + ApiUtils.getCurrentTimestamp());
       operand.setUserStatus(AdGroupServiceUserStatus.PAUSED);
 
-      // bid
-      AdGroupServiceBid bid = new AdGroupServiceBid();
-      bid.setCpc((long) 150);
-      operand.setBid(bid);
+      // cpc
+      AdGroupServiceBiddingStrategyConfiguration biddingStrategyConfiguration = new AdGroupServiceBiddingStrategyConfiguration();
+      AdGroupServiceBiddingScheme biddingScheme = new AdGroupServiceBiddingScheme();
+      AdGroupServiceCpcBiddingScheme cpcBiddingScheme = new AdGroupServiceCpcBiddingScheme();
+      cpcBiddingScheme.setCpc((long) 100);
+      biddingScheme.setCpcBiddingScheme(cpcBiddingScheme);
+      biddingStrategyConfiguration.setBiddingScheme(biddingScheme);
+      operand.setBiddingStrategyConfiguration(biddingStrategyConfiguration);
 
       // settings
       AdGroupServiceTargetingSetting targetingSetting = new AdGroupServiceTargetingSetting();

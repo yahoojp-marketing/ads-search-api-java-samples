@@ -7,10 +7,10 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v9.api.FeedItemServiceApi;
-import jp.co.yahoo.adssearchapi.v9.model.FeedItemServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v9.model.FeedItemServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v9.model.FeedItemServiceSelector;
+import jp.co.yahoo.adssearchapi.v10.api.FeedItemServiceApi;
+import jp.co.yahoo.adssearchapi.v10.model.FeedItemServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v10.model.FeedItemServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v10.model.FeedItemServiceSelector;
 
 import java.util.Arrays;
 import java.util.List;

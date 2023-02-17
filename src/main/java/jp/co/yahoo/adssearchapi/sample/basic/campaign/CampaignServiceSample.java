@@ -4,36 +4,35 @@
 package jp.co.yahoo.adssearchapi.sample.basic.campaign;
 
 import jp.co.yahoo.adssearchapi.sample.basic.biddingstrategy.BiddingStrategyServiceSample;
-import jp.co.yahoo.adssearchapi.sample.basic.pagefeedasset.PageFeedAssetServiceSample;
+import jp.co.yahoo.adssearchapi.sample.basic.pagefeedassetset.PageFeedAssetSetServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v9.api.CampaignServiceApi;
-import jp.co.yahoo.adssearchapi.v9.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v9.model.Campaign;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceAppStore;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceBiddingStrategy;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceBiddingStrategyType;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceBudget;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceBudgetPeriod;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceCpcBiddingScheme;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceDynamicAdsForSearchSetting;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceEnhancedCpcEnabled;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceGeoTargetType;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceGeoTargetTypeSetting;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceMaximizeClicksBiddingScheme;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceOperation;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceSelector;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceSettingType;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceSettings;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v9.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v10.api.CampaignServiceApi;
+import jp.co.yahoo.adssearchapi.v10.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v10.model.Campaign;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceAppOsType;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceBiddingStrategy;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceBiddingStrategyType;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceBudget;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceCpcBiddingScheme;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceDynamicAdsForSearchSetting;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceEnhancedCpcEnabled;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceGeoTargetType;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceGeoTargetTypeSetting;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceOperation;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceSelector;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceSettingType;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceSettings;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceValue;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -208,7 +207,6 @@ public class CampaignServiceSample {
 
     // budget
     CampaignServiceBudget budget = new CampaignServiceBudget();
-    budget.setBudgetPeriod(CampaignServiceBudgetPeriod.DAILY);
     budget.setAmount((long) 1000);
 
     // settings
@@ -267,7 +265,6 @@ public class CampaignServiceSample {
 
     // budget
     CampaignServiceBudget budget = new CampaignServiceBudget();
-    budget.setBudgetPeriod(CampaignServiceBudgetPeriod.DAILY);
     budget.setAmount((long) 1000);
 
     // settings
@@ -306,7 +303,7 @@ public class CampaignServiceSample {
     campaign.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo"))));
     campaign.setEndDate("20301231");
     campaign.setType(CampaignServiceType.MOBILE_APP);
-    campaign.setAppStore(CampaignServiceAppStore.IOS);
+    campaign.setAppOsType(CampaignServiceAppOsType.IOS);
     campaign.setAppId(ApiUtils.getCurrentTimestamp());
     campaign.setTrackingUrl("http://www.yahoo.co.jp/?url={lpurl}&amp;a={creative}&amp;pid={_id1}");
     campaign.setBudget(budget);
@@ -328,7 +325,6 @@ public class CampaignServiceSample {
 
     // budget
     CampaignServiceBudget budget = new CampaignServiceBudget();
-    budget.setBudgetPeriod(CampaignServiceBudgetPeriod.DAILY);
     budget.setAmount((long) 1000);
 
     // settings
@@ -360,7 +356,7 @@ public class CampaignServiceSample {
     campaign.setStartDate(DateTimeFormatter.ofPattern("yyyyMMdd").format(LocalDateTime.now(ZoneId.of("Asia/Tokyo"))));
     campaign.setEndDate("20301231");
     campaign.setType(CampaignServiceType.MOBILE_APP);
-    campaign.setAppStore(CampaignServiceAppStore.ANDROID);
+    campaign.setAppOsType(CampaignServiceAppOsType.ANDROID);
     campaign.setAppId("jp.co.yahoo." + ApiUtils.getCurrentTimestamp());
     campaign.setBudget(budget);
     campaign.setBiddingStrategyConfiguration(campaignBiddingStrategy);
@@ -381,7 +377,6 @@ public class CampaignServiceSample {
 
     // budget
     CampaignServiceBudget budget = new CampaignServiceBudget();
-    budget.setBudgetPeriod(CampaignServiceBudgetPeriod.DAILY);
     budget.setAmount((long) 1000);
 
     // settings
@@ -485,7 +480,7 @@ public class CampaignServiceSample {
   private static ValuesHolder setup() throws Exception {
 
     ValuesHolder valuesHolderBiddingStrategy = BiddingStrategyServiceSample.create();
-    ValuesHolder valuesHolderFeed = PageFeedAssetServiceSample.create();
+    ValuesHolder valuesHolderFeed = PageFeedAssetSetServiceSample.create();
 
     ValuesHolder valuesHolder = new ValuesHolder();
     valuesHolder.setBiddingStrategyServiceValueList(valuesHolderBiddingStrategy.getBiddingStrategyServiceValueList());
@@ -551,7 +546,7 @@ public class CampaignServiceSample {
       campaignService.campaignServiceRemovePost(removeCampaignOperation);
     }
     BiddingStrategyServiceSample.cleanup(valuesHolder);
-    PageFeedAssetServiceSample.cleanup(valuesHolder);
+    PageFeedAssetSetServiceSample.cleanup(valuesHolder);
   }
 
   /**
@@ -578,7 +573,7 @@ public class CampaignServiceSample {
       operand.setBudget(budget);
 
       // set trackingUrl & customParameters
-      if (CampaignServiceType.STANDARD.equals(campaign.getType()) || CampaignServiceType.DYNAMIC_ADS_FOR_SEARCH.equals(campaign.getType()) || (CampaignServiceType.MOBILE_APP.equals(campaign.getType()) && CampaignServiceAppStore.IOS.equals(campaign.getAppStore()))) {
+      if (CampaignServiceType.STANDARD.equals(campaign.getType()) || CampaignServiceType.DYNAMIC_ADS_FOR_SEARCH.equals(campaign.getType()) || (CampaignServiceType.MOBILE_APP.equals(campaign.getType()) && CampaignServiceAppOsType.IOS.equals(campaign.getAppOsType()))) {
         operand.setTrackingUrl("http://yahoo.co.jp?url={lpurl}&amp;a={creative}&amp;pid={_id2}");
 
         // set customParameters
