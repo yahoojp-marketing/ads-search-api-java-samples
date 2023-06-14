@@ -8,31 +8,31 @@ import jp.co.yahoo.adssearchapi.sample.basic.pagefeedassetset.PageFeedAssetSetSe
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v10.api.CampaignServiceApi;
-import jp.co.yahoo.adssearchapi.v10.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v10.model.Campaign;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceAppOsType;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceBiddingStrategy;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceBiddingStrategyType;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceBudget;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceCpcBiddingScheme;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceDynamicAdsForSearchSetting;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceEnhancedCpcEnabled;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceGeoTargetType;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceGeoTargetTypeSetting;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceMaximizeClicksBiddingScheme;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceOperation;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceSelector;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceSettingType;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceSettings;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v10.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v11.api.CampaignServiceApi;
+import jp.co.yahoo.adssearchapi.v11.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v11.model.Campaign;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceAppOsType;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceBiddingStrategy;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceBiddingStrategyType;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceBudget;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceCpcBiddingScheme;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceDynamicAdsForSearchSetting;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceEnhancedCpcEnabled;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceGeoTargetType;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceGeoTargetTypeSetting;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceOperation;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceSelector;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceSettingType;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceSettings;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceValue;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -211,8 +211,8 @@ public class CampaignServiceSample {
 
     // settings
     CampaignServiceGeoTargetTypeSetting geoTargetTypeSetting = new CampaignServiceGeoTargetTypeSetting();
-    geoTargetTypeSetting.setNegativeGeoTargetType(CampaignServiceGeoTargetType.DONT_CARE);
-    geoTargetTypeSetting.setPositiveGeoTargetType(CampaignServiceGeoTargetType.AREA_OF_INTENT);
+    geoTargetTypeSetting.setNegativeGeoTargetType(CampaignServiceGeoTargetType.LOCATION_OF_PRESENCE);
+    geoTargetTypeSetting.setPositiveGeoTargetType(CampaignServiceGeoTargetType.LOCATION_OF_PRESENCE);
 
     CampaignServiceDynamicAdsForSearchSetting dynamicAdsForSearchSetting = new CampaignServiceDynamicAdsForSearchSetting();
     dynamicAdsForSearchSetting.setPageFeedAssetSetIds(feedIds);
@@ -269,8 +269,8 @@ public class CampaignServiceSample {
 
     // settings
     CampaignServiceGeoTargetTypeSetting geoTargetTypeSetting = new CampaignServiceGeoTargetTypeSetting();
-    geoTargetTypeSetting.setNegativeGeoTargetType(CampaignServiceGeoTargetType.DONT_CARE);
-    geoTargetTypeSetting.setPositiveGeoTargetType(CampaignServiceGeoTargetType.AREA_OF_INTENT);
+    geoTargetTypeSetting.setNegativeGeoTargetType(CampaignServiceGeoTargetType.LOCATION_OF_PRESENCE);
+    geoTargetTypeSetting.setPositiveGeoTargetType(CampaignServiceGeoTargetType.LOCATION_OF_PRESENCE);
 
     CampaignServiceDynamicAdsForSearchSetting dynamicAdsForSearchSetting = new CampaignServiceDynamicAdsForSearchSetting();
     dynamicAdsForSearchSetting.setPageFeedAssetSetIds(feedIds);
@@ -329,8 +329,8 @@ public class CampaignServiceSample {
 
     // settings
     CampaignServiceGeoTargetTypeSetting geoTargetTypeSetting = new CampaignServiceGeoTargetTypeSetting();
-    geoTargetTypeSetting.setNegativeGeoTargetType(CampaignServiceGeoTargetType.DONT_CARE);
-    geoTargetTypeSetting.setPositiveGeoTargetType(CampaignServiceGeoTargetType.AREA_OF_INTENT);
+    geoTargetTypeSetting.setNegativeGeoTargetType(CampaignServiceGeoTargetType.LOCATION_OF_PRESENCE);
+    geoTargetTypeSetting.setPositiveGeoTargetType(CampaignServiceGeoTargetType.LOCATION_OF_PRESENCE);
 
     CampaignServiceDynamicAdsForSearchSetting dynamicAdsForSearchSetting = new CampaignServiceDynamicAdsForSearchSetting();
     dynamicAdsForSearchSetting.setPageFeedAssetSetIds(feedIds);
@@ -381,8 +381,8 @@ public class CampaignServiceSample {
 
     // settings
     CampaignServiceGeoTargetTypeSetting geoTargetTypeSetting = new CampaignServiceGeoTargetTypeSetting();
-    geoTargetTypeSetting.setNegativeGeoTargetType(CampaignServiceGeoTargetType.DONT_CARE);
-    geoTargetTypeSetting.setPositiveGeoTargetType(CampaignServiceGeoTargetType.AREA_OF_INTENT);
+    geoTargetTypeSetting.setNegativeGeoTargetType(CampaignServiceGeoTargetType.LOCATION_OF_PRESENCE);
+    geoTargetTypeSetting.setPositiveGeoTargetType(CampaignServiceGeoTargetType.LOCATION_OF_PRESENCE);
 
     CampaignServiceTargetingSetting targetingSetting = new CampaignServiceTargetingSetting();
     targetingSetting.setTargetAll(CampaignServiceTargetAll.ACTIVE);
