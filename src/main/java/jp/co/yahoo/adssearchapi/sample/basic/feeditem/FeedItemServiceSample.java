@@ -3,14 +3,13 @@
  */
 package jp.co.yahoo.adssearchapi.sample.basic.feeditem;
 
-import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v10.api.FeedItemServiceApi;
-import jp.co.yahoo.adssearchapi.v10.model.FeedItemServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v10.model.FeedItemServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v10.model.FeedItemServiceSelector;
+import jp.co.yahoo.adssearchapi.v11.api.FeedItemServiceApi;
+import jp.co.yahoo.adssearchapi.v11.model.FeedItemServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v11.model.FeedItemServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v11.model.FeedItemServiceSelector;
 
 import java.util.Arrays;
 import java.util.List;
@@ -85,35 +84,6 @@ public class FeedItemServiceSample {
     selector.setNumberResults(20);
 
     return selector;
-  }
-
-  /**
-   * check & create upper service object.
-   *
-   * @return ValuesHolder
-   * @throws Exception throw exception
-   */
-  private static ValuesHolder setup() throws Exception {
-    return AdGroupServiceSample.create();
-  }
-
-  /**
-   * create basic FeedItem.
-   *
-   * @return ValuesHolder
-   * @throws Exception throw exception
-   */
-  public static ValuesHolder create() throws Exception {
-
-    ValuesHolder parentValuesHolder = setup();
-
-    ValuesHolder selfValuesHolder = new ValuesHolder();
-    selfValuesHolder.setBiddingStrategyServiceValueList(parentValuesHolder.getBiddingStrategyServiceValueList());
-    selfValuesHolder.setFeedServiceValueList(parentValuesHolder.getFeedServiceValueList());
-    selfValuesHolder.setCampaignServiceValueList(parentValuesHolder.getCampaignServiceValueList());
-    selfValuesHolder.setAdGroupServiceValueList(parentValuesHolder.getAdGroupServiceValueList());
-
-    return selfValuesHolder;
   }
 
 }
