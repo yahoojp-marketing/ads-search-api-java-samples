@@ -11,13 +11,13 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v11.api.AdGroupBidMultiplierServiceApi;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupBidMultiplier;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupBidMultiplierServiceOperation;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupBidMultiplierServicePlatformType;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupBidMultiplierServiceSelector;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupBidMultiplierServiceValue;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v12.api.AdGroupBidMultiplierServiceApi;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupBidMultiplier;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupBidMultiplierServiceOperation;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupBidMultiplierServicePlatformType;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupBidMultiplierServiceSelector;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupBidMultiplierServiceValue;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceType;
 
 /**
  * example AdGroupBidMultiplierService operation and Utility method collection.
@@ -55,7 +55,7 @@ public class AdGroupBidMultiplierServiceSample {
       AdGroupBidMultiplierServiceOperation setRequest = buildExampleMutateRequest(accountId, createExampleSetRequest(campaignId, adGroupId));
 
       // run
-      List<AdGroupBidMultiplierServiceValue> setResponse = adGroupBidMultiplierService.adGroupBidMultiplierServiceSetPost(setRequest).getRval().getValues();
+      List<AdGroupBidMultiplierServiceValue> setResponse = adGroupBidMultiplierService.adGroupBidMultiplierServiceSetPost(ApiUtils.BASE_ACCOUNT_ID, setRequest).getRval().getValues();
 
       List<AdGroupBidMultiplier> adGroupBidMultipliers = new ArrayList<>();
       for (AdGroupBidMultiplierServiceValue adGroupBidMultiplierValue: setResponse) {
@@ -69,7 +69,7 @@ public class AdGroupBidMultiplierServiceSample {
       AdGroupBidMultiplierServiceSelector adGroupBidMultiplierSelector = buildExampleGetRequest(accountId, campaignId, adGroupId);
 
       // run
-      adGroupBidMultiplierService.adGroupBidMultiplierServiceGetPost(adGroupBidMultiplierSelector);
+      adGroupBidMultiplierService.adGroupBidMultiplierServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, adGroupBidMultiplierSelector);
 
       // =================================================================
       // AdGroupBidMultiplierService REMOVE
@@ -78,7 +78,7 @@ public class AdGroupBidMultiplierServiceSample {
       AdGroupBidMultiplierServiceOperation removeRequest = buildExampleMutateRequest(accountId, adGroupBidMultipliers);
 
       // run
-      adGroupBidMultiplierService.adGroupBidMultiplierServiceRemovePost(removeRequest);
+      adGroupBidMultiplierService.adGroupBidMultiplierServiceRemovePost(ApiUtils.BASE_ACCOUNT_ID, removeRequest);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -94,7 +94,7 @@ public class AdGroupBidMultiplierServiceSample {
   public static AdGroupBidMultiplierServiceOperation buildExampleMutateRequest(long accountId, List<AdGroupBidMultiplier> operand) {
     AdGroupBidMultiplierServiceOperation operation = new AdGroupBidMultiplierServiceOperation();
     operation.setAccountId(accountId);
-    operation.getOperand().addAll(operand);
+    operation.setOperand(operand);
 
     return operation;
   }

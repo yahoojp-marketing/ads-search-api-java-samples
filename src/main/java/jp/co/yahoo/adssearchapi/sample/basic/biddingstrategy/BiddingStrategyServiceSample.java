@@ -10,16 +10,16 @@ import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v11.api.BiddingStrategyServiceApi;
-import jp.co.yahoo.adssearchapi.v11.model.BiddingStrategy;
-import jp.co.yahoo.adssearchapi.v11.model.BiddingStrategyServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v11.model.BiddingStrategyServiceMaximizeClicksBiddingScheme;
-import jp.co.yahoo.adssearchapi.v11.model.BiddingStrategyServiceOperation;
-import jp.co.yahoo.adssearchapi.v11.model.BiddingStrategyServiceSelector;
-import jp.co.yahoo.adssearchapi.v11.model.BiddingStrategyServiceTargetCpaBiddingScheme;
-import jp.co.yahoo.adssearchapi.v11.model.BiddingStrategyServiceTargetRoasBiddingScheme;
-import jp.co.yahoo.adssearchapi.v11.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v11.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v12.api.BiddingStrategyServiceApi;
+import jp.co.yahoo.adssearchapi.v12.model.BiddingStrategy;
+import jp.co.yahoo.adssearchapi.v12.model.BiddingStrategyServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v12.model.BiddingStrategyServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v12.model.BiddingStrategyServiceOperation;
+import jp.co.yahoo.adssearchapi.v12.model.BiddingStrategyServiceSelector;
+import jp.co.yahoo.adssearchapi.v12.model.BiddingStrategyServiceTargetCpaBiddingScheme;
+import jp.co.yahoo.adssearchapi.v12.model.BiddingStrategyServiceTargetRoasBiddingScheme;
+import jp.co.yahoo.adssearchapi.v12.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v12.model.BiddingStrategyServiceValue;
 
 /**
  * example BiddingStrategyService operation and Utility method collection.
@@ -49,7 +49,7 @@ public class BiddingStrategyServiceSample {
       BiddingStrategyServiceOperation addBiddingStrategyOperation = buildExampleMutateRequest(accountId, Collections.singletonList(createExampleTargetCpaBidding()));
 
       // run
-      List<BiddingStrategyServiceValue> biddingStrategyValues = biddingStrategyService.biddingStrategyServiceAddPost(addBiddingStrategyOperation).getRval().getValues();
+      List<BiddingStrategyServiceValue> biddingStrategyValues = biddingStrategyService.biddingStrategyServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addBiddingStrategyOperation).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setBiddingStrategyServiceValueList(biddingStrategyValues);
 
       // =================================================================
@@ -60,7 +60,7 @@ public class BiddingStrategyServiceSample {
           buildExampleMutateRequest(accountId, createExampleSetRequest(valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategies()));
 
       // run
-      biddingStrategyService.biddingStrategyServiceSetPost( setBiddingStrategyOperation);
+      biddingStrategyService.biddingStrategyServiceSetPost(ApiUtils.BASE_ACCOUNT_ID, setBiddingStrategyOperation);
 
       // =================================================================
       // BiddingStrategyService::GET
@@ -69,7 +69,7 @@ public class BiddingStrategyServiceSample {
       BiddingStrategyServiceSelector biddingStrategySelector = buildExampleGetRequest(accountId, valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategyIds());
 
       // run
-      biddingStrategyService.biddingStrategyServiceGetPost(biddingStrategySelector);
+      biddingStrategyService.biddingStrategyServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, biddingStrategySelector);
 
       // =================================================================
       // BiddingStrategyService::REMOVE
@@ -79,7 +79,7 @@ public class BiddingStrategyServiceSample {
           buildExampleMutateRequest(accountId, valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategies());
 
       // run
-      biddingStrategyService.biddingStrategyServiceRemovePost(removeBiddingStrategyOperation);
+      biddingStrategyService.biddingStrategyServiceRemovePost(ApiUtils.BASE_ACCOUNT_ID, removeBiddingStrategyOperation);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -100,7 +100,7 @@ public class BiddingStrategyServiceSample {
     BiddingStrategyServiceOperation addBiddingStrategyOperation = buildExampleMutateRequest(accountId, Collections.singletonList(createExampleTargetCpaBidding()));
 
     // Run
-    List<BiddingStrategyServiceValue> biddingStrategyValues = biddingStrategyService.biddingStrategyServiceAddPost(addBiddingStrategyOperation).getRval().getValues();
+    List<BiddingStrategyServiceValue> biddingStrategyValues = biddingStrategyService.biddingStrategyServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addBiddingStrategyOperation).getRval().getValues();
     valuesHolder.setBiddingStrategyServiceValueList(biddingStrategyValues);
     return valuesHolder;
   }
@@ -123,7 +123,7 @@ public class BiddingStrategyServiceSample {
         buildExampleMutateRequest(accountId, valuesRepositoryFacade.getBiddingStrategyValuesRepository().getBiddingStrategies());
 
     // Run
-    biddingStrategyService.biddingStrategyServiceRemovePost(removeBiddingStrategyOperation);
+    biddingStrategyService.biddingStrategyServiceRemovePost(ApiUtils.BASE_ACCOUNT_ID, removeBiddingStrategyOperation);
   }
 
   /**
@@ -132,7 +132,7 @@ public class BiddingStrategyServiceSample {
   public static BiddingStrategyServiceOperation buildExampleMutateRequest(long accountId, List<BiddingStrategy> operand) {
     BiddingStrategyServiceOperation operation = new BiddingStrategyServiceOperation();
     operation.setAccountId(accountId);
-    operation.getOperand().addAll(operand);
+    operation.setOperand(operand);
 
     return operation;
   }

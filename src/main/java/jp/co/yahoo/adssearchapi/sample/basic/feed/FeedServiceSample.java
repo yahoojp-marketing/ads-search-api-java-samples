@@ -6,8 +6,8 @@ package jp.co.yahoo.adssearchapi.sample.basic.feed;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v11.api.FeedServiceApi;
-import jp.co.yahoo.adssearchapi.v11.model.FeedServiceSelector;
+import jp.co.yahoo.adssearchapi.v12.api.FeedServiceApi;
+import jp.co.yahoo.adssearchapi.v12.model.FeedServiceSelector;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class FeedServiceSample {
       FeedServiceSelector feedServiceSelector = buildExampleGetRequest(accountId, valuesRepositoryFacade.getFeedValueRepository().getFeedIds());
 
       // run
-      feedService.feedServiceGetPost(feedServiceSelector);
+      feedService.feedServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, feedServiceSelector);
 
     } catch (Exception e) {
       e.printStackTrace();

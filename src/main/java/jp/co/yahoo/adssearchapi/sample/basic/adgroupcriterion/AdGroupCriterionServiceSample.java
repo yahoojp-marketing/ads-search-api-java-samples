@@ -11,23 +11,23 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v11.api.AdGroupCriterionServiceApi;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceBid;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceBiddableAdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceCriterion;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceKeyword;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceKeywordMatchType;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v11.model.AdGroupCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v12.api.AdGroupCriterionServiceApi;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceBid;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceBiddableAdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceCriterion;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceKeyword;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceKeywordMatchType;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceType;
 
 /**
  * example AdGroupCriterionService operation and Utility method collection.
@@ -67,7 +67,7 @@ public class AdGroupCriterionServiceSample {
       }});
 
       // run
-      List<AdGroupCriterionServiceValue> addResponse = adGroupCriterionService.adGroupCriterionServiceAddPost(addRequest).getRval().getValues();
+      List<AdGroupCriterionServiceValue> addResponse = adGroupCriterionService.adGroupCriterionServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addRequest).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setAdGroupCriterionServiceValueList(addResponse);
 
       // =================================================================
@@ -77,7 +77,7 @@ public class AdGroupCriterionServiceSample {
       AdGroupCriterionServiceSelector getRequest = buildExampleGetRequest(accountId, AdGroupCriterionServiceUse.BIDDABLE, valuesRepositoryFacade.getAdGroupCriterionValuesRepository().getAdGroupCriterions());
 
       // run
-      adGroupCriterionService.adGroupCriterionServiceGetPost(getRequest);
+      adGroupCriterionService.adGroupCriterionServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, getRequest);
 
       // =================================================================
       // AdGroupCriterionService SET
@@ -87,7 +87,7 @@ public class AdGroupCriterionServiceSample {
           buildExampleMutateRequest(accountId, createExampleSetRequest(valuesRepositoryFacade.getAdGroupCriterionValuesRepository().getAdGroupCriterions()));
 
       // run
-      adGroupCriterionService.adGroupCriterionServiceSetPost(setRequest);
+      adGroupCriterionService.adGroupCriterionServiceSetPost(ApiUtils.BASE_ACCOUNT_ID, setRequest);
 
       // =================================================================
       // AdGroupCriterionService REMOVE
@@ -96,7 +96,7 @@ public class AdGroupCriterionServiceSample {
       AdGroupCriterionServiceOperation removeRequest = buildExampleMutateRequest(accountId, valuesRepositoryFacade.getAdGroupCriterionValuesRepository().getAdGroupCriterions());
 
       // run
-      adGroupCriterionService.adGroupCriterionServiceRemovePost(removeRequest);
+      adGroupCriterionService.adGroupCriterionServiceRemovePost(ApiUtils.BASE_ACCOUNT_ID, removeRequest);
 
     } catch (Exception ex) {
       ex.printStackTrace();
@@ -112,7 +112,7 @@ public class AdGroupCriterionServiceSample {
   public static AdGroupCriterionServiceOperation buildExampleMutateRequest(long accountId, List<AdGroupCriterion> operand) {
     AdGroupCriterionServiceOperation operation = new AdGroupCriterionServiceOperation();
     operation.setAccountId(accountId);
-    operation.getOperand().addAll(operand);
+    operation.setOperand(operand);
 
     return operation;
   }
@@ -286,7 +286,7 @@ public class AdGroupCriterionServiceSample {
     );
 
     // run
-    List<AdGroupCriterionServiceValue> addResponse = adGroupCriterionService.adGroupCriterionServiceAddPost(addRequest).getRval().getValues();
+    List<AdGroupCriterionServiceValue> addResponse = adGroupCriterionService.adGroupCriterionServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addRequest).getRval().getValues();
 
     ValuesHolder seflValuesHolder = new ValuesHolder();
     seflValuesHolder.setBiddingStrategyServiceValueList(parentValuesHolder.getBiddingStrategyServiceValueList());

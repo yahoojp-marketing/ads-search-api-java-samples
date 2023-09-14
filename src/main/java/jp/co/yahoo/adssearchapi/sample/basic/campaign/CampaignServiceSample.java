@@ -8,31 +8,31 @@ import jp.co.yahoo.adssearchapi.sample.basic.pagefeedassetset.PageFeedAssetSetSe
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v11.api.CampaignServiceApi;
-import jp.co.yahoo.adssearchapi.v11.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v11.model.Campaign;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceAppOsType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceBiddingStrategy;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceBiddingStrategyType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceBudget;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceCpcBiddingScheme;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceDynamicAdsForSearchSetting;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceEnhancedCpcEnabled;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceGeoTargetType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceGeoTargetTypeSetting;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceMaximizeClicksBiddingScheme;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceOperation;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceSelector;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceSettingType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceSettings;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v12.api.CampaignServiceApi;
+import jp.co.yahoo.adssearchapi.v12.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v12.model.Campaign;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceAppOsType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceBiddingStrategy;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceBiddingStrategyType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceBudget;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceCpcBiddingScheme;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceDynamicAdsForSearchSetting;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceEnhancedCpcEnabled;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceGeoTargetType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceGeoTargetTypeSetting;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceOperation;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceSelector;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceSettingType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceSettings;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceValue;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -88,7 +88,7 @@ public class CampaignServiceSample {
       }});
 
       // run
-      List<CampaignServiceValue> addCampaignValues = campaignService.campaignServiceAddPost(addCampaignOperation).getRval().getValues();
+      List<CampaignServiceValue> addCampaignValues = campaignService.campaignServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addCampaignOperation).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setCampaignServiceValueList(addCampaignValues);
 
       // =================================================================
@@ -98,7 +98,7 @@ public class CampaignServiceSample {
       CampaignServiceSelector campaignSelector = buildExampleGetRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaignIds());
 
       // run
-      campaignService.campaignServiceGetPost(campaignSelector);
+      campaignService.campaignServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, campaignSelector);
 
       // check review status
       checkStatus(valuesRepositoryFacade.getCampaignValuesRepository().getCampaignIds());
@@ -110,7 +110,7 @@ public class CampaignServiceSample {
       CampaignServiceOperation setCampaignOperation = buildExampleMutateRequest(accountId, createExampleSetRequest(valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns()));
 
       // run
-      campaignService.campaignServiceSetPost(setCampaignOperation);
+      campaignService.campaignServiceSetPost(ApiUtils.BASE_ACCOUNT_ID, setCampaignOperation);
 
       // =================================================================
       // CampaignService::REMOVE
@@ -120,7 +120,7 @@ public class CampaignServiceSample {
           buildExampleMutateRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns());
 
       // run
-      campaignService.campaignServiceRemovePost(removeCampaignOperation);
+      campaignService.campaignServiceRemovePost(ApiUtils.BASE_ACCOUNT_ID, removeCampaignOperation);
       valuesHolder.setCampaignServiceValueList(new ArrayList<>());
 
     } catch (Exception e) {
@@ -440,7 +440,7 @@ public class CampaignServiceSample {
         Thread.sleep(30000);
 
         CampaignServiceSelector campaignSelector = buildExampleGetRequest(ApiUtils.ACCOUNT_ID, campaignIds);
-        List<CampaignServiceValue> getCampaignValues = campaignService.campaignServiceGetPost(campaignSelector).getRval().getValues();
+        List<CampaignServiceValue> getCampaignValues = campaignService.campaignServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, campaignSelector).getRval().getValues();
 
         int approvalCount = 0;
         for (CampaignServiceValue campaignValues : getCampaignValues) {
@@ -519,7 +519,7 @@ public class CampaignServiceSample {
       add(createExampleDynamicAdsForSearchCampaign("SampleCpcDynamicAdsForSearchCampaign_", feedIds, createManualBiddingCampaignBiddingStrategy()));
     }});
 
-    List<CampaignServiceValue> addCampaignValues = campaignService.campaignServiceAddPost(addCampaignOperation).getRval().getValues();
+    List<CampaignServiceValue> addCampaignValues = campaignService.campaignServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addCampaignOperation).getRval().getValues();
 
     ValuesHolder selfValuesHolder = new ValuesHolder();
     selfValuesHolder.setBiddingStrategyServiceValueList(parentValuesHolder.getBiddingStrategyServiceValueList());
@@ -543,7 +543,7 @@ public class CampaignServiceSample {
       CampaignServiceOperation removeCampaignOperation =
           buildExampleMutateRequest(accountId, valuesRepositoryFacade.getCampaignValuesRepository().getCampaigns());
 
-      campaignService.campaignServiceRemovePost(removeCampaignOperation);
+      campaignService.campaignServiceRemovePost(ApiUtils.BASE_ACCOUNT_ID, removeCampaignOperation);
     }
     BiddingStrategyServiceSample.cleanup(valuesHolder);
     PageFeedAssetSetServiceSample.cleanup(valuesHolder);
