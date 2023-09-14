@@ -10,23 +10,23 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v11.api.CampaignTargetServiceApi;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTarget;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceDayOfWeek;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceExcludedType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceLocationTarget;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceMinuteOfHour;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceNetworkCoverageType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceNetworkTarget;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceOperation;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServicePlatformTarget;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServicePlatformType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceScheduleTarget;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceSelector;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceTarget;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceTargetType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignTargetServiceValue;
+import jp.co.yahoo.adssearchapi.v12.api.CampaignTargetServiceApi;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTarget;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceDayOfWeek;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceExcludedType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceLocationTarget;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceMinuteOfHour;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceNetworkCoverageType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceNetworkTarget;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceOperation;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServicePlatformTarget;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServicePlatformType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceScheduleTarget;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceSelector;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceTarget;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceTargetType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignTargetServiceValue;
 
 /**
  * example CampaignTargetService operation and Utility method collection.
@@ -70,7 +70,7 @@ public class CampaignTargetServiceSample {
       }});
 
       // run
-      List<CampaignTargetServiceValue> addCampaignTargetValues = campaignTargetService.campaignTargetServiceAddPost(addCampaignTargetOperation).getRval().getValues();
+      List<CampaignTargetServiceValue> addCampaignTargetValues = campaignTargetService.campaignTargetServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addCampaignTargetOperation).getRval().getValues();
 
       List<CampaignTarget> campaignTargets = new ArrayList<>();
       for (CampaignTargetServiceValue campaignTargetValues: addCampaignTargetValues) {
@@ -84,7 +84,7 @@ public class CampaignTargetServiceSample {
       CampaignTargetServiceOperation setCampaignTargetOperation = buildExampleMutateRequest(accountId, createExampleSetRequest(campaignTargets));
 
       // run
-      campaignTargetService.campaignTargetServiceSetPost(setCampaignTargetOperation);
+      campaignTargetService.campaignTargetServiceSetPost(ApiUtils.BASE_ACCOUNT_ID, setCampaignTargetOperation);
 
       // =================================================================
       // CampaignTargetService::GET
@@ -93,7 +93,7 @@ public class CampaignTargetServiceSample {
       CampaignTargetServiceSelector campaignTargetSelector = buildExampleGetRequest(accountId, campaignTargets);
 
       // run
-      campaignTargetService.campaignTargetServiceGetPost(campaignTargetSelector);
+      campaignTargetService.campaignTargetServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, campaignTargetSelector);
 
       // =================================================================
       // CampaignTargetService::REMOVE
@@ -102,7 +102,7 @@ public class CampaignTargetServiceSample {
       CampaignTargetServiceOperation removeCampaignTargetOperation = buildExampleMutateRequest(accountId, campaignTargets);
 
       // run
-      campaignTargetService.campaignTargetServiceRemovePost(removeCampaignTargetOperation);
+      campaignTargetService.campaignTargetServiceRemovePost(ApiUtils.BASE_ACCOUNT_ID, removeCampaignTargetOperation);
 
     } catch (Exception e) {
       e.printStackTrace();

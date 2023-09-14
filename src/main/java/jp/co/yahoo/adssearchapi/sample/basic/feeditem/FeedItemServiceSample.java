@@ -6,10 +6,10 @@ package jp.co.yahoo.adssearchapi.sample.basic.feeditem;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v11.api.FeedItemServiceApi;
-import jp.co.yahoo.adssearchapi.v11.model.FeedItemServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v11.model.FeedItemServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v11.model.FeedItemServiceSelector;
+import jp.co.yahoo.adssearchapi.v12.api.FeedItemServiceApi;
+import jp.co.yahoo.adssearchapi.v12.model.FeedItemServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v12.model.FeedItemServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v12.model.FeedItemServiceSelector;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,7 +43,7 @@ public class FeedItemServiceSample {
       FeedItemServiceSelector feedItemSelector = buildExampleGetRequest(accountId, valuesRepositoryFacade.getFeedItemValuesRepository().getFeedItemIds());
 
       // run
-      feedItemService.feedItemServiceGetPost(feedItemSelector);
+      feedItemService.feedItemServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, feedItemSelector);
 
     } catch (Exception e) {
       e.printStackTrace();

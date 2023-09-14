@@ -7,12 +7,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import jp.co.yahoo.adssearchapi.v11.YahooJapanAdsApiClient;
+import jp.co.yahoo.adssearchapi.v12.YahooJapanAdsApiClient;
 
 /**
  * Utility method collection for Java Sample Program.
  */
 public class ApiUtils {
+
+  public static final long BASE_ACCOUNT_ID;
 
   public static final long ACCOUNT_ID;
 
@@ -28,6 +30,8 @@ public class ApiUtils {
   static {
     ResourceBundle bundle = ResourceBundle.getBundle("api_config");
 
+    BASE_ACCOUNT_ID = Long.parseLong(Optional.ofNullable(System.getenv("BASE_ACCOUNT_ID")).orElseGet(() ->
+        bundle.getString("BASE_ACCOUNT_ID")));
     ACCOUNT_ID = Long.parseLong(Optional.ofNullable(System.getenv("ACCOUNT_ID")).orElseGet(() ->
         bundle.getString("ACCOUNT_ID")));
     CLIENT_ID = Optional.ofNullable(System.getenv("CLIENT_ID")).orElseGet(() ->

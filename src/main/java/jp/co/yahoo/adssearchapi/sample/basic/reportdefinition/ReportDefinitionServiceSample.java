@@ -9,22 +9,22 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
-import jp.co.yahoo.adssearchapi.v11.api.ReportDefinitionServiceApi;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinition;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceDownloadSelector;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceGetReportFields;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceOperation;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceReportCompressType;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceReportDateRangeType;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceReportDownloadEncode;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceReportDownloadFormat;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceReportIncludeDeleted;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceReportLanguage;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceReportSortField;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceReportSortType;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceReportType;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceSelector;
-import jp.co.yahoo.adssearchapi.v11.model.ReportDefinitionServiceValue;
+import jp.co.yahoo.adssearchapi.v12.api.ReportDefinitionServiceApi;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinition;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceDownloadSelector;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceGetReportFields;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceOperation;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceReportCompressType;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceReportDateRangeType;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceReportDownloadEncode;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceReportDownloadFormat;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceReportIncludeDeleted;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceReportLanguage;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceReportSortField;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceReportSortType;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceReportType;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceSelector;
+import jp.co.yahoo.adssearchapi.v12.model.ReportDefinitionServiceValue;
 import org.springframework.core.io.Resource;
 import org.springframework.util.StreamUtils;
 
@@ -96,7 +96,7 @@ public class ReportDefinitionServiceSample {
       );
 
       // run
-      List<ReportDefinitionServiceValue> addResponse = reportDefinitionService.reportDefinitionServiceAddPost(addRequest).getRval().getValues();
+      List<ReportDefinitionServiceValue> addResponse = reportDefinitionService.reportDefinitionServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addRequest).getRval().getValues();
       List<ReportDefinition> reportDefinitionList = new ArrayList<>();
       List<Long> reportJobIds = new ArrayList<>();
       for (ReportDefinitionServiceValue values : addResponse) {
@@ -114,7 +114,7 @@ public class ReportDefinitionServiceSample {
       ReportDefinitionServiceSelector selector = buildExampleGetRequest(accountId, reportJobIds);
 
       // run
-      List<ReportDefinitionServiceValue> getResponse = reportDefinitionService.reportDefinitionServiceGetPost(selector).getRval().getValues();
+      List<ReportDefinitionServiceValue> getResponse = reportDefinitionService.reportDefinitionServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, selector).getRval().getValues();
 
       long getJobIds = 0;
       for (ReportDefinitionServiceValue values : getResponse) {
@@ -125,7 +125,7 @@ public class ReportDefinitionServiceSample {
       // ReportDefinitionService download (http request)
       // =================================================================
       ReportDefinitionServiceDownloadSelector downloadSelector = buildExampleDownloadRequest(accountId, getJobIds);
-      Resource report = reportDefinitionService.reportDefinitionServiceDownloadPost(downloadSelector);
+      Resource report = reportDefinitionService.reportDefinitionServiceDownloadPost(ApiUtils.BASE_ACCOUNT_ID, downloadSelector);
       System.out.println("### reportString=\n" + StreamUtils.copyToString(report.getInputStream(), StandardCharsets.UTF_8));
 
       // =================================================================
@@ -135,7 +135,7 @@ public class ReportDefinitionServiceSample {
       ReportDefinitionServiceOperation removeRequest = buildExampleMutateRequest(accountId, reportDefinitionList);
 
       // run
-      reportDefinitionService.reportDefinitionServiceRemovePost(removeRequest);
+      reportDefinitionService.reportDefinitionServiceRemovePost(ApiUtils.BASE_ACCOUNT_ID, removeRequest);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -169,7 +169,7 @@ public class ReportDefinitionServiceSample {
   public static ReportDefinitionServiceOperation buildExampleMutateRequest(long accountId, List<ReportDefinition> operand) {
     ReportDefinitionServiceOperation operation = new ReportDefinitionServiceOperation();
     operation.setAccountId(accountId);
-    operation.getOperand().addAll(operand);
+    operation.setOperand(operand);
 
     return operation;
   }
@@ -226,7 +226,7 @@ public class ReportDefinitionServiceSample {
 
       // get
       ReportDefinitionServiceSelector selector = buildExampleGetRequest(ApiUtils.ACCOUNT_ID, reportJobIds);
-      List<ReportDefinitionServiceValue> reportDefinitionValues = reportDefinitionService.reportDefinitionServiceGetPost(selector).getRval().getValues();
+      List<ReportDefinitionServiceValue> reportDefinitionValues = reportDefinitionService.reportDefinitionServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, selector).getRval().getValues();
 
       int completedCount = 0;
 

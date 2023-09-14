@@ -3,11 +3,11 @@ package jp.co.yahoo.adssearchapi.sample.basic.pagefeedassetset;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v11.api.PageFeedAssetSetServiceApi;
-import jp.co.yahoo.adssearchapi.v11.model.PageFeedAssetSet;
-import jp.co.yahoo.adssearchapi.v11.model.PageFeedAssetSetServiceOperation;
-import jp.co.yahoo.adssearchapi.v11.model.PageFeedAssetSetServiceSelector;
-import jp.co.yahoo.adssearchapi.v11.model.PageFeedAssetSetServiceValue;
+import jp.co.yahoo.adssearchapi.v12.api.PageFeedAssetSetServiceApi;
+import jp.co.yahoo.adssearchapi.v12.model.PageFeedAssetSet;
+import jp.co.yahoo.adssearchapi.v12.model.PageFeedAssetSetServiceOperation;
+import jp.co.yahoo.adssearchapi.v12.model.PageFeedAssetSetServiceSelector;
+import jp.co.yahoo.adssearchapi.v12.model.PageFeedAssetSetServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,7 @@ public class PageFeedAssetSetServiceSample {
       }});
 
       // run
-      List<PageFeedAssetSetServiceValue> pageFeedAssetSetServiceValue = pageFeedAssetSetService.pageFeedAssetSetServiceAddPost(addPageFeedAssetSetServiceOperation).getRval().getValues();
+      List<PageFeedAssetSetServiceValue> pageFeedAssetSetServiceValue = pageFeedAssetSetService.pageFeedAssetSetServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addPageFeedAssetSetServiceOperation).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setPageFeedAssetSetServiceValueList(pageFeedAssetSetServiceValue);
 
       // =================================================================
@@ -48,7 +48,7 @@ public class PageFeedAssetSetServiceSample {
       PageFeedAssetSetServiceOperation setPageFeedAssetSetServiceOperation = buildExampleMutateRequest(accountId, createExampleSetRequest(valuesRepositoryFacade.getPageFeedAssetSetValuesRepository().getPageFeedAssetSet()));
 
       // run
-      pageFeedAssetSetService.pageFeedAssetSetServiceSetPost(setPageFeedAssetSetServiceOperation);
+      pageFeedAssetSetService.pageFeedAssetSetServiceSetPost(ApiUtils.BASE_ACCOUNT_ID, setPageFeedAssetSetServiceOperation);
 
       // =================================================================
       // PageFeedAssetSetService GET
@@ -57,7 +57,7 @@ public class PageFeedAssetSetServiceSample {
       PageFeedAssetSetServiceSelector pageFeedAssetSetServiceSelector = buildExampleGetRequest(accountId, valuesRepositoryFacade.getPageFeedAssetSetValuesRepository().getPageFeedAssetSetIds());
 
       // run
-      pageFeedAssetSetService.pageFeedAssetSetServiceGetPost(pageFeedAssetSetServiceSelector);
+      pageFeedAssetSetService.pageFeedAssetSetServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, pageFeedAssetSetServiceSelector);
 
       // =================================================================
       // PageFeedAssetSetService REMOVE
@@ -66,7 +66,7 @@ public class PageFeedAssetSetServiceSample {
       PageFeedAssetSetServiceOperation removePageFeedAssetSetServiceOperation = buildExampleMutateRequest(accountId, valuesRepositoryFacade.getPageFeedAssetSetValuesRepository().getPageFeedAssetSet());
 
       // run
-      pageFeedAssetSetService.pageFeedAssetSetServiceRemovePost(removePageFeedAssetSetServiceOperation);
+      pageFeedAssetSetService.pageFeedAssetSetServiceRemovePost(ApiUtils.BASE_ACCOUNT_ID, removePageFeedAssetSetServiceOperation);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -84,7 +84,7 @@ public class PageFeedAssetSetServiceSample {
     }});
 
     // Run
-    List<PageFeedAssetSetServiceValue> pageFeedAssetSetServiceOperationValue = pageFeedAssetSetService.pageFeedAssetSetServiceAddPost(addFeedOperation).getRval().getValues();
+    List<PageFeedAssetSetServiceValue> pageFeedAssetSetServiceOperationValue = pageFeedAssetSetService.pageFeedAssetSetServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addFeedOperation).getRval().getValues();
     valuesHolder.setPageFeedAssetSetServiceValueList(pageFeedAssetSetServiceOperationValue);
     return valuesHolder;
   }
@@ -100,7 +100,7 @@ public class PageFeedAssetSetServiceSample {
     PageFeedAssetSetServiceOperation removePageFeedAssetSetOperation =
         buildExampleMutateRequest(accountId, valuesRepositoryFacade.getPageFeedAssetSetValuesRepository().getPageFeedAssetSet());
 
-    pageFeedAssetSetService.pageFeedAssetSetServiceRemovePost(removePageFeedAssetSetOperation);
+    pageFeedAssetSetService.pageFeedAssetSetServiceRemovePost(ApiUtils.BASE_ACCOUNT_ID, removePageFeedAssetSetOperation);
   }
 
   /**

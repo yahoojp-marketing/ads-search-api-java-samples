@@ -9,17 +9,17 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v11.api.CampaignCriterionServiceApi;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignCriterion;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignCriterionServiceCriterion;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignCriterionServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignCriterionServiceKeyword;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignCriterionServiceKeywordMatchType;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v11.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v12.api.CampaignCriterionServiceApi;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignCriterion;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignCriterionServiceCriterion;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignCriterionServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignCriterionServiceKeyword;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignCriterionServiceKeywordMatchType;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceType;
 
 /**
  * example CampaignService operation and Utility method collection.
@@ -58,7 +58,7 @@ public class CampaignCriterionServiceSample {
       }});
 
       // run
-      List<CampaignCriterionServiceValue> addCampaignCriterionValues = campaignCriterionService.campaignCriterionServiceAddPost(addCampaignCriterionOperation).getRval().getValues();
+      List<CampaignCriterionServiceValue> addCampaignCriterionValues = campaignCriterionService.campaignCriterionServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addCampaignCriterionOperation).getRval().getValues();
 
       List<CampaignCriterion> campaignCriterions = new ArrayList<>();
       for (CampaignCriterionServiceValue campaignCriterionValues: addCampaignCriterionValues) {
@@ -72,7 +72,7 @@ public class CampaignCriterionServiceSample {
       CampaignCriterionServiceSelector campaignCriterionSelector = buildExampleGetRequest(accountId, campaignCriterions);
 
       // run
-      campaignCriterionService.campaignCriterionServiceGetPost(campaignCriterionSelector);
+      campaignCriterionService.campaignCriterionServiceGetPost(ApiUtils.BASE_ACCOUNT_ID, campaignCriterionSelector);
 
       // =================================================================
       // CampaignCriterionService REMOVE
@@ -81,7 +81,7 @@ public class CampaignCriterionServiceSample {
       CampaignCriterionServiceOperation removeCampaignCriterionOperation = buildExampleMutateRequest(accountId, campaignCriterions);
 
       // run
-      campaignCriterionService.campaignCriterionServiceRemovePost(removeCampaignCriterionOperation);
+      campaignCriterionService.campaignCriterionServiceRemovePost(ApiUtils.BASE_ACCOUNT_ID, removeCampaignCriterionOperation);
 
     } catch (Exception e) {
       e.printStackTrace();

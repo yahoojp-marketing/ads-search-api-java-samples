@@ -6,11 +6,11 @@ package jp.co.yahoo.adssearchapi.sample.repository;
 import java.util.ArrayList;
 import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v11.model.Feed;
-import jp.co.yahoo.adssearchapi.v11.model.FeedServiceAttribute;
-import jp.co.yahoo.adssearchapi.v11.model.FeedServicePlaceholderField;
-import jp.co.yahoo.adssearchapi.v11.model.FeedServicePlaceholderType;
-import jp.co.yahoo.adssearchapi.v11.model.FeedServiceValue;
+import jp.co.yahoo.adssearchapi.v12.model.Feed;
+import jp.co.yahoo.adssearchapi.v12.model.FeedServiceAttribute;
+import jp.co.yahoo.adssearchapi.v12.model.FeedServicePlaceholderField;
+import jp.co.yahoo.adssearchapi.v12.model.FeedServicePlaceholderType;
+import jp.co.yahoo.adssearchapi.v12.model.FeedServiceValue;
 
 /**
  * Utility method collection for Java Sample Program.

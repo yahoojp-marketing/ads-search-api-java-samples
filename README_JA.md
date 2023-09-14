@@ -1,6 +1,6 @@
 ## バージョン
 
-v11
+v12
 
 ## 概要
 
@@ -26,9 +26,10 @@ src/main/java/jp/co/yahoo/adssearchapi/sample/feature/
 
 Java環境を構築するために、以下をインストールしてください。
 
-1. Java 1.8 Java SE Development Kit 8
+1. Java 17 以上
 2. Apache Maven 3.5.3、またはそれ以上のバージョン
 3. 以下の環境変数を設定します。
+  - BASE_ACCOUNT_ID     : x-z-base-account-id ヘッダーで指定するアカウントIDを記述してください(必須)。
   - ACCOUNT_ID          : アカウントIDを記述してください(必須)。
   - CLIENT_ID           : クライアントIDを記述してください(必須)。
   - CLIENT_SECRET       : クライアントシークレットを記述してください(必須)。

@@ -1,6 +1,6 @@
 ## Version
 
-v11
+v12
 
 ## Overview
 
@@ -26,9 +26,10 @@ src/main/java/jp/yahooapis/ss/adapisample/feature/
 
 Install the software below to organize environment.
 
-1. Java 1.8(Java SE Development Kit 8 or above
+1. Java 17 or above
 2. Apache Maven 3.5.3 or above
 3. Set the following environment variables.
+  - BASE_ACCOUNT_ID      : Account ID that should be specified in 'x-z-base-account-id' header. (required)
   - ACCOUNT_ID           : Account ID (required)
   - CLIENT_ID            : Client ID (required)
   - CLIENT_SECRET        : Client secret (required)
