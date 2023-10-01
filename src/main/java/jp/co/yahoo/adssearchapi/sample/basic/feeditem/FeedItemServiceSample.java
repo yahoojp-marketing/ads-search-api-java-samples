@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2022 Yahoo Japan Corporation. All Rights Reserved.
+ * Copyright (C) 2023 LY Corporation. All Rights Reserved.
  */
 package jp.co.yahoo.adssearchapi.sample.basic.feeditem;
 
