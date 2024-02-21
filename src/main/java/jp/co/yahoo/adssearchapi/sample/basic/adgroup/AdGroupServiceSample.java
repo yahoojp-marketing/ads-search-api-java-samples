@@ -7,28 +7,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v12.api.AdGroupServiceApi;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroup;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceBiddingStrategyConfiguration;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceCpcBiddingScheme;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceFrequentlyRunBetterPerformingAdsMode;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceOperation;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceSelector;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceSettings;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceUrlApprovalStatus;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v13.api.AdGroupServiceApi;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroup;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceBiddingStrategyConfiguration;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceCpcBiddingScheme;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceFrequentlyRunBetterPerformingAdsMode;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceOperation;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceSelector;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceSettings;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceUrlApprovalStatus;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v13.model.CampaignServiceType;
 
 /**
  * example AdGroupService operation and Utility method collection.
@@ -65,7 +66,7 @@ public class AdGroupServiceSample {
       AdGroupServiceOperation addRequest = buildExampleMutateRequest(accountId, Collections.singletonList(createExampleStandardAdGroup(campaignId)));
 
       // run
-      List<AdGroupServiceValue> addResponse =  adGroupService.adGroupServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addRequest).getRval().getValues();
+      List<AdGroupServiceValue> addResponse = adGroupService.adGroupServiceAddPost(ApiUtils.BASE_ACCOUNT_ID, addRequest).getRval().getValues();
       valuesRepositoryFacade.getValuesHolder().setAdGroupServiceValueList(addResponse);
 
       // =================================================================
@@ -251,7 +252,7 @@ public class AdGroupServiceSample {
    * create sample request.
    *
    * @param accountId long
-   * @param adGroups AdGroup
+   * @param adGroups  AdGroup
    * @return AdGroupSelector
    */
   public static AdGroupServiceSelector buildExampleGetRequest(long accountId, List<AdGroup> adGroups) {
@@ -425,7 +426,6 @@ public class AdGroupServiceSample {
 
     ValuesHolder selfValuesHolder = new ValuesHolder();
     selfValuesHolder.setBiddingStrategyServiceValueList(parentValuesHolder.getBiddingStrategyServiceValueList());
-    selfValuesHolder.setFeedServiceValueList(parentValuesHolder.getFeedServiceValueList());
     selfValuesHolder.setCampaignServiceValueList(parentValuesHolder.getCampaignServiceValueList());
     selfValuesHolder.setAdGroupServiceValueList(addResponse);
 
