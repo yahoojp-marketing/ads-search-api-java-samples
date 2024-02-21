@@ -11,13 +11,11 @@ import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
 public class ValuesRepositoryFacade {
 
   private ValuesHolder valuesHolder;
-  private FeedValuesRepository feedFolderValueRepository;
   private CampaignValuesRepository campaignValuesRepository;
   private BiddingStrategyValuesRepository biddingStrategyValuesRepository;
   private AdGroupValuesRepository adGroupValuesRepository;
   private AdGroupAdValuesRepository adGroupAdValuesRepository;
   private AdGroupCriterionValuesRepository adGroupCriterionValuesRepository;
-  private FeedItemValuesRepository feedItemValuesRepository;
   private PageFeedAssetSetValuesRepository pageFeedAssetSetValuesRepository;
 
   /**
@@ -27,13 +25,11 @@ public class ValuesRepositoryFacade {
    */
   public ValuesRepositoryFacade(ValuesHolder valuesHolder) {
     this.valuesHolder = valuesHolder;
-    this.feedFolderValueRepository = new FeedValuesRepository(this.valuesHolder);
     this.campaignValuesRepository = new CampaignValuesRepository(this.valuesHolder);
     this.biddingStrategyValuesRepository = new BiddingStrategyValuesRepository(this.valuesHolder);
     this.adGroupValuesRepository = new AdGroupValuesRepository(this.valuesHolder);
     this.adGroupAdValuesRepository = new AdGroupAdValuesRepository(this.valuesHolder);
     this.adGroupCriterionValuesRepository = new AdGroupCriterionValuesRepository(this.valuesHolder);
-    this.feedItemValuesRepository = new FeedItemValuesRepository(this.valuesHolder);
     this.pageFeedAssetSetValuesRepository = new PageFeedAssetSetValuesRepository(this.valuesHolder);
   }
 
@@ -42,13 +38,6 @@ public class ValuesRepositoryFacade {
    */
   public ValuesHolder getValuesHolder() {
     return this.valuesHolder;
-  }
-
-  /**
-   * @return FeedValueRepository
-   */
-  public FeedValuesRepository getFeedValueRepository() {
-    return this.feedFolderValueRepository;
   }
 
   /**
@@ -84,13 +73,6 @@ public class ValuesRepositoryFacade {
    */
   public AdGroupCriterionValuesRepository getAdGroupCriterionValuesRepository() {
     return this.adGroupCriterionValuesRepository;
-  }
-
-  /**
-   * @return FeedItemValuesRepository
-   */
-  public FeedItemValuesRepository getFeedItemValuesRepository() {
-    return this.feedItemValuesRepository;
   }
 
   /**

@@ -3,31 +3,32 @@
  */
 package jp.co.yahoo.adssearchapi.sample.basic.adgroupcriterion;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v12.api.AdGroupCriterionServiceApi;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceBid;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceBiddableAdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceCriterion;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceKeyword;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceKeywordMatchType;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v13.api.AdGroupCriterionServiceApi;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceBid;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceBiddableAdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceCriterion;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceKeyword;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceKeywordMatchType;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v13.model.CampaignServiceType;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * example AdGroupCriterionService operation and Utility method collection.
@@ -290,7 +291,6 @@ public class AdGroupCriterionServiceSample {
 
     ValuesHolder seflValuesHolder = new ValuesHolder();
     seflValuesHolder.setBiddingStrategyServiceValueList(parentValuesHolder.getBiddingStrategyServiceValueList());
-    seflValuesHolder.setFeedServiceValueList(parentValuesHolder.getFeedServiceValueList());
     seflValuesHolder.setCampaignServiceValueList(parentValuesHolder.getCampaignServiceValueList());
     seflValuesHolder.setAdGroupServiceValueList(parentValuesHolder.getAdGroupServiceValueList());
     seflValuesHolder.setAdGroupCriterionServiceValueList(addResponse);

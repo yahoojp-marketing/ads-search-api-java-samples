@@ -11,13 +11,13 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v12.api.AdGroupBidMultiplierServiceApi;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupBidMultiplier;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupBidMultiplierServiceOperation;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupBidMultiplierServicePlatformType;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupBidMultiplierServiceSelector;
-import jp.co.yahoo.adssearchapi.v12.model.AdGroupBidMultiplierServiceValue;
-import jp.co.yahoo.adssearchapi.v12.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v13.api.AdGroupBidMultiplierServiceApi;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupBidMultiplier;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupBidMultiplierServiceOperation;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupBidMultiplierServicePlatformType;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupBidMultiplierServiceSelector;
+import jp.co.yahoo.adssearchapi.v13.model.AdGroupBidMultiplierServiceValue;
+import jp.co.yahoo.adssearchapi.v13.model.CampaignServiceType;
 
 /**
  * example AdGroupBidMultiplierService operation and Utility method collection.

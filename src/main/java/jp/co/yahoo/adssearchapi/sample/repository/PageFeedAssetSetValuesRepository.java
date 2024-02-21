@@ -1,8 +1,8 @@
 package jp.co.yahoo.adssearchapi.sample.repository;
 
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v12.model.PageFeedAssetSet;
-import jp.co.yahoo.adssearchapi.v12.model.PageFeedAssetSetServiceValue;
+import jp.co.yahoo.adssearchapi.v13.model.PageFeedAssetSet;
+import jp.co.yahoo.adssearchapi.v13.model.PageFeedAssetSetServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
