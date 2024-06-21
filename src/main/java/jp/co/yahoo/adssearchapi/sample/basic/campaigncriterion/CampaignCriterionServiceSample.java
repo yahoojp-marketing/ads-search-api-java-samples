@@ -9,17 +9,17 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v13.api.CampaignCriterionServiceApi;
-import jp.co.yahoo.adssearchapi.v13.model.CampaignCriterion;
-import jp.co.yahoo.adssearchapi.v13.model.CampaignCriterionServiceCriterion;
-import jp.co.yahoo.adssearchapi.v13.model.CampaignCriterionServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v13.model.CampaignCriterionServiceKeyword;
-import jp.co.yahoo.adssearchapi.v13.model.CampaignCriterionServiceKeywordMatchType;
-import jp.co.yahoo.adssearchapi.v13.model.CampaignCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v13.model.CampaignCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v13.model.CampaignCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v13.model.CampaignCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v13.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v14.api.CampaignCriterionServiceApi;
+import jp.co.yahoo.adssearchapi.v14.model.CampaignCriterion;
+import jp.co.yahoo.adssearchapi.v14.model.CampaignCriterionServiceCriterion;
+import jp.co.yahoo.adssearchapi.v14.model.CampaignCriterionServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v14.model.CampaignCriterionServiceKeyword;
+import jp.co.yahoo.adssearchapi.v14.model.CampaignCriterionServiceKeywordMatchType;
+import jp.co.yahoo.adssearchapi.v14.model.CampaignCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v14.model.CampaignCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v14.model.CampaignCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v14.model.CampaignCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v14.model.CampaignServiceType;
 
 /**
  * example CampaignService operation and Utility method collection.
