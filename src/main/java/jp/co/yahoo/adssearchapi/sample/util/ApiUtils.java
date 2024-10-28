@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import jp.co.yahoo.adssearchapi.v14.YahooJapanAdsApiClient;
+import jp.co.yahoo.adssearchapi.v15.YahooJapanAdsApiClient;
 
 /**
  * Utility method collection for Java Sample Program.
