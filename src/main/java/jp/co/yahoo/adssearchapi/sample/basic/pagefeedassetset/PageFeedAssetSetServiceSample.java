@@ -3,11 +3,11 @@ package jp.co.yahoo.adssearchapi.sample.basic.pagefeedassetset;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v15.api.PageFeedAssetSetServiceApi;
-import jp.co.yahoo.adssearchapi.v15.model.PageFeedAssetSet;
-import jp.co.yahoo.adssearchapi.v15.model.PageFeedAssetSetServiceOperation;
-import jp.co.yahoo.adssearchapi.v15.model.PageFeedAssetSetServiceSelector;
-import jp.co.yahoo.adssearchapi.v15.model.PageFeedAssetSetServiceValue;
+import jp.co.yahoo.adssearchapi.v16.api.PageFeedAssetSetServiceApi;
+import jp.co.yahoo.adssearchapi.v16.model.PageFeedAssetSet;
+import jp.co.yahoo.adssearchapi.v16.model.PageFeedAssetSetServiceOperation;
+import jp.co.yahoo.adssearchapi.v16.model.PageFeedAssetSetServiceSelector;
+import jp.co.yahoo.adssearchapi.v16.model.PageFeedAssetSetServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;

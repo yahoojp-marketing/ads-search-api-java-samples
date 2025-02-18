@@ -3,12 +3,12 @@
  */
 package jp.co.yahoo.adssearchapi.sample.util;
 
-import jp.co.yahoo.adssearchapi.v15.model.AdGroupAdServiceValue;
-import jp.co.yahoo.adssearchapi.v15.model.AdGroupCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v15.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v15.model.BiddingStrategyServiceValue;
-import jp.co.yahoo.adssearchapi.v15.model.CampaignServiceValue;
-import jp.co.yahoo.adssearchapi.v15.model.PageFeedAssetSetServiceValue;
+import jp.co.yahoo.adssearchapi.v16.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v16.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v16.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v16.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v16.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v16.model.PageFeedAssetSetServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
