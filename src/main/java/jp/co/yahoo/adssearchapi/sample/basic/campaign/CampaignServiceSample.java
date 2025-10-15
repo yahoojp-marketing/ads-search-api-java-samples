@@ -8,31 +8,29 @@ import jp.co.yahoo.adssearchapi.sample.basic.pagefeedassetset.PageFeedAssetSetSe
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v17.api.CampaignServiceApi;
-import jp.co.yahoo.adssearchapi.v17.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v17.model.Campaign;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceAppOsType;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceBiddingStrategy;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceBiddingStrategyType;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceBudget;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceCpcBiddingScheme;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceDynamicAdsForSearchSetting;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceEnhancedCpcEnabled;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceGeoTargetType;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceGeoTargetTypeSetting;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceMaximizeClicksBiddingScheme;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceOperation;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceSelector;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceSettingType;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceSettings;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v17.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v18.api.CampaignServiceApi;
+import jp.co.yahoo.adssearchapi.v18.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v18.model.Campaign;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceAppOsType;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceBiddingStrategy;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceBiddingStrategyType;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceBudget;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceDynamicAdsForSearchSetting;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceGeoTargetType;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceGeoTargetTypeSetting;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceOperation;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceSelector;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceSettingType;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceSettings;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceValue;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -149,12 +147,8 @@ public class CampaignServiceSample {
    */
   private static CampaignServiceBiddingStrategy createManualBiddingCampaignBiddingStrategy() {
 
-    CampaignServiceCpcBiddingScheme manualCpcBiddingScheme = new CampaignServiceCpcBiddingScheme();
-    manualCpcBiddingScheme.setEnhancedCpcEnabled(CampaignServiceEnhancedCpcEnabled.FALSE);
-
     CampaignServiceBiddingScheme biddingScheme = new CampaignServiceBiddingScheme();
     biddingScheme.setBiddingStrategyType(CampaignServiceBiddingStrategyType.CPC);
-    biddingScheme.setCpcBiddingScheme(manualCpcBiddingScheme);
 
     CampaignServiceBiddingStrategy campaignBiddingStrategy = new CampaignServiceBiddingStrategy();
     campaignBiddingStrategy.setBiddingScheme(biddingScheme);
