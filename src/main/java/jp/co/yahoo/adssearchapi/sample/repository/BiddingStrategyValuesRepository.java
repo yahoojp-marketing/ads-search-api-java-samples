@@ -6,9 +6,9 @@ package jp.co.yahoo.adssearchapi.sample.repository;
 import java.util.ArrayList;
 import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v18.model.BiddingStrategy;
-import jp.co.yahoo.adssearchapi.v18.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v18.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategy;
+import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategyServiceValue;
 
 /**
  * Utility method collection for Java Sample Program.

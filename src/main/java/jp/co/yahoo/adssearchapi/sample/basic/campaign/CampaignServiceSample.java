@@ -8,29 +8,29 @@ import jp.co.yahoo.adssearchapi.sample.basic.pagefeedassetset.PageFeedAssetSetSe
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v18.api.CampaignServiceApi;
-import jp.co.yahoo.adssearchapi.v18.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v18.model.Campaign;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceAppOsType;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceBiddingStrategy;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceBiddingStrategyType;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceBudget;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceDynamicAdsForSearchSetting;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceGeoTargetType;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceGeoTargetTypeSetting;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceMaximizeClicksBiddingScheme;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceOperation;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceSelector;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceSettingType;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceSettings;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceValue;
+import jp.co.yahoo.adssearchapi.v19.api.CampaignServiceApi;
+import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v19.model.Campaign;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceAppOsType;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceBiddingStrategy;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceBiddingStrategyType;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceBudget;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceDynamicAdsForSearchSetting;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceGeoTargetType;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceGeoTargetTypeSetting;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceOperation;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceSelector;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceSettingType;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceSettings;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceValue;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -219,7 +219,7 @@ public class CampaignServiceSample {
     geoTargetTypeServiceSetting.setGeoTargetTypeSetting(geoTargetTypeSetting);
 
     CampaignServiceSettings targetingServiceSetting = new CampaignServiceSettings();
-    targetingServiceSetting.setSettingType(CampaignServiceSettingType.TARGET_LIST_SETTING);
+    targetingServiceSetting.setSettingType(CampaignServiceSettingType.AUDIENCE_LIST_SETTING);
     targetingServiceSetting.setTargetingSetting(targetingSetting);
 
     CampaignServiceSettings dynamicAdsForSearchServiceSetting =new CampaignServiceSettings();
@@ -277,7 +277,7 @@ public class CampaignServiceSample {
     geoTargetTypeServiceSetting.setGeoTargetTypeSetting(geoTargetTypeSetting);
 
     CampaignServiceSettings targetingServiceSetting = new CampaignServiceSettings();
-    targetingServiceSetting.setSettingType(CampaignServiceSettingType.TARGET_LIST_SETTING);
+    targetingServiceSetting.setSettingType(CampaignServiceSettingType.AUDIENCE_LIST_SETTING);
     targetingServiceSetting.setTargetingSetting(targetingSetting);
 
     CampaignServiceSettings dynamicAdsForSearchServiceSetting =new CampaignServiceSettings();
@@ -337,7 +337,7 @@ public class CampaignServiceSample {
     geoTargetTypeServiceSetting.setGeoTargetTypeSetting(geoTargetTypeSetting);
 
     CampaignServiceSettings targetingServiceSetting = new CampaignServiceSettings();
-    targetingServiceSetting.setSettingType(CampaignServiceSettingType.TARGET_LIST_SETTING);
+    targetingServiceSetting.setSettingType(CampaignServiceSettingType.AUDIENCE_LIST_SETTING);
     targetingServiceSetting.setTargetingSetting(targetingSetting);
 
     CampaignServiceSettings dynamicAdsForSearchServiceSetting =new CampaignServiceSettings();
@@ -389,7 +389,7 @@ public class CampaignServiceSample {
     geoTargetTypeServiceSetting.setGeoTargetTypeSetting(geoTargetTypeSetting);
 
     CampaignServiceSettings targetingServiceSetting = new CampaignServiceSettings();
-    targetingServiceSetting.setSettingType(CampaignServiceSettingType.TARGET_LIST_SETTING);
+    targetingServiceSetting.setSettingType(CampaignServiceSettingType.AUDIENCE_LIST_SETTING);
     targetingServiceSetting.setTargetingSetting(targetingSetting);
 
     CampaignServiceSettings dynamicAdsForSearchServiceSetting =new CampaignServiceSettings();
