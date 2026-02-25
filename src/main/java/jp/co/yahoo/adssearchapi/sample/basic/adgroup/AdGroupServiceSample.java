@@ -12,24 +12,24 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v18.api.AdGroupServiceApi;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroup;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceBiddingStrategyConfiguration;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceCpcBiddingScheme;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceFrequentlyRunBetterPerformingAdsMode;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceOperation;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceSelector;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceSettings;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceTargetAll;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceTargetingSetting;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceUrlApprovalStatus;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v18.model.AdGroupServiceValue;
-import jp.co.yahoo.adssearchapi.v18.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v19.api.AdGroupServiceApi;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroup;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceBiddingStrategyConfiguration;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceCpcBiddingScheme;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceFrequentlyRunBetterPerformingAdsMode;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceOperation;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceSelector;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceSettings;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceTargetAll;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceTargetingSetting;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceUrlApprovalStatus;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v19.model.AdGroupServiceValue;
+import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceType;
 
 /**
  * example AdGroupService operation and Utility method collection.
@@ -136,7 +136,7 @@ public class AdGroupServiceSample {
     targetingSetting.setTargetAll(AdGroupServiceTargetAll.ACTIVE);
 
     AdGroupServiceSettings setting = new AdGroupServiceSettings();
-    setting.setCriterionType(AdGroupServiceCriterionType.TARGET_LIST);
+    setting.setCriterionType(AdGroupServiceCriterionType.AUDIENCE_LIST);
     setting.setTargetingSetting(targetingSetting);
 
 
@@ -184,7 +184,7 @@ public class AdGroupServiceSample {
     targetingSetting.setTargetAll(AdGroupServiceTargetAll.ACTIVE);
 
     AdGroupServiceSettings setting = new AdGroupServiceSettings();
-    setting.setCriterionType(AdGroupServiceCriterionType.TARGET_LIST);
+    setting.setCriterionType(AdGroupServiceCriterionType.AUDIENCE_LIST);
     setting.setTargetingSetting(targetingSetting);
 
     // customParameters
@@ -231,7 +231,7 @@ public class AdGroupServiceSample {
     targetingSetting.setTargetAll(AdGroupServiceTargetAll.ACTIVE);
 
     AdGroupServiceSettings setting = new AdGroupServiceSettings();
-    setting.setCriterionType(AdGroupServiceCriterionType.TARGET_LIST);
+    setting.setCriterionType(AdGroupServiceCriterionType.AUDIENCE_LIST);
     setting.setTargetingSetting(targetingSetting);
 
     // ad rotation mode
@@ -308,7 +308,7 @@ public class AdGroupServiceSample {
       targetingSetting.setTargetAll(AdGroupServiceTargetAll.DEACTIVE);
 
       AdGroupServiceSettings setting = new AdGroupServiceSettings();
-      setting.setCriterionType(AdGroupServiceCriterionType.TARGET_LIST);
+      setting.setCriterionType(AdGroupServiceCriterionType.AUDIENCE_LIST);
       setting.setTargetingSetting(targetingSetting);
       operand.setSettings(setting);
 
