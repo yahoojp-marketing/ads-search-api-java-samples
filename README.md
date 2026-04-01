@@ -1,4 +1,4 @@
-# Yahoo!広告 検索広告 API Javaサンプルプログラム
+# LINEヤフー広告 検索広告 API Javaサンプルプログラム
 
 Javaサンプルプログラムです。
 
@@ -6,7 +6,7 @@ Javaサンプルプログラムです。
 
 ### [日本語](./README_JA.md)
 
-# Yahoo! Ads Search Ads API Java sample code
+# LY Ads Search Ads API Java sample code
 
 Java sample code.
 
