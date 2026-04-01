@@ -42,7 +42,7 @@ Example
 mvn exec:java -Dexec.mainClass=jp.co.yahoo.adssearchapi.sample.basic.reportdefinition.ReportDefinitionServiceSample
 ```
 
-## NOTICE：Yahoo! JAPAN Ads Search Ads API - For use of sample code
+## NOTICE：LY Ads Search Ads API - For use of sample code
 
-The sample code of Yahoo! JAPAN Ads API is provided to API users only who concluded the contract of "Application to Use Yahoo! JAPAN Ads API" with LY Corporation.  
+The sample code of LY Ads API is provided to API users only who concluded the contract of "Application to Use LY Ads API" with LY Corporation.  
 Additionally, please note that LY Corporation may change the contents and the specification of the sample code, and may discontinue providing the sample code without any notice.  
