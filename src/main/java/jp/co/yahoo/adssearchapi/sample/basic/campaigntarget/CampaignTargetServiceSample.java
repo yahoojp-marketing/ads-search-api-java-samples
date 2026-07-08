@@ -10,30 +10,30 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v19.api.CampaignTargetServiceApi;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceType;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTarget;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceDayOfWeek;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceExcludedType;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceLocationTarget;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceMinuteOfHour;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceNetworkCoverageType;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceNetworkTarget;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceOperation;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServicePlatformTarget;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServicePlatformType;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceScheduleTarget;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceSelector;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceTarget;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceTargetType;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignTargetServiceValue;
+import jp.co.yahoo.adssearchapi.v20.api.CampaignTargetServiceApi;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTarget;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceDayOfWeek;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceExcludedType;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceLocationTarget;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceMinuteOfHour;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceNetworkCoverageType;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceNetworkTarget;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceOperation;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServicePlatformTarget;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServicePlatformType;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceScheduleTarget;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceSelector;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceTarget;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceTargetType;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignTargetServiceValue;
 
 /**
  * example CampaignTargetService operation and Utility method collection.
  */
 public class CampaignTargetServiceSample {
 
-  private static final CampaignTargetServiceApi campaignTargetService = new CampaignTargetServiceApi(ApiUtils.getYahooJapanAdsApiClient());
+  private static final CampaignTargetServiceApi campaignTargetService = new CampaignTargetServiceApi(ApiUtils.getAdsApiClient());
 
   /**
    * main method for CampaignTargetServiceSample
