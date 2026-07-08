@@ -9,24 +9,24 @@ import jp.co.yahoo.adssearchapi.sample.basic.campaign.CampaignServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v19.api.CampaignCriterionServiceApi;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignCriterion;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignCriterionServiceCriterion;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignCriterionServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignCriterionServiceKeyword;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignCriterionServiceKeywordMatchType;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v20.api.CampaignCriterionServiceApi;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignCriterion;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignCriterionServiceCriterion;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignCriterionServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignCriterionServiceKeyword;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignCriterionServiceKeywordMatchType;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignServiceType;
 
 /**
  * example CampaignService operation and Utility method collection.
  */
 public class CampaignCriterionServiceSample {
 
-  private static final CampaignCriterionServiceApi campaignCriterionService = new CampaignCriterionServiceApi(ApiUtils.getYahooJapanAdsApiClient());
+  private static final CampaignCriterionServiceApi campaignCriterionService = new CampaignCriterionServiceApi(ApiUtils.getAdsApiClient());
 
   /**
    * main method for CampaignCriterionServiceSample

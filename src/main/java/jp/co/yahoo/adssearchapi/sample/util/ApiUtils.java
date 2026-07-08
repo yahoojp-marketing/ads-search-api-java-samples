@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import jp.co.yahoo.adssearchapi.v19.YahooJapanAdsApiClient;
+import jp.co.yahoo.adssearchapi.v20.AdsApiClient;
 
 /**
  * Utility method collection for Java Sample Program.
@@ -42,10 +42,10 @@ public class ApiUtils {
         bundle.getString("REFRESH_TOKEN"));
   }
 
-  public static YahooJapanAdsApiClient getYahooJapanAdsApiClient() {
-    YahooJapanAdsApiClient yahooJapanAdsApiClient = new YahooJapanAdsApiClient(CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN);
-    yahooJapanAdsApiClient.setDebugging(true);
-    return yahooJapanAdsApiClient;
+  public static AdsApiClient getAdsApiClient() {
+    AdsApiClient adsApiClient = new AdsApiClient(CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN);
+    adsApiClient.setDebugging(true);
+    return adsApiClient;
   }
 
   /**

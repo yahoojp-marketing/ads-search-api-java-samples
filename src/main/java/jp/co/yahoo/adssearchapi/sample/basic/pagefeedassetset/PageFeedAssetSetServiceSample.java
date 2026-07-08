@@ -3,17 +3,17 @@ package jp.co.yahoo.adssearchapi.sample.basic.pagefeedassetset;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v19.api.PageFeedAssetSetServiceApi;
-import jp.co.yahoo.adssearchapi.v19.model.PageFeedAssetSet;
-import jp.co.yahoo.adssearchapi.v19.model.PageFeedAssetSetServiceOperation;
-import jp.co.yahoo.adssearchapi.v19.model.PageFeedAssetSetServiceSelector;
-import jp.co.yahoo.adssearchapi.v19.model.PageFeedAssetSetServiceValue;
+import jp.co.yahoo.adssearchapi.v20.api.PageFeedAssetSetServiceApi;
+import jp.co.yahoo.adssearchapi.v20.model.PageFeedAssetSet;
+import jp.co.yahoo.adssearchapi.v20.model.PageFeedAssetSetServiceOperation;
+import jp.co.yahoo.adssearchapi.v20.model.PageFeedAssetSetServiceSelector;
+import jp.co.yahoo.adssearchapi.v20.model.PageFeedAssetSetServiceValue;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PageFeedAssetSetServiceSample {
-  private static final PageFeedAssetSetServiceApi pageFeedAssetSetService = new PageFeedAssetSetServiceApi(ApiUtils.getYahooJapanAdsApiClient());
+  private static final PageFeedAssetSetServiceApi pageFeedAssetSetService = new PageFeedAssetSetServiceApi(ApiUtils.getAdsApiClient());
 
 
   /**

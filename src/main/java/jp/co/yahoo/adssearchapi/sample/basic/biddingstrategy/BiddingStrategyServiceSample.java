@@ -10,23 +10,23 @@ import java.util.List;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v19.api.BiddingStrategyServiceApi;
-import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategy;
-import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategyServiceBiddingScheme;
-import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategyServiceMaximizeClicksBiddingScheme;
-import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategyServiceOperation;
-import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategyServiceSelector;
-import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategyServiceTargetCpaBiddingScheme;
-import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategyServiceTargetRoasBiddingScheme;
-import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategyServiceType;
-import jp.co.yahoo.adssearchapi.v19.model.BiddingStrategyServiceValue;
+import jp.co.yahoo.adssearchapi.v20.api.BiddingStrategyServiceApi;
+import jp.co.yahoo.adssearchapi.v20.model.BiddingStrategy;
+import jp.co.yahoo.adssearchapi.v20.model.BiddingStrategyServiceBiddingScheme;
+import jp.co.yahoo.adssearchapi.v20.model.BiddingStrategyServiceMaximizeClicksBiddingScheme;
+import jp.co.yahoo.adssearchapi.v20.model.BiddingStrategyServiceOperation;
+import jp.co.yahoo.adssearchapi.v20.model.BiddingStrategyServiceSelector;
+import jp.co.yahoo.adssearchapi.v20.model.BiddingStrategyServiceTargetCpaBiddingScheme;
+import jp.co.yahoo.adssearchapi.v20.model.BiddingStrategyServiceTargetRoasBiddingScheme;
+import jp.co.yahoo.adssearchapi.v20.model.BiddingStrategyServiceType;
+import jp.co.yahoo.adssearchapi.v20.model.BiddingStrategyServiceValue;
 
 /**
  * example BiddingStrategyService operation and Utility method collection.
  */
 public class BiddingStrategyServiceSample {
 
-  private static final BiddingStrategyServiceApi biddingStrategyService = new BiddingStrategyServiceApi(ApiUtils.getYahooJapanAdsApiClient());
+  private static final BiddingStrategyServiceApi biddingStrategyService = new BiddingStrategyServiceApi(ApiUtils.getAdsApiClient());
 
   /**
    * main method for BiddingStrategyServiceSample

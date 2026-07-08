@@ -7,23 +7,23 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v19.api.AdGroupCriterionServiceApi;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceBid;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceBiddableAdGroupCriterion;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceCriterion;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceCriterionType;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceKeyword;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceKeywordMatchType;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceOperation;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceSelector;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceUse;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupCriterionServiceValue;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v20.api.AdGroupCriterionServiceApi;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceBid;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceBiddableAdGroupCriterion;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceCriterion;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceCriterionType;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceKeyword;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceKeywordMatchType;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceOperation;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceSelector;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceUse;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupCriterionServiceValue;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignServiceType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class AdGroupCriterionServiceSample {
 
-  private static final AdGroupCriterionServiceApi adGroupCriterionService = new AdGroupCriterionServiceApi(ApiUtils.getYahooJapanAdsApiClient());
+  private static final AdGroupCriterionServiceApi adGroupCriterionService = new AdGroupCriterionServiceApi(ApiUtils.getAdsApiClient());
 
   /**
    * main method for AdGroupCriterionServiceSample

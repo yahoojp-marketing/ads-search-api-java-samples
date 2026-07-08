@@ -7,21 +7,21 @@ import jp.co.yahoo.adssearchapi.sample.basic.adgroup.AdGroupServiceSample;
 import jp.co.yahoo.adssearchapi.sample.repository.ValuesRepositoryFacade;
 import jp.co.yahoo.adssearchapi.sample.util.ApiUtils;
 import jp.co.yahoo.adssearchapi.sample.util.ValuesHolder;
-import jp.co.yahoo.adssearchapi.v19.api.AdGroupAdServiceApi;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAd;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAdServiceAd;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAdServiceAdType;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAdServiceAppAd;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAdServiceApprovalStatus;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAdServiceCustomParameter;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAdServiceCustomParameters;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAdServiceDevicePreference;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAdServiceOperation;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAdServiceSelector;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAdServiceUserStatus;
-import jp.co.yahoo.adssearchapi.v19.model.AdGroupAdServiceValue;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceAppOsType;
-import jp.co.yahoo.adssearchapi.v19.model.CampaignServiceType;
+import jp.co.yahoo.adssearchapi.v20.api.AdGroupAdServiceApi;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAd;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAdServiceAd;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAdServiceAdType;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAdServiceAppAd;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAdServiceApprovalStatus;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAdServiceCustomParameter;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAdServiceCustomParameters;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAdServiceDevicePreference;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAdServiceOperation;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAdServiceSelector;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAdServiceUserStatus;
+import jp.co.yahoo.adssearchapi.v20.model.AdGroupAdServiceValue;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignServiceAppOsType;
+import jp.co.yahoo.adssearchapi.v20.model.CampaignServiceType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +33,7 @@ import java.util.List;
  */
 public class AdGroupAdServiceSample {
 
-  private static final AdGroupAdServiceApi adGroupAdService = new AdGroupAdServiceApi(ApiUtils.getYahooJapanAdsApiClient());
+  private static final AdGroupAdServiceApi adGroupAdService = new AdGroupAdServiceApi(ApiUtils.getAdsApiClient());
 
   /**
    * main method for AdGroupAdServiceSample
