@@ -44,7 +44,10 @@ public class ApiUtils {
 
   public static AdsApiClient getAdsApiClient() {
     AdsApiClient adsApiClient = new AdsApiClient(CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN);
-    adsApiClient.setDebugging(true);
+
+    // Set to true only when you need API communication logs for troubleshooting.
+    // Debug logs may contain sensitive authentication information; do not enable this in production.
+    adsApiClient.setDebugging(false);
     return adsApiClient;
   }
 
